@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>LME Reuma Â· HC-UFU</title>
+<title>LME Reuma · HC-UFU</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Outfit:wght@300;400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -188,8 +188,8 @@ select.fi{cursor:pointer}
 <body>
 <div class="app">
   <div class="bar">
-    <div class="bar-logo">LME Reuma <small>HC-UFU Â· CEAF-MG</small></div>
-    <div class="bar-dr"><b>Dr. Gustavo Pafume de SÃ¡</b>CRM-MG 68688 Â· Reumatologia</div>
+    <div class="bar-logo">LME Reuma <small>HC-UFU · CEAF-MG</small></div>
+    <div class="bar-dr"><b>Dr. Gustavo Pafume de Sá</b>CRM-MG 68688 · Reumatologia</div>
   </div>
   <div class="body">
     <nav class="nav" id="nav"></nav>
@@ -199,105 +199,105 @@ select.fi{cursor:pointer}
 <div id="toast"></div>
 
 <script>
-// â”€â”€ CONFIG â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── CONFIG ────────────────────────────────────────────────────
 const MEDICO = {
-  nome:"Dr. Gustavo Pafume de SÃ¡",crm:"CRM-MG 68688",
-  especialidade:"Reumatologia",instituicao:"Hospital de ClÃ­nicas da UFU",
-  endereco:"Av. ParÃ¡, 1720 - Umuarama, UberlÃ¢ndia - MG, 38405-320",
+  nome:"Dr. Gustavo Pafume de Sá",crm:"CRM-MG 68688",
+  especialidade:"Reumatologia",instituicao:"Hospital de Clínicas da UFU",
+  endereco:"Av. Pará, 1720 - Umuarama, Uberlândia - MG, 38405-320",
   cnes:"2146355",cns:"701403641664437"
 };
 
 const CIDS = [
-  {c:"M05.0",d:"Artrite reumatoide com fator reumatoide â€” SÃ­ndrome de Felty"},
+  {c:"M05.0",d:"Artrite reumatoide com fator reumatoide — Síndrome de Felty"},
   {c:"M05.1",d:"Artrite reumatoide com acometimento pulmonar"},
   {c:"M05.2",d:"Artrite reumatoide com vasculite"},
-  {c:"M05.3",d:"Artrite reumatoide com acometimento de outros Ã³rgÃ£os e sistemas"},
+  {c:"M05.3",d:"Artrite reumatoide com acometimento de outros órgãos e sistemas"},
   {c:"M05.8",d:"Outras artrites reumatoides soropositivas"},
   {c:"M06.0",d:"Artrite reumatoide soronegativa"},
   {c:"M06.8",d:"Outras artrites reumatoides especificadas"},
 ];
 
 const MEDS = {
-  "MMCDs SintÃ©ticos â€” 1Âª linha":[
-    {nome:"Metotrexato 2,5mg",ap:"Comp. 2,5 mg",pos:"7,5 a 25 mg/semana, VO, 1Ã—/semana (3â€“10 comprimidos/sem). Associar Ãcido FÃ³lico 5 mg/semana (36h apÃ³s MTX).",obs:"Primeira escolha. Contraindicado na gestaÃ§Ã£o (categoria X)."},
-    {nome:"Metotrexato 25mg/ml",ap:"Sol. inj. 25 mg/mL (frasco 2 mL = 50 mg)",pos:"7,5 a 25 mg/semana, SC ou IM, 1Ã—/semana. Associar Ãcido FÃ³lico 5 mg/semana (36h apÃ³s MTX).",obs:"Uso injetÃ¡vel quando hÃ¡ intolerÃ¢ncia ao comprimido. Contraindicado na gestaÃ§Ã£o (categoria X)."},
-    {nome:"Leflunomida 20mg",ap:"Comp. 20 mg",pos:"20 mg/dia, VO. Dose de ataque opcional: 100 mg/dia Ã— 3 dias.",obs:"Contraindicada na gestaÃ§Ã£o. ReceituÃ¡rio de controle especial."},
-    {nome:"Sulfassalazina 500mg",ap:"Comp. 500 mg",pos:"1.000 a 3.000 mg/dia, VO, em 2â€“3 tomadas.",obs:""},
-    {nome:"Hidroxicloroquina 400mg",ap:"Comp. 400 mg",pos:"400 mg/dia, VO (mÃ¡x 5 mg/kg/dia).",obs:"Monitoramento oftalmolÃ³gico anual obrigatÃ³rio."},
-    {nome:"Cloroquina 150mg",ap:"Comp. 150 mg",pos:"250 mg/dia, VO (mÃ¡x 4 mg/kg/dia).",obs:"Monitoramento oftalmolÃ³gico obrigatÃ³rio."},
+  "MMCDs Sintéticos — 1ª linha":[
+    {nome:"Metotrexato 2,5mg",ap:"Comp. 2,5 mg",pos:"7,5 a 25 mg/semana, VO, 1×/semana (3–10 comprimidos/sem). Associar Ácido Fólico 5 mg/semana (36h após MTX).",obs:"Primeira escolha. Contraindicado na gestação (categoria X)."},
+    {nome:"Metotrexato 25mg/ml",ap:"Sol. inj. 25 mg/mL (frasco 2 mL = 50 mg)",pos:"7,5 a 25 mg/semana, SC ou IM, 1×/semana. Associar Ácido Fólico 5 mg/semana (36h após MTX).",obs:"Uso injetável quando há intolerância ao comprimido. Contraindicado na gestação (categoria X)."},
+    {nome:"Leflunomida 20mg",ap:"Comp. 20 mg",pos:"20 mg/dia, VO. Dose de ataque opcional: 100 mg/dia × 3 dias.",obs:"Contraindicada na gestação. Receituário de controle especial."},
+    {nome:"Sulfassalazina 500mg",ap:"Comp. 500 mg",pos:"1.000 a 3.000 mg/dia, VO, em 2–3 tomadas.",obs:""},
+    {nome:"Hidroxicloroquina 400mg",ap:"Comp. 400 mg",pos:"400 mg/dia, VO (máx 5 mg/kg/dia).",obs:"Monitoramento oftalmológico anual obrigatório."},
+    {nome:"Cloroquina 150mg",ap:"Comp. 150 mg",pos:"250 mg/dia, VO (máx 4 mg/kg/dia).",obs:"Monitoramento oftalmológico obrigatório."},
   ],
-  "JAKi (MMCDsae) â€” 2Âª linha":[
-    {nome:"Baricitinibe 2mg",ap:"Comp. 2 mg",pos:"2 mg VO 1Ã—/dia (dose reduzida: â‰¥75 anos, IRC moderada ou controle prolongado).",obs:"Apenas â‰¥18 anos."},
-    {nome:"Baricitinibe 4mg",ap:"Comp. 4 mg",pos:"4 mg VO 1Ã—/dia. Monoterapia ou + MTX.",obs:"Apenas â‰¥18 anos."},
-    {nome:"Tofacitinibe 5mg",ap:"Comp. 5 mg",pos:"5 mg VO 2Ã—/dia. Monoterapia ou + MTX.",obs:"Apenas â‰¥18 anos."},
-    {nome:"Upadacitinibe 15mg",ap:"Comp. 15 mg (liberaÃ§Ã£o prolongada)",pos:"15 mg VO 1Ã—/dia. Monoterapia ou + MTX.",obs:"Apenas â‰¥18 anos."},
+  "JAKi (MMCDsae) — 2ª linha":[
+    {nome:"Baricitinibe 2mg",ap:"Comp. 2 mg",pos:"2 mg VO 1×/dia (dose reduzida: ≥75 anos, IRC moderada ou controle prolongado).",obs:"Apenas ≥18 anos."},
+    {nome:"Baricitinibe 4mg",ap:"Comp. 4 mg",pos:"4 mg VO 1×/dia. Monoterapia ou + MTX.",obs:"Apenas ≥18 anos."},
+    {nome:"Tofacitinibe 5mg",ap:"Comp. 5 mg",pos:"5 mg VO 2×/dia. Monoterapia ou + MTX.",obs:"Apenas ≥18 anos."},
+    {nome:"Upadacitinibe 15mg",ap:"Comp. 15 mg (liberação prolongada)",pos:"15 mg VO 1×/dia. Monoterapia ou + MTX.",obs:"Apenas ≥18 anos."},
   ],
-  "MMCDbio anti-TNF â€” 2Âª linha":[
+  "MMCDbio anti-TNF — 2ª linha":[
     {nome:"Adalimumabe 40mg",ap:"Seringa preenchida 40 mg/0,8 mL SC",pos:"40 mg SC a cada 14 dias.",obs:"Preferencialmente + MTX."},
-    {nome:"Etanercepte 25mg",ap:"Frasco-ampola 25 mg SC",pos:"25 mg SC 2Ã—/semana.",obs:"Preferencialmente + MTX."},
-    {nome:"Etanercepte 50mg",ap:"Frasco-ampola 50 mg SC",pos:"50 mg SC 1Ã—/semana.",obs:"Preferencialmente + MTX."},
-    {nome:"Certolizumabe Pegol 200mg",ap:"Seringa preenchida 200 mg/mL SC",pos:"Ataque: 400 mg SC semanas 0, 2 e 4. ManutenÃ§Ã£o: 200 mg SC a cada 2 semanas.",obs:"Ãšnico anti-TNF permitido na gestaÃ§Ã£o (2Âº trim.)."},
-    {nome:"Golimumabe 50mg",ap:"Seringa preenchida 50 mg/0,5 mL SC",pos:"50 mg SC 1Ã—/mÃªs.",obs:"Preferencialmente + MTX."},
-    {nome:"Infliximabe 100mg/10ml",ap:"Frasco-ampola 100 mg/10 mL IV",pos:"3 mg/kg IV semanas 0, 2 e 6, depois a cada 8 semanas.",obs:"InfusÃ£o hospitalar. Obrigatoriamente + MTX."},
+    {nome:"Etanercepte 25mg",ap:"Frasco-ampola 25 mg SC",pos:"25 mg SC 2×/semana.",obs:"Preferencialmente + MTX."},
+    {nome:"Etanercepte 50mg",ap:"Frasco-ampola 50 mg SC",pos:"50 mg SC 1×/semana.",obs:"Preferencialmente + MTX."},
+    {nome:"Certolizumabe Pegol 200mg",ap:"Seringa preenchida 200 mg/mL SC",pos:"Ataque: 400 mg SC semanas 0, 2 e 4. Manutenção: 200 mg SC a cada 2 semanas.",obs:"Único anti-TNF permitido na gestação (2º trim.)."},
+    {nome:"Golimumabe 50mg",ap:"Seringa preenchida 50 mg/0,5 mL SC",pos:"50 mg SC 1×/mês.",obs:"Preferencialmente + MTX."},
+    {nome:"Infliximabe 100mg/10ml",ap:"Frasco-ampola 100 mg/10 mL IV",pos:"3 mg/kg IV semanas 0, 2 e 6, depois a cada 8 semanas.",obs:"Infusão hospitalar. Obrigatoriamente + MTX."},
   ],
-  "MMCDbio nÃ£o anti-TNF â€” 2Âª linha":[
-    {nome:"Abatacepte 125mg",ap:"Seringa preenchida 125 mg/mL SC",pos:"125 mg SC 1Ã—/semana.",obs:"Preferencialmente + MTX."},
-    {nome:"Tocilizumabe 20mg/ml",ap:"Frasco-ampola 80 mg/4 mL (20 mg/mL) IV",pos:"8 mg/kg IV a cada 4 semanas (mÃ­n 4 mg/kg, mÃ¡x 800 mg/infusÃ£o).",obs:"Monoterapia ou + MTX."},
-    {nome:"Rituximabe 500mg/50ml",ap:"Frasco-ampola 500 mg/50 mL IV",pos:"1.000 mg IV dias 0 e 14 (ciclo). ManutenÃ§Ã£o: 1 ciclo a cada â‰¥6 meses. PrÃ©-medicar com metilprednisolona 100 mg IV.",obs:"Reservado para falha a todos os MMCDbio e MMCDsae."},
+  "MMCDbio não anti-TNF — 2ª linha":[
+    {nome:"Abatacepte 125mg",ap:"Seringa preenchida 125 mg/mL SC",pos:"125 mg SC 1×/semana.",obs:"Preferencialmente + MTX."},
+    {nome:"Tocilizumabe 20mg/ml",ap:"Frasco-ampola 80 mg/4 mL (20 mg/mL) IV",pos:"8 mg/kg IV a cada 4 semanas (mín 4 mg/kg, máx 800 mg/infusão).",obs:"Monoterapia ou + MTX."},
+    {nome:"Rituximabe 500mg/50ml",ap:"Frasco-ampola 500 mg/50 mL IV",pos:"1.000 mg IV dias 0 e 14 (ciclo). Manutenção: 1 ciclo a cada ≥6 meses. Pré-medicar com metilprednisolona 100 mg IV.",obs:"Reservado para falha a todos os MMCDbio e MMCDsae."},
   ],
   "Imunossupressores":[
-    {nome:"Azatioprina 50mg",ap:"Comp. 50 mg",pos:"1 a 3 mg/kg/dia, VO, em 1â€“2 tomadas.",obs:""},
-    {nome:"Ciclosporina 25mg",ap:"CÃ¡ps. 25 mg",pos:"2,5 a 5 mg/kg/dia, VO, em 2 tomadas.",obs:"Monitorar PA e funÃ§Ã£o renal."},
-    {nome:"Ciclosporina 50mg",ap:"CÃ¡ps. 50 mg",pos:"2,5 a 5 mg/kg/dia, VO, em 2 tomadas.",obs:"Monitorar PA e funÃ§Ã£o renal."},
-    {nome:"Ciclosporina 100mg",ap:"CÃ¡ps. 100 mg",pos:"2,5 a 5 mg/kg/dia, VO, em 2 tomadas.",obs:"Monitorar PA e funÃ§Ã£o renal."},
+    {nome:"Azatioprina 50mg",ap:"Comp. 50 mg",pos:"1 a 3 mg/kg/dia, VO, em 1–2 tomadas.",obs:""},
+    {nome:"Ciclosporina 25mg",ap:"Cáps. 25 mg",pos:"2,5 a 5 mg/kg/dia, VO, em 2 tomadas.",obs:"Monitorar PA e função renal."},
+    {nome:"Ciclosporina 50mg",ap:"Cáps. 50 mg",pos:"2,5 a 5 mg/kg/dia, VO, em 2 tomadas.",obs:"Monitorar PA e função renal."},
+    {nome:"Ciclosporina 100mg",ap:"Cáps. 100 mg",pos:"2,5 a 5 mg/kg/dia, VO, em 2 tomadas.",obs:"Monitorar PA e função renal."},
   ],
-  "AINEs â€” uso sintomÃ¡tico":[
-    {nome:"Naproxeno 500mg",ap:"Comp. 500 mg",pos:"500â€“1.000 mg/dia, VO, em 2 tomadas.",obs:""},
-    {nome:"Ibuprofeno 600mg",ap:"Comp. 600 mg",pos:"1.200â€“3.200 mg/dia, VO, em 3â€“4 tomadas.",obs:""},
+  "AINEs — uso sintomático":[
+    {nome:"Naproxeno 500mg",ap:"Comp. 500 mg",pos:"500–1.000 mg/dia, VO, em 2 tomadas.",obs:""},
+    {nome:"Ibuprofeno 600mg",ap:"Comp. 600 mg",pos:"1.200–3.200 mg/dia, VO, em 3–4 tomadas.",obs:""},
   ],
 };
 const ALL_MEDS = Object.values(MEDS).flat();
 
 const CONDS = [
-  "Sangramento gastrointestinal nÃ£o controlado",
-  "ExposiÃ§Ã£o Ã  tuberculose/residÃªncia em Ã¡rea de TB endÃªmica ou micoses endÃªmicas",
-  "InfecÃ§Ã£o ativa, recorrente ou crÃ´nica, grave, oportunista ou localizada",
-  "InfecÃ§Ã£o bacteriana com indicaÃ§Ã£o de uso de antibiÃ³ticos",
-  "InfecÃ§Ã£o fÃºngica ameaÃ§adora Ã  vida",
-  "InfecÃ§Ã£o por herpes zoster e herpes simples ativa",
-  "InsuficiÃªncia hepÃ¡tica grave","Hepatite B aguda","Hepatite C aguda",
+  "Sangramento gastrointestinal não controlado",
+  "Exposição à tuberculose/residência em área de TB endêmica ou micoses endêmicas",
+  "Infecção ativa, recorrente ou crônica, grave, oportunista ou localizada",
+  "Infecção bacteriana com indicação de uso de antibióticos",
+  "Infecção fúngica ameaçadora à vida",
+  "Infecção por herpes zoster e herpes simples ativa",
+  "Insuficiência hepática grave","Hepatite B aguda","Hepatite C aguda",
   "Gestante","Lactante","Porfiria","Retinopatia",
-  "HipertensÃ£o arterial sistÃªmica grave nÃ£o controlada","Cistite hemorrÃ¡gica",
-  "Neoplasia nos Ãºltimos cinco anos","InsuficiÃªncia cardÃ­aca congestiva classe III ou IV",
-  "DoenÃ§a neurolÃ³gica desmielinizante","Esclerose mÃºltipla",
-  "Leucoencefalopatia multifocal progressiva","Risco iminente de perfuraÃ§Ã£o intestinal",
-  "Risco ou histÃ³rico de trombose venosa profunda (TVP) ou tromboembolismo venoso",
+  "Hipertensão arterial sistêmica grave não controlada","Cistite hemorrágica",
+  "Neoplasia nos últimos cinco anos","Insuficiência cardíaca congestiva classe III ou IV",
+  "Doença neurológica desmielinizante","Esclerose múltipla",
+  "Leucoencefalopatia multifocal progressiva","Risco iminente de perfuração intestinal",
+  "Risco ou histórico de trombose venosa profunda (TVP) ou tromboembolismo venoso",
   "Risco para embolia pulmonar (EP)",
 ];
 
 const CHECKLIST = {
   "Documentos pessoais":[
     "RG ou documento de identidade com foto","CPF",
-    "CartÃ£o Nacional de SaÃºde (CNS)",
-    "Comprovante de residÃªncia (Ãºltimos 3 meses)",
-    "Receita mÃ©dica com posologia (validade 30 dias)",
-    "FormulÃ¡rio EspecÃ­fico AR â€” preenchido e assinado (SES-MG)",
-    "LME â€” Laudo CEAF â€” preenchida e assinada",
-    "Laudo mÃ©dico circunstanciado",
+    "Cartão Nacional de Saúde (CNS)",
+    "Comprovante de residência (últimos 3 meses)",
+    "Receita médica com posologia (validade 30 dias)",
+    "Formulário Específico AR — preenchido e assinado (SES-MG)",
+    "LME — Laudo CEAF — preenchida e assinada",
+    "Laudo médico circunstanciado",
   ],
-  "Exames diagnÃ³sticos":[
+  "Exames diagnósticos":[
     "Fator Reumatoide (FR) com valor","Anti-CCP","VHS","PCR quantitativo",
-    "Hemograma completo","ALT/TGP e AST/TGO","Creatinina sÃ©rica",
+    "Hemograma completo","ALT/TGP e AST/TGO","Creatinina sérica",
     "Glicemia de jejum","Urina rotina (EAS)",
-    "Radiografia de mÃ£os e punhos bilateral (PA)",
+    "Radiografia de mãos e punhos bilateral (PA)",
   ],
-  "Exames obrigatÃ³rios para biolÃ³gicos / JAKi":[
-    "PPD ou IGRA","RX de tÃ³rax PA e perfil",
+  "Exames obrigatórios para biológicos / JAKi":[
+    "PPD ou IGRA","RX de tórax PA e perfil",
     "HBsAg e Anti-HBc total","Anti-HCV","Sorologia HIV",
   ],
 };
 
-// â”€â”€ STATE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── STATE ─────────────────────────────────────────────────────
 let state = {
   view: "pacientes",
   pts: [],
@@ -310,7 +310,7 @@ let state = {
   novo: {nome:"",mae:"",cpf:"",nasc:"",peso:"",altura:""},
 };
 
-// â”€â”€ STORAGE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── STORAGE ───────────────────────────────────────────────────
 const stor = {
   get: k => { try{ const v=localStorage.getItem(k); return v?JSON.parse(v):null; }catch{return null;} },
   set: (k,v) => { try{ localStorage.setItem(k,JSON.stringify(v)); }catch{} },
@@ -326,12 +326,12 @@ function loadLme(){
 function saveLme(){
   if(!state.sel){ toast("Selecione um paciente"); return; }
   stor.set("lme_ar_"+state.sel.cpf, state.lme);
-  // atualizar histÃ³rico
+  // atualizar histórico
   const p = state.pts.find(x=>x.cpf===state.sel.cpf);
   if(p){ p.lmes=p.lmes||[]; const hj=new Date().toLocaleDateString("pt-BR");
     if(!p.lmes.find(h=>h.data===hj)) p.lmes.push({data:hj,d:"AR"});
     savePts(); }
-  toast("LME salva âœ“");
+  toast("LME salva ✓");
 }
 
 function loadFe(){
@@ -339,16 +339,16 @@ function loadFe(){
   return stor.get("fe_ar_"+state.sel.cpf);
 }
 function saveFe(){
-  if(!state.sel||!state.fe){ toast("Preencha o formulÃ¡rio primeiro"); return; }
+  if(!state.sel||!state.fe){ toast("Preencha o formulário primeiro"); return; }
   stor.set("fe_ar_"+state.sel.cpf, state.fe);
-  toast("FormulÃ¡rio EspecÃ­fico salvo âœ“");
+  toast("Formulário Específico salvo ✓");
 }
 
-// â”€â”€ INIT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── INIT ──────────────────────────────────────────────────────
 function initLme(){
   // Campos exatos do PDF NovomodelodeLME-EDITAVEL
   return {
-    // Campos 1-6 (mÃ©dico/paciente â€” maioria prÃ©-preenchida)
+    // Campos 1-6 (médico/paciente — maioria pré-preenchida)
     meds: Array.from({length:6}, ()=>({nome:"", qtd:["","","","","",""]})), // campo 7+8
     cid10:"",                  // campo 9
     diagnostico:"",            // campo 10
@@ -357,7 +357,7 @@ function initLme(){
     tratPrevioSim: false,
     incapaz: false,            // campo 13
     nomeResponsavel:"",
-    // campos 14-16 = mÃ©dico (prÃ©-preenchidos)
+    // campos 14-16 = médico (pré-preenchidos)
     // campo 17 = assinatura (manual)
     preenchidoPor:"paciente",  // campo 18
     outroNome:"",outroCPF:"",
@@ -365,7 +365,7 @@ function initLme(){
     tel1:"",tel2:"",           // campo 20
     docTipo:"cpf",             // campo 21
     email:"",                  // campo 22
-    // campo 23 = assinatura responsÃ¡vel (manual)
+    // campo 23 = assinatura responsável (manual)
   };
 }
 function initFe(){
@@ -381,7 +381,7 @@ function initFe(){
   };
 }
 
-// â”€â”€ HELPERS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── HELPERS ───────────────────────────────────────────────────
 function fmtCPF(v){
   const n=v.replace(/\D/g,"").slice(0,11);
   if(n.length<=3) return n;
@@ -391,7 +391,7 @@ function fmtCPF(v){
 }
 function imc(p,a){ if(!p||!a) return null; const v=parseFloat(p)/Math.pow(parseFloat(a)/100,2); return isNaN(v)?null:v.toFixed(1); }
 function imcCls(v){ if(!v) return ""; const n=parseFloat(v); if(n<18.5) return "imc imc-ow"; if(n<25) return "imc imc-ok"; if(n<30) return "imc imc-ow"; return "imc imc-ob"; }
-function das28Lbl(v){ const n=parseFloat(v); if(isNaN(n)) return ""; if(n<2.6) return "RemissÃ£o"; if(n<3.2) return "Baixa"; if(n<5.1) return "Moderada"; return "Alta"; }
+function das28Lbl(v){ const n=parseFloat(v); if(isNaN(n)) return ""; if(n<2.6) return "Remissão"; if(n<3.2) return "Baixa"; if(n<5.1) return "Moderada"; return "Alta"; }
 function das28Cls(v){ const n=parseFloat(v); if(isNaN(n)) return ""; if(n<2.6) return "interp-ok"; if(n<3.2) return "interp-ok"; if(n<5.1) return "interp-mod"; return "interp-hi"; }
 function eulaSum(d){ return [d.acometimento,d.sorologia,d.inflamatorias,d.duracao].filter(v=>v!=="").reduce((a,b)=>a+Number(b),0); }
 function h(tag,cls,inner,attrs=""){return `<${tag} class="${cls}" ${attrs}>${inner}</${tag}>`; }
@@ -400,7 +400,7 @@ function esc(s){ return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;")
 let toastTimer;
 function toast(msg){ const el=document.getElementById("toast"); el.textContent=msg; el.style.display="block"; clearTimeout(toastTimer); toastTimer=setTimeout(()=>el.style.display="none",2800); }
 
-// â”€â”€ RENDER ENGINE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── RENDER ENGINE ─────────────────────────────────────────────
 function render(){
   renderNav();
   document.getElementById("app-root").innerHTML = renderView();
@@ -410,18 +410,18 @@ function render(){
 function renderNav(){
   const nav = document.getElementById("nav");
   const items = [
-    {id:"pacientes",icon:"ðŸ‘¥",tip:"Pacientes",dis:false},
-    {id:"lme",icon:"ðŸ¦´",tip:"Artrite Reumatoide",dis:false},
+    {id:"pacientes",icon:"👥",tip:"Pacientes",dis:false},
+    {id:"lme",icon:"🦴",tip:"Artrite Reumatoide",dis:false},
     null,
-    {id:"les",icon:"ðŸ«€",tip:"LÃºpus â€” em breve",dis:true},
-    {id:"espo",icon:"ðŸª„",tip:"Espondiloartrites â€” em breve",dis:true},
-    {id:"pso",icon:"ðŸ©¹",tip:"Artrite PsoriÃ¡sica â€” em breve",dis:true},
-    {id:"mio",icon:"ðŸ’ª",tip:"Miopatias â€” em breve",dis:true},
-    {id:"sjo",icon:"ðŸ’§",tip:"SjÃ¶gren â€” em breve",dis:true},
-    {id:"esc",icon:"ðŸ©º",tip:"Esc. SistÃªmica â€” em breve",dis:true},
-    {id:"vas",icon:"ðŸ©¸",tip:"Vasculites â€” em breve",dis:true},
-    {id:"ost",icon:"ðŸ”¬",tip:"Osteoporose â€” em breve",dis:true},
-    {id:"dor",icon:"ðŸ˜£",tip:"Dor CrÃ´nica â€” em breve",dis:true},
+    {id:"les",icon:"🫀",tip:"Lúpus — em breve",dis:true},
+    {id:"espo",icon:"🪄",tip:"Espondiloartrites — em breve",dis:true},
+    {id:"pso",icon:"🩹",tip:"Artrite Psoriásica — em breve",dis:true},
+    {id:"mio",icon:"💪",tip:"Miopatias — em breve",dis:true},
+    {id:"sjo",icon:"💧",tip:"Sjögren — em breve",dis:true},
+    {id:"esc",icon:"🩺",tip:"Esc. Sistêmica — em breve",dis:true},
+    {id:"vas",icon:"🩸",tip:"Vasculites — em breve",dis:true},
+    {id:"ost",icon:"🔬",tip:"Osteoporose — em breve",dis:true},
+    {id:"dor",icon:"😣",tip:"Dor Crônica — em breve",dis:true},
   ];
   nav.innerHTML = items.map(item=>{
     if(!item) return `<div class="nsep"></div>`;
@@ -435,16 +435,16 @@ function renderNav(){
 function renderView(){
   if(state.view==="pacientes") return renderPacientes();
   if(state.view==="lme") return renderLmeView();
-  return `<div class="empty"><span class="empty-i">ðŸš§</span><div class="empty-t">Em desenvolvimento</div></div>`;
+  return `<div class="empty"><span class="empty-i">🚧</span><div class="empty-t">Em desenvolvimento</div></div>`;
 }
 
-// â”€â”€ PACIENTES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── PACIENTES ─────────────────────────────────────────────────
 function renderPacientes(){
   const header = `<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
-    <div><div class="pg-title">Pacientes</div><div class="pg-sub">${state.pts.length} cadastrado${state.pts.length!==1?"s":""} Â· HC-UFU</div></div>
+    <div><div class="pg-title">Pacientes</div><div class="pg-sub">${state.pts.length} cadastrado${state.pts.length!==1?"s":""} · HC-UFU</div></div>
     <div class="brow">
-      <button class="btn bg btn-sm" id="btn-teste">ðŸŽ² Teste</button>
-      <button class="btn bp btn-sm" id="btn-toggle-novo">${state.showNovo?"âœ• Cancelar":"+ Novo"}</button>
+      <button class="btn bg btn-sm" id="btn-teste">🎲 Teste</button>
+      <button class="btn bp btn-sm" id="btn-toggle-novo">${state.showNovo?"✕ Cancelar":"+ Novo"}</button>
     </div></div>`;
 
   let form = "";
@@ -453,7 +453,7 @@ function renderPacientes(){
       <div class="sec-lbl">Novo paciente</div>
       <div class="g2">
         <div class="f s2"><label class="fl">Nome Completo *</label><input class="fi" id="np-nome" placeholder="Nome completo" value="${esc(state.novo.nome)}"></div>
-        <div class="f s2"><label class="fl">Nome da MÃ£e *</label><input class="fi" id="np-mae" placeholder="Nome da mÃ£e" value="${esc(state.novo.mae)}"></div>
+        <div class="f s2"><label class="fl">Nome da Mãe *</label><input class="fi" id="np-mae" placeholder="Nome da mãe" value="${esc(state.novo.mae)}"></div>
         <div class="f"><label class="fl">CPF *</label><input class="fi" id="np-cpf" placeholder="000.000.000-00" value="${esc(state.novo.cpf)}"></div>
         <div class="f"><label class="fl">Data de Nascimento</label><input class="fi" type="date" id="np-nasc" value="${esc(state.novo.nasc)}"></div>
         <div class="f"><label class="fl">Peso (kg)</label><input class="fi" type="number" id="np-peso" placeholder="68.5" value="${esc(state.novo.peso)}"></div>
@@ -465,24 +465,24 @@ function renderPacientes(){
 
   let lista = "";
   if(state.pts.length===0 && !state.showNovo){
-    lista = `<div class="empty"><span class="empty-i">ðŸ¥</span><div class="empty-t">Nenhum paciente ainda</div><div style="margin-bottom:14px">Cadastre o primeiro para comeÃ§ar</div><button class="btn bp btn-sm" id="btn-toggle-novo2">+ Novo Paciente</button></div>`;
+    lista = `<div class="empty"><span class="empty-i">🏥</span><div class="empty-t">Nenhum paciente ainda</div><div style="margin-bottom:14px">Cadastre o primeiro para começar</div><button class="btn bp btn-sm" id="btn-toggle-novo2">+ Novo Paciente</button></div>`;
   } else {
     lista = state.pts.map(p=>{
       const im = imc(p.peso,p.altura);
-      const imcSpan = im ? `<span class="${imcCls(im)}"> Â· IMC ${im}</span>` : "";
-      const chips = (p.lmes||[]).slice(-2).map(l=>`<span class="chip ch-b">${l.d} Â· ${l.data}</span>`).join(" ");
-      const nascStr = p.nasc ? ` Â· ${new Date(p.nasc+"T12:00:00").toLocaleDateString("pt-BR")}` : "";
+      const imcSpan = im ? `<span class="${imcCls(im)}"> · IMC ${im}</span>` : "";
+      const chips = (p.lmes||[]).slice(-2).map(l=>`<span class="chip ch-b">${l.d} · ${l.data}</span>`).join(" ");
+      const nascStr = p.nasc ? ` · ${new Date(p.nasc+"T12:00:00").toLocaleDateString("pt-BR")}` : "";
       const sel = state.sel?.cpf===p.cpf ? "sel" : "";
       return `<div class="pt-item ${sel}" data-cpf="${esc(p.cpf)}">
         <div class="pt-av">${esc(p.nome[0])}</div>
         <div class="pt-inf">
           <div class="pt-nm">${esc(p.nome)}</div>
-          <div class="pt-mt">${esc(p.cpf)}${nascStr}${p.peso?" Â· "+p.peso+"kg":""}${imcSpan}</div>
+          <div class="pt-mt">${esc(p.cpf)}${nascStr}${p.peso?" · "+p.peso+"kg":""}${imcSpan}</div>
           ${chips?`<div style="margin-top:3px">${chips}</div>`:""}
         </div>
         <div class="pt-ac">
-          <button class="btn bg btn-xs" data-lme="${esc(p.cpf)}">LME â†’</button>
-          <button class="btn bd btn-xs" data-del="${esc(p.cpf)}">âœ•</button>
+          <button class="btn bg btn-xs" data-lme="${esc(p.cpf)}">LME →</button>
+          <button class="btn bd btn-xs" data-del="${esc(p.cpf)}">✕</button>
         </div>
       </div>`;
     }).join("");
@@ -490,40 +490,40 @@ function renderPacientes(){
   return header + form + lista;
 }
 
-// â”€â”€ LME VIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── LME VIEW ─────────────────────────────────────────────────
 function renderLmeView(){
-  if(!state.sel) return `<div class="empty"><span class="empty-i">ðŸ“‹</span><div class="empty-t">Selecione um paciente</div><button class="btn bg btn-sm" style="margin-top:10px" id="btn-goto-pts">â† Pacientes</button></div>`;
+  if(!state.sel) return `<div class="empty"><span class="empty-i">📋</span><div class="empty-t">Selecione um paciente</div><button class="btn bg btn-sm" style="margin-top:10px" id="btn-goto-pts">← Pacientes</button></div>`;
 
   const p = state.sel;
   const hd = `<div class="pt-hd">
     <div class="pt-hd-av">${esc(p.nome[0])}</div>
     <div>
       <div class="pt-hd-nm">${esc(p.nome)}</div>
-      <div class="pt-hd-mt">${esc(p.cpf)} Â· AR</div>
+      <div class="pt-hd-mt">${esc(p.cpf)} · AR</div>
     </div>
     <div class="pt-actions">
-      <button class="btn bg btn-xs" id="btn-nova-lme" title="Zera o formulÃ¡rio e inicia nova LME">âž• Nova LME</button>
-      <button class="btn bg btn-xs" id="btn-baixar-lme" title="Baixa a Ãºltima LME salva como PDF">â¬‡ Baixar LME</button>
-      <button class="btn bg btn-xs" id="btn-novo-fe" title="FormulÃ¡rio especÃ­fico em branco">ðŸ“‹ Novo F.Esp.</button>
-      <button class="btn bg btn-xs" id="btn-editar-fe" title="Carrega Ãºltimo formulÃ¡rio especÃ­fico salvo">âœ Editar F.Esp.</button>
+      <button class="btn bg btn-xs" id="btn-nova-lme" title="Zera o formulário e inicia nova LME">➕ Nova LME</button>
+      <button class="btn bg btn-xs" id="btn-baixar-lme" title="Baixa a última LME salva como PDF">⬇ Baixar LME</button>
+      <button class="btn bg btn-xs" id="btn-novo-fe" title="Formulário específico em branco">📋 Novo F.Esp.</button>
+      <button class="btn bg btn-xs" id="btn-editar-fe" title="Carrega último formulário específico salvo">✏ Editar F.Esp.</button>
     </div>
   </div>`;
 
   const pills = `<div class="pill-row">
     <button class="pill ${state.tab==="lme"?"on":""}" data-tab="lme">LME</button>
-    <button class="pill ${state.tab==="fe"?"on":""}" data-tab="fe">Form. EspecÃ­fico</button>
+    <button class="pill ${state.tab==="fe"?"on":""}" data-tab="fe">Form. Específico</button>
     <button class="pill ${state.tab==="ck"?"on":""}" data-tab="ck">Checklist</button>
   </div>`;
 
   let content = "";
   if(state.tab==="ck") content = renderChecklist();
-  else if(state.tab==="fe") content = state.fe ? renderFE() : `<div class="empty"><span class="empty-i">ðŸ“‹</span><div class="empty-t">Nenhum formulÃ¡rio especÃ­fico</div><button class="btn bp btn-sm" style="margin-top:10px" id="btn-novo-fe2">+ Novo F. EspecÃ­fico</button></div>`;
+  else if(state.tab==="fe") content = state.fe ? renderFE() : `<div class="empty"><span class="empty-i">📋</span><div class="empty-t">Nenhum formulário específico</div><button class="btn bp btn-sm" style="margin-top:10px" id="btn-novo-fe2">+ Novo F. Específico</button></div>`;
   else content = renderLmeForm();
 
   return hd + pills + content;
 }
 
-// â”€â”€ LME FORM (Campos 1-23 do NovomodelodeLME-EDITAVEL.pdf) â”€â”€
+// ── LME FORM (Campos 1-23 do NovomodelodeLME-EDITAVEL.pdf) ──
 function renderLmeForm(){
   const d = state.lme;
   const p = state.sel;
@@ -537,17 +537,17 @@ function renderLmeForm(){
       <td style="width:24px;text-align:center;font-weight:600;font-size:.8rem;padding:4px 2px">${i+1}</td>
       <td style="padding:4px 6px">
         <select class="fi" style="font-size:.78rem;padding:5px 8px" data-lme-med-sel="${i}">
-          <option value="">â€” Medicamento â€”</option>${medOptGrps}
+          <option value="">— Medicamento —</option>${medOptGrps}
         </select>
       </td>
-      ${m.qtd.map((q,j)=>`<td style="padding:3px 2px;width:44px"><input class="fi" style="padding:4px;text-align:center;font-size:.78rem" type="text" placeholder="â€”" data-lme-qtd="${i}-${j}" value="${esc(q)}"></td>`).join("")}
+      ${m.qtd.map((q,j)=>`<td style="padding:3px 2px;width:44px"><input class="fi" style="padding:4px;text-align:center;font-size:.78rem" type="text" placeholder="—" data-lme-qtd="${i}-${j}" value="${esc(q)}"></td>`).join("")}
     </tr>`).join("");
 
-  const cidOpts = CIDS.map(c=>`<option value="${c.c}" ${d.cid10===c.c?"selected":""}>${c.c} â€” ${c.d}</option>`).join("");
+  const cidOpts = CIDS.map(c=>`<option value="${c.c}" ${d.cid10===c.c?"selected":""}>${c.c} — ${c.d}</option>`).join("");
 
   return `
   <div class="card">
-    <div class="sec-lbl">1â€“2 Â· Estabelecimento</div>
+    <div class="sec-lbl">1–2 · Estabelecimento</div>
     <div class="g2">
       <div class="f"><label class="fl">1. CNES</label><input class="fi" value="${esc(MEDICO.cnes)}" readonly></div>
       <div class="f"><label class="fl">2. Estabelecimento</label><input class="fi" value="${esc(MEDICO.instituicao)}" readonly></div>
@@ -555,18 +555,18 @@ function renderLmeForm(){
   </div>
 
   <div class="card">
-    <div class="sec-lbl">3â€“6 Â· Paciente</div>
+    <div class="sec-lbl">3–6 · Paciente</div>
     <div class="g2">
       <div class="f s2"><label class="fl">3.1 Nome Civil do Paciente *</label><input class="fi" value="${esc(p.nome)}" readonly></div>
       <div class="f"><label class="fl">5. Peso (kg) *</label><input class="fi" value="${esc(p.peso||"")}" readonly></div>
       <div class="f"><label class="fl">6. Altura (cm) *</label><input class="fi" value="${esc(p.altura||"")}" readonly></div>
       <div class="f s2"><label class="fl">3.2 Nome Social</label><input class="fi" id="lme-nome-social" placeholder="Se houver" value="${esc(d.nomeSocial||"")}"></div>
-      <div class="f s2"><label class="fl">4. Nome da MÃ£e *</label><input class="fi" value="${esc(p.mae||"")}" readonly></div>
+      <div class="f s2"><label class="fl">4. Nome da Mãe *</label><input class="fi" value="${esc(p.mae||"")}" readonly></div>
     </div>
   </div>
 
   <div class="card">
-    <div class="sec-lbl">7â€“8 Â· Medicamentos e Quantidades</div>
+    <div class="sec-lbl">7–8 · Medicamentos e Quantidades</div>
     <div class="al al-i" style="font-size:.75rem">Selecione os medicamentos. Preencha as quantidades mensais (ex: 31, 60...).</div>
     <div style="overflow-x:auto">
       <table style="width:100%;border-collapse:collapse;min-width:480px">
@@ -574,7 +574,7 @@ function renderLmeForm(){
           <tr>
             <th style="padding:4px 2px;font-size:.7rem;color:var(--ink3);width:24px"></th>
             <th style="padding:4px 6px;font-size:.7rem;color:var(--ink3);text-align:left">7. Medicamento *</th>
-            ${["1Â°","2Â°","3Â°","4Â°","5Â°","6Â°"].map(m=>`<th style="padding:4px 2px;font-size:.68rem;color:var(--ink3);text-align:center;width:44px">${m}<br>mÃªs</th>`).join("")}
+            ${["1°","2°","3°","4°","5°","6°"].map(m=>`<th style="padding:4px 2px;font-size:.68rem;color:var(--ink3);text-align:center;width:44px">${m}<br>mês</th>`).join("")}
           </tr>
         </thead>
         <tbody>${medRows}</tbody>
@@ -583,69 +583,69 @@ function renderLmeForm(){
   </div>
 
   <div class="card">
-    <div class="sec-lbl">9â€“10 Â· CID e DiagnÃ³stico</div>
+    <div class="sec-lbl">9–10 · CID e Diagnóstico</div>
     <div class="g2">
       <div class="f"><label class="fl">9. CID-10 *</label>
         <select class="fi" id="lme-cid10"><option value="">Selecione</option>${cidOpts}</select>
       </div>
-      <div class="f"><label class="fl">10. DiagnÃ³stico</label>
+      <div class="f"><label class="fl">10. Diagnóstico</label>
         <input class="fi" id="lme-diagnostico" placeholder="Ex: Artrite Reumatoide" value="${esc(d.diagnostico||CIDS.find(c=>c.c===d.cid10)?.d||"")}">
       </div>
     </div>
   </div>
 
   <div class="card">
-    <div class="sec-lbl">11 Â· Anamnese *</div>
+    <div class="sec-lbl">11 · Anamnese *</div>
     <div class="f">
-      <textarea class="fi" id="lme-anamnese" rows="5" placeholder="Descreva a histÃ³ria clÃ­nica, evoluÃ§Ã£o da doenÃ§a, tratamentos realizados...">${esc(d.anamnese)}</textarea>
+      <textarea class="fi" id="lme-anamnese" rows="5" placeholder="Descreva a história clínica, evolução da doença, tratamentos realizados...">${esc(d.anamnese)}</textarea>
     </div>
   </div>
 
   <div class="card">
-    <div class="sec-lbl">12 Â· Tratamento prÃ©vio *</div>
+    <div class="sec-lbl">12 · Tratamento prévio *</div>
     <div class="brow" style="margin-bottom:10px">
-      <button class="btn btn-sm ${!d.tratPrevioSim?"bp":"bg"}" id="lme-trat-nao">â—‰ NÃƒO</button>
-      <button class="btn btn-sm ${d.tratPrevioSim?"bp":"bg"}" id="lme-trat-sim">â—‰ SIM</button>
+      <button class="btn btn-sm ${!d.tratPrevioSim?"bp":"bg"}" id="lme-trat-nao">◉ NÃO</button>
+      <button class="btn btn-sm ${d.tratPrevioSim?"bp":"bg"}" id="lme-trat-sim">◉ SIM</button>
     </div>
     ${d.tratPrevioSim?`<div class="f"><label class="fl">Relatar</label><textarea class="fi" id="lme-trat-relato" rows="3" placeholder="Medicamentos anteriores, tempo de uso, motivo da troca...">${esc(d.tratPrevio)}</textarea></div>`:""}
   </div>
 
   <div class="card">
-    <div class="sec-lbl">13 Â· Atestado de Capacidade *</div>
-    <div style="font-size:.8rem;color:var(--ink2);margin-bottom:10px;font-style:italic">O paciente Ã© considerado incapaz (art. 3Â° e 4Â° do CÃ³digo Civil)?</div>
+    <div class="sec-lbl">13 · Atestado de Capacidade *</div>
+    <div style="font-size:.8rem;color:var(--ink2);margin-bottom:10px;font-style:italic">O paciente é considerado incapaz (art. 3° e 4° do Código Civil)?</div>
     <div class="brow" style="margin-bottom:10px">
-      <button class="btn btn-sm ${!d.incapaz?"bp":"bg"}" id="lme-cap-nao">â—‰ NÃƒO</button>
-      <button class="btn btn-sm ${d.incapaz?"bp":"bg"}" id="lme-cap-sim">â—‰ SIM</button>
+      <button class="btn btn-sm ${!d.incapaz?"bp":"bg"}" id="lme-cap-nao">◉ NÃO</button>
+      <button class="btn btn-sm ${d.incapaz?"bp":"bg"}" id="lme-cap-sim">◉ SIM</button>
     </div>
-    ${d.incapaz?`<div class="f"><label class="fl">Nome do ResponsÃ¡vel</label><input class="fi" id="lme-responsavel" placeholder="Nome completo do responsÃ¡vel" value="${esc(d.nomeResponsavel)}"></div>`:""}
+    ${d.incapaz?`<div class="f"><label class="fl">Nome do Responsável</label><input class="fi" id="lme-responsavel" placeholder="Nome completo do responsável" value="${esc(d.nomeResponsavel)}"></div>`:""}
   </div>
 
   <div class="card">
-    <div class="sec-lbl">14â€“16 Â· MÃ©dico Solicitante</div>
+    <div class="sec-lbl">14–16 · Médico Solicitante</div>
     <div class="g2">
-      <div class="f s2"><label class="fl">14. Nome do mÃ©dico *</label><input class="fi" value="${esc(MEDICO.nome)}" readonly></div>
-      <div class="f"><label class="fl">15. CNS do mÃ©dico *</label><input class="fi" value="${esc(MEDICO.cns)}" readonly></div>
-      <div class="f"><label class="fl">16. Data da SolicitaÃ§Ã£o *</label><input class="fi" placeholder="___/___/________" id="lme-data"></div>
+      <div class="f s2"><label class="fl">14. Nome do médico *</label><input class="fi" value="${esc(MEDICO.nome)}" readonly></div>
+      <div class="f"><label class="fl">15. CNS do médico *</label><input class="fi" value="${esc(MEDICO.cns)}" readonly></div>
+      <div class="f"><label class="fl">16. Data da Solicitação *</label><input class="fi" placeholder="___/___/________" id="lme-data"></div>
     </div>
     <div style="margin-top:12px;padding:10px;background:var(--surf2);border-radius:7px;font-size:.78rem;color:var(--ink3)">
-      17. Assinatura e carimbo do mÃ©dico â€” preencher no momento da impressÃ£o
+      17. Assinatura e carimbo do médico — preencher no momento da impressão
     </div>
   </div>
 
   <div class="card">
-    <div class="sec-lbl" style="color:var(--ink3)">18â€“23 Â· Campos preenchidos pelo paciente na farmÃ¡cia</div>
-    <div class="al al-i" style="font-size:.77rem">Os campos 18 (responsÃ¡vel pelo preenchimento), 19 (raÃ§a/etnia), 20 (telefones), 21 (documento), 22 (email) e 23 (assinatura) serÃ£o preenchidos pelo paciente ou responsÃ¡vel diretamente na farmÃ¡cia do CEAF.</div>
+    <div class="sec-lbl" style="color:var(--ink3)">18–23 · Campos preenchidos pelo paciente na farmácia</div>
+    <div class="al al-i" style="font-size:.77rem">Os campos 18 (responsável pelo preenchimento), 19 (raça/etnia), 20 (telefones), 21 (documento), 22 (email) e 23 (assinatura) serão preenchidos pelo paciente ou responsável diretamente na farmácia do CEAF.</div>
   </div>
 
   <div class="div"></div>
   <div class="brow no-print">
-    <button class="btn bg btn-sm" id="btn-save-lme">ðŸ’¾ Salvar LME</button>
-    <button class="btn bp btn-sm" id="btn-pdf-lme">â¬‡ Baixar LME (PDF)</button>
+    <button class="btn bg btn-sm" id="btn-save-lme">💾 Salvar LME</button>
+    <button class="btn bp btn-sm" id="btn-pdf-lme">⬇ Baixar LME (PDF)</button>
   </div>`;
 }
 
 
-// â”€â”€ FORMULÃRIO ESPECÃFICO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── FORMULÁRIO ESPECÍFICO ─────────────────────────────────────
 function renderFE(){
   const d=state.fe;
   const total=eulaSum(d);
@@ -654,144 +654,144 @@ function renderFE(){
     <span class="co-lb">${esc(c)}</span>
     <div class="yn">
       <button class="yn-btn ys ${d.conds[c]==="sim"?"on":""}" data-fe-cond="${esc(c)}" data-val="sim">SIM</button>
-      <button class="yn-btn nn ${d.conds[c]==="nao"?"on":""}" data-fe-cond="${esc(c)}" data-val="nao">NÃƒO</button>
+      <button class="yn-btn nn ${d.conds[c]==="nao"?"on":""}" data-fe-cond="${esc(c)}" data-val="nao">NÃO</button>
     </div></div>`).join("");
   const medCards=d.meds.map((m,i)=>`<div class="med-card">
     <div class="med-hd"><span class="med-n">Medicamento ${i+1}</span>${i>=2?`<button class="btn bd btn-xs" data-del-fe-med="${i}">Remover</button>`:""}</div>
     <div class="g2" style="margin-bottom:8px">
-      <div class="f"><label class="fl">Medicamento</label><select class="fi" data-fe-med-sel="${i}"><option value="">â€” Selecionar â€”</option>${medOptGrps}</select></div>
+      <div class="f"><label class="fl">Medicamento</label><select class="fi" data-fe-med-sel="${i}"><option value="">— Selecionar —</option>${medOptGrps}</select></div>
       <div class="f"><label class="fl">Posologia</label><textarea class="fi" rows="2" data-fe-med-pos="${i}" placeholder="Posologia...">${esc(m.posologia)}</textarea></div>
     </div></div>`).join("");
 
   return `
-  <div class="al al-i">FormulÃ¡rio EspecÃ­fico â€” AR Â· SES-MG (24/02/2026)</div>
+  <div class="al al-i">Formulário Específico — AR · SES-MG (24/02/2026)</div>
   <div class="card">
-    <div class="sec-lbl">1 Â· IdentificaÃ§Ã£o</div>
+    <div class="sec-lbl">1 · Identificação</div>
     <div class="f"><label class="fl">Nome Civil do(a) Paciente</label><input class="fi" value="${esc(state.sel.nome)}" readonly></div>
   </div>
   <div class="card">
-    <div class="sec-lbl">2 Â· HistÃ³ria ClÃ­nica</div>
-    <div class="f"><label class="fl">2.1 CaracterÃ­sticas clÃ­nicas e evoluÃ§Ã£o</label>
-    <textarea class="fi" id="fe-historia" rows="5" placeholder="InÃ­cio, evoluÃ§Ã£o, articulaÃ§Ãµes acometidas...">${esc(d.historia)}</textarea></div>
-    <div class="sec-lbl" style="margin-top:10px">2.2 CritÃ©rios ACR 1987</div>
-    <div class="f" style="max-width:200px"><label class="fl">Total critÃ©rios (0â€“7)</label>
-    <input class="fi" type="number" min="0" max="7" id="fe-acr87" value="${esc(d.acr87)}" placeholder="0â€“7"></div>
-    <div class="sec-lbl" style="margin-top:10px">2.2 CritÃ©rios ACR/EULAR 2010</div>
-    <div class="al al-i">Score â‰¥ 6 pontos confirma AR</div>
+    <div class="sec-lbl">2 · História Clínica</div>
+    <div class="f"><label class="fl">2.1 Características clínicas e evolução</label>
+    <textarea class="fi" id="fe-historia" rows="5" placeholder="Início, evolução, articulações acometidas...">${esc(d.historia)}</textarea></div>
+    <div class="sec-lbl" style="margin-top:10px">2.2 Critérios ACR 1987</div>
+    <div class="f" style="max-width:200px"><label class="fl">Total critérios (0–7)</label>
+    <input class="fi" type="number" min="0" max="7" id="fe-acr87" value="${esc(d.acr87)}" placeholder="0–7"></div>
+    <div class="sec-lbl" style="margin-top:10px">2.2 Critérios ACR/EULAR 2010</div>
+    <div class="al al-i">Score ≥ 6 pontos confirma AR</div>
     <div class="g2">
-      <div class="f"><label class="fl">Acometimento articular (0â€“5)</label>
+      <div class="f"><label class="fl">Acometimento articular (0–5)</label>
       <select class="fi" id="fe-acometimento">
         <option value="">Selecione</option>
-        <option value="0" ${d.acometimento==="0"?"selected":""}>0 â€” 1 grande articulaÃ§Ã£o</option>
-        <option value="1" ${d.acometimento==="1"?"selected":""}>1 â€” 2â€“10 grandes</option>
-        <option value="2" ${d.acometimento==="2"?"selected":""}>2 â€” 1â€“3 pequenas</option>
-        <option value="3" ${d.acometimento==="3"?"selected":""}>3 â€” 4â€“10 pequenas</option>
-        <option value="5" ${d.acometimento==="5"?"selected":""}>5 â€” &gt;10 (â‰¥1 pequena)</option>
+        <option value="0" ${d.acometimento==="0"?"selected":""}>0 — 1 grande articulação</option>
+        <option value="1" ${d.acometimento==="1"?"selected":""}>1 — 2–10 grandes</option>
+        <option value="2" ${d.acometimento==="2"?"selected":""}>2 — 1–3 pequenas</option>
+        <option value="3" ${d.acometimento==="3"?"selected":""}>3 — 4–10 pequenas</option>
+        <option value="5" ${d.acometimento==="5"?"selected":""}>5 — &gt;10 (≥1 pequena)</option>
       </select></div>
-      <div class="f"><label class="fl">Sorologia FR/Anti-CCP (0â€“3)</label>
+      <div class="f"><label class="fl">Sorologia FR/Anti-CCP (0–3)</label>
       <select class="fi" id="fe-sorologia">
         <option value="">Selecione</option>
-        <option value="0" ${d.sorologia==="0"?"selected":""}>0 â€” Negativos</option>
-        <option value="2" ${d.sorologia==="2"?"selected":""}>2 â€” Baixos tÃ­tulos</option>
-        <option value="3" ${d.sorologia==="3"?"selected":""}>3 â€” Altos tÃ­tulos</option>
+        <option value="0" ${d.sorologia==="0"?"selected":""}>0 — Negativos</option>
+        <option value="2" ${d.sorologia==="2"?"selected":""}>2 — Baixos títulos</option>
+        <option value="3" ${d.sorologia==="3"?"selected":""}>3 — Altos títulos</option>
       </select></div>
-      <div class="f"><label class="fl">Provas inflamatÃ³rias (0â€“1)</label>
+      <div class="f"><label class="fl">Provas inflamatórias (0–1)</label>
       <select class="fi" id="fe-inflamatorias">
         <option value="">Selecione</option>
-        <option value="0" ${d.inflamatorias==="0"?"selected":""}>0 â€” VHS e PCR normais</option>
-        <option value="1" ${d.inflamatorias==="1"?"selected":""}>1 â€” VHS ou PCR alterados</option>
+        <option value="0" ${d.inflamatorias==="0"?"selected":""}>0 — VHS e PCR normais</option>
+        <option value="1" ${d.inflamatorias==="1"?"selected":""}>1 — VHS ou PCR alterados</option>
       </select></div>
-      <div class="f"><label class="fl">DuraÃ§Ã£o dos sintomas (0â€“1)</label>
+      <div class="f"><label class="fl">Duração dos sintomas (0–1)</label>
       <select class="fi" id="fe-duracao">
         <option value="">Selecione</option>
-        <option value="0" ${d.duracao==="0"?"selected":""}>0 â€” &lt; 6 semanas</option>
-        <option value="1" ${d.duracao==="1"?"selected":""}>1 â€” â‰¥ 6 semanas</option>
+        <option value="0" ${d.duracao==="0"?"selected":""}>0 — &lt; 6 semanas</option>
+        <option value="1" ${d.duracao==="1"?"selected":""}>1 — ≥ 6 semanas</option>
       </select></div>
     </div>
-    ${total>0?`<div style="margin-top:10px;padding:7px 11px;background:${total>=6?"var(--green-bg)":"var(--surf2)"};border-radius:7px;font-size:.8rem"><span style="font-family:var(--mono);font-weight:600">Total: ${total} pts</span><span style="margin-left:10px;color:var(--ink2)">${total>=6?"âœ“ AR confirmada":"âš  Insuficiente"}</span></div>`:""}
-    <div class="sec-lbl" style="margin-top:12px">2.3 Atividade da DoenÃ§a</div>
-    <div class="sc-row"><span class="sc-k">DAS28</span><input class="sc-v" type="number" step=".01" id="fe-das28" value="${esc(d.das28)}" placeholder="â€”"></div>
-    <div class="sc-row"><span class="sc-k">SDAI</span><input class="sc-v" type="number" step=".01" id="fe-sdai" value="${esc(d.sdai)}" placeholder="â€”"></div>
-    <div class="sc-row"><span class="sc-k">CDAI</span><input class="sc-v" type="number" step=".01" id="fe-cdai" value="${esc(d.cdai)}" placeholder="â€”"></div>
+    ${total>0?`<div style="margin-top:10px;padding:7px 11px;background:${total>=6?"var(--green-bg)":"var(--surf2)"};border-radius:7px;font-size:.8rem"><span style="font-family:var(--mono);font-weight:600">Total: ${total} pts</span><span style="margin-left:10px;color:var(--ink2)">${total>=6?"✓ AR confirmada":"⚠ Insuficiente"}</span></div>`:""}
+    <div class="sec-lbl" style="margin-top:12px">2.3 Atividade da Doença</div>
+    <div class="sc-row"><span class="sc-k">DAS28</span><input class="sc-v" type="number" step=".01" id="fe-das28" value="${esc(d.das28)}" placeholder="—"></div>
+    <div class="sc-row"><span class="sc-k">SDAI</span><input class="sc-v" type="number" step=".01" id="fe-sdai" value="${esc(d.sdai)}" placeholder="—"></div>
+    <div class="sc-row"><span class="sc-k">CDAI</span><input class="sc-v" type="number" step=".01" id="fe-cdai" value="${esc(d.cdai)}" placeholder="—"></div>
   </div>
-  <div class="card"><div class="sec-lbl">3 Â· CondiÃ§Ãµes Especiais</div>${condRows}</div>
+  <div class="card"><div class="sec-lbl">3 · Condições Especiais</div>${condRows}</div>
   <div class="card">
-    <div class="sec-lbl">4 Â· Tuberculose (para LEF, MTX, SSZ, AZA, Ciclosporina)</div>
+    <div class="sec-lbl">4 · Tuberculose (para LEF, MTX, SSZ, AZA, Ciclosporina)</div>
     <div style="font-size:.83rem;margin-bottom:9px">Paciente apresenta tuberculose sem tratamento?</div>
     <div class="brow" style="margin-bottom:8px">
       <button class="btn btn-sm ${d.tbTrat==="sim"?"bd":"bg"}" id="fe-tb-sim">SIM</button>
-      <button class="btn btn-sm ${d.tbTrat==="nao"?"bs":"bg"}" id="fe-tb-nao">NÃƒO</button>
+      <button class="btn btn-sm ${d.tbTrat==="nao"?"bs":"bg"}" id="fe-tb-nao">NÃO</button>
     </div>
-    ${d.tbTrat==="sim"?`<div class="al al-e">â›” TB sem tratamento Ã© contraindicaÃ§Ã£o absoluta aos MMCDs.</div>`:""}
+    ${d.tbTrat==="sim"?`<div class="al al-e">⛔ TB sem tratamento é contraindicação absoluta aos MMCDs.</div>`:""}
   </div>
   <div class="card">
-    <div class="sec-lbl">5 Â· Tratamentos PrÃ©vios</div>
-    <div class="f"><label class="fl">Medicamentos anteriores, tempo, falha, intolerÃ¢ncia</label>
-    <textarea class="fi" id="fe-tratPrevios" rows="5" placeholder="Ex: Metotrexato 20 mg/sem por 6 meses â€” falha terapÃªutica...">${esc(d.tratPrevios)}</textarea></div>
+    <div class="sec-lbl">5 · Tratamentos Prévios</div>
+    <div class="f"><label class="fl">Medicamentos anteriores, tempo, falha, intolerância</label>
+    <textarea class="fi" id="fe-tratPrevios" rows="5" placeholder="Ex: Metotrexato 20 mg/sem por 6 meses — falha terapêutica...">${esc(d.tratPrevios)}</textarea></div>
   </div>
   <div class="card">
-    <div class="sec-lbl">6 Â· MMCDbio + MTX</div>
-    <div style="font-size:.83rem;margin-bottom:9px">O MMCDbio serÃ¡ associado ao Metotrexato?</div>
+    <div class="sec-lbl">6 · MMCDbio + MTX</div>
+    <div style="font-size:.83rem;margin-bottom:9px">O MMCDbio será associado ao Metotrexato?</div>
     <div class="brow" style="margin-bottom:10px">
       <button class="btn btn-sm ${d.usarMTX==="sim"?"bp":"bg"}" id="fe-mtx-sim">SIM</button>
-      <button class="btn btn-sm ${d.usarMTX==="nao"?"bp":"bg"}" id="fe-mtx-nao">NÃƒO</button>
+      <button class="btn btn-sm ${d.usarMTX==="nao"?"bp":"bg"}" id="fe-mtx-nao">NÃO</button>
     </div>
     ${d.usarMTX==="nao"?`<div class="f"><label class="fl">Justificativa</label><textarea class="fi" id="fe-justMTX" rows="3" placeholder="Justifique...">${esc(d.justMTX)}</textarea></div>`:""}
   </div>
   <div class="card">
-    <div class="sec-lbl">7 Â· Esquema TerapÃªutico</div>
-    <div class="al al-i">Selecione os medicamentos â€” posologia preenchida automaticamente</div>
+    <div class="sec-lbl">7 · Esquema Terapêutico</div>
+    <div class="al al-i">Selecione os medicamentos — posologia preenchida automaticamente</div>
     ${medCards}
     <button class="btn bg btn-sm" id="fe-btn-add-med">+ Adicionar Medicamento</button>
   </div>
   <div class="card">
-    <div class="sec-lbl">8 Â· Rituximabe</div>
-    <div class="f"><label class="fl">ContraindicaÃ§Ã£o / falha a biolÃ³gicos e JAKi</label>
-    <textarea class="fi" id="fe-rituximabe" rows="3" placeholder="Descrever falha/contraindicaÃ§Ã£o...">${esc(d.rituximabe)}</textarea></div>
+    <div class="sec-lbl">8 · Rituximabe</div>
+    <div class="f"><label class="fl">Contraindicação / falha a biológicos e JAKi</label>
+    <textarea class="fi" id="fe-rituximabe" rows="3" placeholder="Descrever falha/contraindicação...">${esc(d.rituximabe)}</textarea></div>
   </div>
   <div class="card">
-    <div class="sec-lbl">9 Â· PPD / IGRA</div>
+    <div class="sec-lbl">9 · PPD / IGRA</div>
     <div style="font-size:.83rem;margin-bottom:9px">Paciente realizou PPD ou IGRA?</div>
     <div class="brow" style="margin-bottom:10px">
       <button class="btn btn-sm ${d.ppd==="sim"?"bp":"bg"}" id="fe-ppd-sim">SIM</button>
-      <button class="btn btn-sm ${d.ppd==="nao"?"bp":"bg"}" id="fe-ppd-nao">NÃƒO</button>
+      <button class="btn btn-sm ${d.ppd==="nao"?"bp":"bg"}" id="fe-ppd-nao">NÃO</button>
     </div>
-    <div class="f"><label class="fl">Resultado / ObservaÃ§Ãµes</label>
-    <textarea class="fi" id="fe-ppd_obs" rows="2" placeholder="Resultado, TB prÃ©via, ILTB tratada...">${esc(d.ppd_obs)}</textarea></div>
+    <div class="f"><label class="fl">Resultado / Observações</label>
+    <textarea class="fi" id="fe-ppd_obs" rows="2" placeholder="Resultado, TB prévia, ILTB tratada...">${esc(d.ppd_obs)}</textarea></div>
   </div>
   <div class="card">
-    <div class="sec-lbl">10 Â· ObservaÃ§Ãµes</div>
-    <div class="f"><textarea class="fi" id="fe-obs" rows="3" placeholder="Outras informaÃ§Ãµes...">${esc(d.obs)}</textarea></div>
+    <div class="sec-lbl">10 · Observações</div>
+    <div class="f"><textarea class="fi" id="fe-obs" rows="3" placeholder="Outras informações...">${esc(d.obs)}</textarea></div>
   </div>
   <div class="card" style="padding:14px">
-    <div class="sec-lbl">11 Â· Responsabilidade</div>
-    <div style="font-size:.83rem;color:var(--ink2);margin-bottom:14px">Assumo integral responsabilidade pela veracidade das informaÃ§Ãµes prestadas.</div>
+    <div class="sec-lbl">11 · Responsabilidade</div>
+    <div style="font-size:.83rem;color:var(--ink2);margin-bottom:14px">Assumo integral responsabilidade pela veracidade das informações prestadas.</div>
     <div style="display:flex;justify-content:space-between;align-items:flex-end">
       <div><div style="font-size:.76rem;color:var(--ink3)">Assinatura e carimbo</div><div style="border-bottom:1px solid var(--ink);width:180px;margin-top:20px"></div></div>
       <div style="text-align:right"><div style="font-size:.76rem;color:var(--ink3)">Data</div><div style="border-bottom:1px solid var(--ink);width:90px;margin-top:20px"></div></div>
     </div>
-    <div style="margin-top:10px;font-size:.76rem;color:var(--ink3)">${esc(MEDICO.nome)} Â· ${esc(MEDICO.crm)} Â· ${esc(MEDICO.especialidade)} Â· ${esc(MEDICO.instituicao)}</div>
+    <div style="margin-top:10px;font-size:.76rem;color:var(--ink3)">${esc(MEDICO.nome)} · ${esc(MEDICO.crm)} · ${esc(MEDICO.especialidade)} · ${esc(MEDICO.instituicao)}</div>
   </div>
   <div class="div"></div>
   <div class="brow no-print">
-    <button class="btn bg btn-sm" id="btn-save-fe">ðŸ’¾ Salvar F. EspecÃ­fico</button>
-    <button class="btn bp btn-sm" id="btn-pdf-fe">â¬‡ Baixar F. EspecÃ­fico (PDF)</button>
-    <button class="btn bg btn-sm" id="btn-pdf-lme2">â¬‡ Baixar LME (PDF)</button>
+    <button class="btn bg btn-sm" id="btn-save-fe">💾 Salvar F. Específico</button>
+    <button class="btn bp btn-sm" id="btn-pdf-fe">⬇ Baixar F. Específico (PDF)</button>
+    <button class="btn bg btn-sm" id="btn-pdf-lme2">⬇ Baixar LME (PDF)</button>
   </div>`;
 }
 
-// â”€â”€ CHECKLIST â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── CHECKLIST ────────────────────────────────────────────────
 function renderChecklist(){
   const secs = Object.entries(CHECKLIST).map(([ttl,itens])=>`
     <div class="ck-sec">
       <div class="ck-ttl">${esc(ttl)}</div>
       ${itens.map(it=>`<div class="ck-it"><div class="ck-bx"></div>${esc(it)}</div>`).join("")}
     </div>`).join("");
-  return `<div class="card">${secs}<div style="font-size:.68rem;color:var(--ink3);margin-top:10px;border-top:1px solid var(--border);padding-top:8px">Ref.: FormulÃ¡rio EspecÃ­fico AR â€” SES-MG (24/02/2026) Â· saude.mg.gov.br/formulariosceaf</div>
-  <div class="brow" style="margin-top:14px"><button class="btn bp btn-sm" id="btn-print-ck">ðŸ–¨ Imprimir Checklist</button></div></div>`;
+  return `<div class="card">${secs}<div style="font-size:.68rem;color:var(--ink3);margin-top:10px;border-top:1px solid var(--border);padding-top:8px">Ref.: Formulário Específico AR — SES-MG (24/02/2026) · saude.mg.gov.br/formulariosceaf</div>
+  <div class="brow" style="margin-top:14px"><button class="btn bp btn-sm" id="btn-print-ck">🖨 Imprimir Checklist</button></div></div>`;
 }
 
-// â”€â”€ BIND EVENTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── BIND EVENTS ───────────────────────────────────────────────
 function bindEvents(){
   // Nav
   document.querySelectorAll("[data-nav]").forEach(el=>{
@@ -830,7 +830,7 @@ function bindEvents(){
   q("btn-baixar-lme",()=>{ downloadPDF("lme"); });
   q("btn-novo-fe",()=>{ state.fe=initFe(); state.tab="fe"; render(); });
   q("btn-novo-fe2",()=>{ state.fe=initFe(); state.tab="fe"; render(); });
-  q("btn-editar-fe",()=>{ const d=loadFe(); state.fe=d||initFe(); state.tab="fe"; render(); if(!d) toast("Nenhum formulÃ¡rio salvo â€” novo em branco"); });
+  q("btn-editar-fe",()=>{ const d=loadFe(); state.fe=d||initFe(); state.tab="fe"; render(); if(!d) toast("Nenhum formulário salvo — novo em branco"); });
 
   // Tabs
   document.querySelectorAll("[data-tab]").forEach(el=>{
@@ -849,7 +849,7 @@ function bindEvents(){
     state.lme.cid10=v;
     const cid=CIDS.find(c=>c.c===v);
     if(cid){
-      // preenche diagnÃ³stico
+      // preenche diagnóstico
       const elD=document.getElementById("lme-diagnostico");
       if(elD) { elD.value=cid.d; state.lme.diagnostico=cid.d; }
       // preenche anamnese se ainda vazia
@@ -882,7 +882,7 @@ function bindEvents(){
     el.addEventListener("click",()=>{ state.lme.raca=el.dataset.lmeRaca; render(); });
   });
 
-  // Medicamentos LME (tabela 6Ã—6)
+  // Medicamentos LME (tabela 6×6)
   document.querySelectorAll("[data-lme-med-sel]").forEach(el=>{
     const i=parseInt(el.dataset.lmeMedSel);
     if(state.lme.meds[i]) el.value=state.lme.meds[i].nome||"";
@@ -996,7 +996,7 @@ function collectFE(){
   });
 }
 
-// â”€â”€ PACIENTE ACTIONS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── PACIENTE ACTIONS ──────────────────────────────────────────
 function selPaciente(cpf){
   state.sel = state.pts.find(p=>p.cpf===cpf)||null;
   loadLme();
@@ -1005,12 +1005,12 @@ function selPaciente(cpf){
 
 function cadastrar(){
   const n=state.novo;
-  if(!n.nome.trim()||!n.cpf.trim()){ toast("Nome e CPF sÃ£o obrigatÃ³rios"); return; }
+  if(!n.nome.trim()||!n.cpf.trim()){ toast("Nome e CPF são obrigatórios"); return; }
   const p={...n, id:Date.now(), lmes:[]};
   state.pts.push(p); savePts();
   state.novo={nome:"",mae:"",cpf:"",nasc:"",peso:"",altura:""};
   state.showNovo=false;
-  toast("Paciente cadastrado âœ“");
+  toast("Paciente cadastrado ✓");
   render();
 }
 
@@ -1024,10 +1024,10 @@ function delPaciente(cpf){
 
 function testeAleatorio(){
   const pool=[
-    {nome:"Maria Aparecida Silva Santos",mae:"Benedita ConceiÃ§Ã£o Silva"},
-    {nome:"JosÃ© Carlos Oliveira Ferreira",mae:"Ana Maria Oliveira"},
+    {nome:"Maria Aparecida Silva Santos",mae:"Benedita Conceição Silva"},
+    {nome:"José Carlos Oliveira Ferreira",mae:"Ana Maria Oliveira"},
     {nome:"Francisca Rodrigues Almeida",mae:"Luzia Rodrigues Costa"},
-    {nome:"AntÃ´nia Pereira Nascimento",mae:"Rita de CÃ¡ssia Pereira"},
+    {nome:"Antônia Pereira Nascimento",mae:"Rita de Cássia Pereira"},
   ];
   const e=pool[Math.floor(Math.random()*pool.length)];
   const raw=String(Math.floor(Math.random()*900000000)+100000000);
@@ -1040,15 +1040,16 @@ function testeAleatorio(){
     id:Date.now(),lmes:[]};
   state.pts.push(p); savePts();
   state.sel=p; loadLme();
-  toast(`"${p.nome.split(" ")[0]}" cadastrado âœ“`);
+  toast(`"${p.nome.split(" ")[0]}" cadastrado ✓`);
   render();
 }
 
-// â”€â”€ IMPRESSÃƒO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── IMPRESSÃO ─────────────────────────────────────────────────
 
-// â”€â”€ SALVAR & PDF â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-// URL do servidor local â€” alterar se usar porta diferente
-const SERVIDOR_URL = "http://localhost:8765";
+// ── SALVAR & PDF ──────────────────────────────────────────────
+// URL do servidor local — alterar se usar porta diferente
+// URL do servidor — em produção usa a mesma origem da página
+const SERVIDOR_URL = (location.hostname === "localhost") ? "http://localhost:8765" : "";
 
 function downloadPDF(tipo){
   const p = state.sel;
@@ -1107,29 +1108,16 @@ function downloadPDF(tipo){
       a.download = "LME_" + p.nome.replace(/\s+/g,"_") + ".pdf";
       a.click();
       setTimeout(()=>URL.revokeObjectURL(url), 5000);
-      toast("âœ“ PDF baixado com sucesso!");
+      toast("✓ PDF baixado com sucesso!");
     })
     .catch(err => {
-      // Servidor nÃ£o estÃ¡ rodando â€” fallback: baixa JSON para usar com script Python
-      if(err.message && err.message.includes("fetch")) {
-        toast("Servidor nÃ£o encontrado. Baixando dados para gerar PDF manualmente...");
-        const json = JSON.stringify(dados, null, 2);
-        const blob = new Blob([json], {type:"application/json"});
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "LME_" + p.nome.replace(/\s+/g,"_") + ".json";
-        a.click();
-        setTimeout(()=>URL.revokeObjectURL(url), 3000);
-        setTimeout(()=>toast("Para gerar o PDF: python3 servidor_lme.py â†’ abra http://localhost:8765"), 3200);
-      } else {
-        toast("Erro ao gerar PDF: " + err.message);
-      }
+      // Servidor não está rodando — fallback: baixa JSON para usar com script Python
+      toast("Erro ao gerar PDF: " + err.message);
     });
 
   } else if(tipo === "fe"){
     collectFE();
-    if(!state.fe){ toast("Preencha o FormulÃ¡rio EspecÃ­fico primeiro"); return; }
+    if(!state.fe){ toast("Preencha o Formulário Específico primeiro"); return; }
 
     const titulo = "FormEspecifico_AR_" + p.nome.replace(/\s+/g,"_");
     const conteudo = buildFePrintHTML(state.fe, p);
@@ -1147,7 +1135,7 @@ function downloadPDF(tipo){
 </style>
 </head>
 <body>
-<div id="bar"><span>ðŸ“„ ${titulo.replace(/_/g," ")}</span><button id="bp">ðŸ–¨ Imprimir / Salvar PDF</button></div>
+<div id="bar"><span>📄 ${titulo.replace(/_/g," ")}</span><button id="bp">🖨 Imprimir / Salvar PDF</button></div>
 <div class="doc">${conteudo}</div>
 <script>document.getElementById("bp").onclick=function(){window.print()}<\/script>
 </body></html>`;
@@ -1158,16 +1146,16 @@ function downloadPDF(tipo){
     a.download = titulo + ".html";
     a.click();
     setTimeout(()=>URL.revokeObjectURL(url), 3000);
-    toast("Arquivo baixado â€” abra no Chrome e imprima como PDF");
+    toast("Arquivo baixado — abra no Chrome e imprima como PDF");
   }
 }
 
 
-function cbSN(val){ return `<span style="display:inline-block;width:10px;height:10px;border:1px solid #000;margin-right:2px;vertical-align:middle;text-align:center;font-size:7px;line-height:10px">${val==="sim"?"âœ“":""}</span>`; }
+function cbSN(val){ return `<span style="display:inline-block;width:10px;height:10px;border:1px solid #000;margin-right:2px;vertical-align:middle;text-align:center;font-size:7px;line-height:10px">${val==="sim"?"✓":""}</span>`; }
 
 function buildLmePrintHTML(d, p){
   const cid = CIDS.find(c=>c.c===d.cid10);
-  const radio = (on) => `<span style="font-size:12px;vertical-align:middle;line-height:1">${on?'â—':'â—‹'}</span>`;
+  const radio = (on) => `<span style="font-size:12px;vertical-align:middle;line-height:1">${on?'●':'○'}</span>`;
   const chk   = ()   => `<span style="display:inline-block;width:9px;height:9px;border:1px solid #333;vertical-align:middle;margin-right:2px;background:#fff"></span>`;
 
   const medsRows = Array.from({length:6}, (_,i) => {
@@ -1180,14 +1168,14 @@ function buildLmePrintHTML(d, p){
     </tr>`;
   }).join("");
 
-  // Estilos base das cÃ©lulas principais (borda esquerda+direita+bottom, sem top = contÃ­nuo)
-  const C  = `border:1px solid #000;`;              // cÃ©lula completa (primeira linha)
+  // Estilos base das células principais (borda esquerda+direita+bottom, sem top = contínuo)
+  const C  = `border:1px solid #000;`;              // célula completa (primeira linha)
   const Cb = `border-left:1px solid #000;border-right:1px solid #000;border-bottom:1px solid #000;`; // sem topo
   const CbL= `border-right:1px solid #000;border-bottom:1px solid #000;`; // sem topo e sem esquerda
 
   return `<div style="font-family:Arial,Helvetica,sans-serif;font-size:9pt;color:#000;width:100%;line-height:1.3">
 
-  <!-- â•â• CABEÃ‡ALHO â•â• -->
+  <!-- ══ CABEÇALHO ══ -->
   <table style="width:100%;border-collapse:collapse;margin-bottom:5px">
     <tr>
       <td style="width:80px;vertical-align:middle;padding:0 8px 0 0">
@@ -1198,36 +1186,36 @@ function buildLmePrintHTML(d, p){
               <div style="width:0;height:0;border-left:11px solid transparent;border-right:11px solid transparent;border-top:7px solid #fff;margin:2px auto 0"></div>
             </td>
             <td style="border-left:1.5px solid #1a5e8a;padding:2px 3px;vertical-align:middle;text-align:center">
-              <div style="font-size:5pt;color:#1a5e8a;font-weight:700;line-height:1.4">Sistema<br>Ãšnico<br>de SaÃºde</div>
+              <div style="font-size:5pt;color:#1a5e8a;font-weight:700;line-height:1.4">Sistema<br>Único<br>de Saúde</div>
             </td>
           </tr>
         </table>
       </td>
       <td style="text-align:center;vertical-align:middle">
-        <div style="font-size:9pt;line-height:1.8">Sistema Ãšnico de SaÃºde<br>MinistÃ©rio da SaÃºde<br>Secretaria de Estado da SaÃºde</div>
+        <div style="font-size:9pt;line-height:1.8">Sistema Único de Saúde<br>Ministério da Saúde<br>Secretaria de Estado da Saúde</div>
       </td>
     </tr>
   </table>
 
-  <!-- â•â• FORMULÃRIO â€” UMA TABELA CONTÃGUA â•â• -->
+  <!-- ══ FORMULÁRIO — UMA TABELA CONTÍGUA ══ -->
   <table style="width:100%;border-collapse:collapse">
 
-    <!-- TÃ­tulo principal -->
+    <!-- Título principal -->
     <tr><td colspan="2" style="${C}text-align:center;padding:3px 4px;font-size:9.5pt;font-weight:700;text-transform:uppercase;line-height:1.5">
-      COMPONENTE ESPECIALIZADO DA ASSISTÃŠNCIA FARMACÃŠUTICA<br>
-      LAUDO DE SOLICITAÃ‡ÃƒO, AVALIAÃ‡ÃƒO E AUTORIZAÃ‡ÃƒO DE MEDICAMENTO(S)
+      COMPONENTE ESPECIALIZADO DA ASSISTÊNCIA FARMACÊUTICA<br>
+      LAUDO DE SOLICITAÇÃO, AVALIAÇÃO E AUTORIZAÇÃO DE MEDICAMENTO(S)
     </td></tr>
-    <tr><td colspan="2" style="${Cb}text-align:center;padding:2px 4px;font-size:9pt">SOLICITAÃ‡ÃƒO DE MEDICAMENTO(S)</td></tr>
-    <tr><td colspan="2" style="${Cb}background:#D0D0D0;padding:2px 5px;font-size:8.5pt;font-weight:700">CAMPOS DE PREENCHIMENTO EXCLUSIVO PELO MÃ‰DICO SOLICITANTE</td></tr>
+    <tr><td colspan="2" style="${Cb}text-align:center;padding:2px 4px;font-size:9pt">SOLICITAÇÃO DE MEDICAMENTO(S)</td></tr>
+    <tr><td colspan="2" style="${Cb}background:#D0D0D0;padding:2px 5px;font-size:8.5pt;font-weight:700">CAMPOS DE PREENCHIMENTO EXCLUSIVO PELO MÉDICO SOLICITANTE</td></tr>
 
     <!-- Campos 1 e 2 -->
     <tr>
       <td style="${Cb}width:26%;padding:2px 5px;vertical-align:top">
-        <div style="font-size:7.5pt;font-weight:700">1. NÃºmero do CNES*</div>
+        <div style="font-size:7.5pt;font-weight:700">1. Número do CNES*</div>
         <div style="font-size:9pt;padding:2px 0">${esc(MEDICO.cnes)}</div>
       </td>
       <td style="${CbL}padding:2px 5px;vertical-align:top">
-        <div style="font-size:7.5pt;font-weight:700">2. Nome do Estabelecimento de SaÃºde Solicitante</div>
+        <div style="font-size:7.5pt;font-weight:700">2. Nome do Estabelecimento de Saúde Solicitante</div>
         <div style="font-size:9pt;padding:2px 0">${esc(MEDICO.instituicao)}</div>
       </td>
     </tr>
@@ -1259,12 +1247,12 @@ function buildLmePrintHTML(d, p){
     <!-- Campo 4 -->
     <tr>
       <td colspan="2" style="${Cb}padding:2px 5px;vertical-align:top">
-        <div style="font-size:7.5pt;font-weight:700">4. Nome da MÃ£e do Paciente*</div>
+        <div style="font-size:7.5pt;font-weight:700">4. Nome da Mãe do Paciente*</div>
         <div style="font-size:10pt;padding:3px 0 2px">${esc(p.mae||"")}</div>
       </td>
     </tr>
 
-    <!-- Campos 7 e 8: cabeÃ§alho da tabela de medicamentos -->
+    <!-- Campos 7 e 8: cabeçalho da tabela de medicamentos -->
     <tr>
       <td colspan="2" style="${Cb}padding:0">
         <table style="width:100%;border-collapse:collapse">
@@ -1275,7 +1263,7 @@ function buildLmePrintHTML(d, p){
           <tr>
             <td style="border-bottom:1px solid #000;width:20px;padding:1px 2px"></td>
             <td style="border-left:1px solid #000;border-bottom:1px solid #000;padding:1px 4px"></td>
-            ${["1Â° mÃªs","2Â° mÃªs","3Â° mÃªs","4Â° mÃªs","5Â° mÃªs","6Â° mÃªs"].map(m=>`<td style="border-left:1px solid #000;border-bottom:1px solid #000;text-align:center;font-size:7pt;padding:1px 0;width:26px">${m}</td>`).join("")}
+            ${["1° mês","2° mês","3° mês","4° mês","5° mês","6° mês"].map(m=>`<td style="border-left:1px solid #000;border-bottom:1px solid #000;text-align:center;font-size:7pt;padding:1px 0;width:26px">${m}</td>`).join("")}
           </tr>
           ${medsRows}
         </table>
@@ -1289,7 +1277,7 @@ function buildLmePrintHTML(d, p){
         <div style="font-size:11pt;font-weight:700;padding:2px 0">${esc(d.cid10||"")}</div>
       </td>
       <td style="${CbL}padding:2px 5px;vertical-align:top">
-        <div style="font-size:7.5pt;font-weight:700">10. DiagnÃ³stico</div>
+        <div style="font-size:7.5pt;font-weight:700">10. Diagnóstico</div>
         <div style="font-size:9pt;padding:2px 0">${esc(d.diagnostico||cid?.d||"")}</div>
       </td>
     </tr>
@@ -1305,9 +1293,9 @@ function buildLmePrintHTML(d, p){
     <!-- Campo 12 -->
     <tr>
       <td colspan="2" style="${Cb}padding:2px 5px">
-        <div style="font-size:7.5pt;font-weight:700;margin-bottom:2px">12. Paciente realizou tratamento prÃ©vio ou estÃ¡ em tratamento na doenÃ§a?*</div>
+        <div style="font-size:7.5pt;font-weight:700;margin-bottom:2px">12. Paciente realizou tratamento prévio ou está em tratamento na doença?*</div>
         <div style="font-size:9pt">
-          ${radio(!d.tratPrevioSim)} NÃƒO &nbsp;&nbsp;
+          ${radio(!d.tratPrevioSim)} NÃO &nbsp;&nbsp;
           ${radio(d.tratPrevioSim)} SIM. Relatar: ${esc(d.tratPrevio||"")}
         </div>
       </td>
@@ -1318,18 +1306,18 @@ function buildLmePrintHTML(d, p){
       <td colspan="2" style="${Cb}padding:5px 8px">
         <div style="font-size:9pt;font-weight:700;text-align:center;margin-bottom:3px">13. Atestado de Capacidade*</div>
         <div style="font-size:8pt;text-align:center;margin-bottom:5px;line-height:1.4">
-          A solicitaÃ§Ã£o do medicamento deverÃ¡ ser realizada pelo paciente. Entretanto, fica dispensada a obrigatoriedade da presenÃ§a fÃ­sica do<br>
-          paciente considerado incapaz de acordo com os artigos 3Â° e 4Â° do CÃ³digo Civil. O paciente Ã© considerado incapaz?
+          A solicitação do medicamento deverá ser realizada pelo paciente. Entretanto, fica dispensada a obrigatoriedade da presença física do<br>
+          paciente considerado incapaz de acordo com os artigos 3° e 4° do Código Civil. O paciente é considerado incapaz?
         </div>
         <table style="width:100%;border-collapse:collapse">
           <tr>
             <td style="width:52%;vertical-align:middle;padding-right:8px;font-size:9pt">
-              ${radio(!d.incapaz)} NÃƒO &nbsp;&nbsp;
-              ${radio(d.incapaz)} SIM. Indicar o nome do responsÃ¡vel pelo paciente, o qual poderÃ¡ realizar a solicitaÃ§Ã£o do medicamento
+              ${radio(!d.incapaz)} NÃO &nbsp;&nbsp;
+              ${radio(d.incapaz)} SIM. Indicar o nome do responsável pelo paciente, o qual poderá realizar a solicitação do medicamento
             </td>
             <td style="vertical-align:bottom">
               <div style="border-bottom:1px solid #000;min-height:16px;font-size:9pt;padding-bottom:1px">${esc(d.nomeResponsavel||"")}</div>
-              <div style="font-size:7pt;margin-top:2px">Nome do ResponsÃ¡vel</div>
+              <div style="font-size:7pt;margin-top:2px">Nome do Responsável</div>
             </td>
           </tr>
         </table>
@@ -1339,11 +1327,11 @@ function buildLmePrintHTML(d, p){
     <!-- Campos 14 e 17 (linha 1) -->
     <tr>
       <td style="${Cb}width:60%;padding:2px 5px;vertical-align:top">
-        <div style="font-size:7.5pt;font-weight:700">14. Nome do mÃ©dico solicitante*</div>
+        <div style="font-size:7.5pt;font-weight:700">14. Nome do médico solicitante*</div>
         <div style="font-size:10pt;font-weight:700;padding:2px 0">${esc(MEDICO.nome)}</div>
       </td>
       <td rowspan="2" style="${CbL}padding:5px;text-align:center;vertical-align:top">
-        <div style="font-size:7.5pt;font-weight:700">17. Assinatura e carimbo do mÃ©dico*</div>
+        <div style="font-size:7.5pt;font-weight:700">17. Assinatura e carimbo do médico*</div>
         <div style="min-height:34px"></div>
       </td>
     </tr>
@@ -1354,11 +1342,11 @@ function buildLmePrintHTML(d, p){
         <table style="width:100%;border-collapse:collapse">
           <tr>
             <td style="border-right:1px solid #000;padding:2px 5px;width:58%;vertical-align:top">
-              <div style="font-size:7.5pt;font-weight:700">15. NÂ° do CartÃ£o Nacional de SaÃºde (CNS) do mÃ©dico solicitante*</div>
+              <div style="font-size:7.5pt;font-weight:700">15. N° do Cartão Nacional de Saúde (CNS) do médico solicitante*</div>
               <div style="font-size:9pt;padding:2px 0">${esc(MEDICO.cns)}</div>
             </td>
             <td style="padding:2px 5px;vertical-align:top">
-              <div style="font-size:7.5pt;font-weight:700">16. Data da SolicitaÃ§Ã£o*</div>
+              <div style="font-size:7.5pt;font-weight:700">16. Data da Solicitação*</div>
               <div style="font-size:9pt;padding:2px 0">${esc(d.dataStr||"")}</div>
             </td>
           </tr>
@@ -1371,9 +1359,9 @@ function buildLmePrintHTML(d, p){
       <td colspan="2" style="${Cb}padding:3px 5px;font-size:8.5pt">
         <b>18. CAMPOS ABAIXO PREENCHIDOS POR*:</b>
         ${chk()} Paciente &nbsp;
-        ${chk()} MÃ£e do Paciente &nbsp;
-        ${chk()} ResponsÃ¡vel (Descrito no item 13) &nbsp;
-        ${chk()} MÃ©dico Solicitante<br>
+        ${chk()} Mãe do Paciente &nbsp;
+        ${chk()} Responsável (Descrito no item 13) &nbsp;
+        ${chk()} Médico Solicitante<br>
         ${chk()} Outro, informar nome:
         <span style="display:inline-block;border-bottom:1px solid #999;width:145px;vertical-align:bottom"></span>
         &nbsp;e CPF:
@@ -1384,9 +1372,9 @@ function buildLmePrintHTML(d, p){
     <!-- Campos 19 e 20 -->
     <tr>
       <td style="${Cb}width:50%;padding:3px 5px;vertical-align:top">
-        <div style="font-size:7.5pt;font-weight:700;margin-bottom:2px">19. RaÃ§a/Cor/Etnia informado pelo Paciente ResponsÃ¡vel*</div>
+        <div style="font-size:7.5pt;font-weight:700;margin-bottom:2px">19. Raça/Cor/Etnia informado pelo Paciente Responsável*</div>
         <div style="font-size:8.5pt;margin-bottom:2px">
-          ${chk()} Branca &nbsp; ${chk()} Amarela &nbsp; ${chk()} IndÃ­gena. Informar Etnia:
+          ${chk()} Branca &nbsp; ${chk()} Amarela &nbsp; ${chk()} Indígena. Informar Etnia:
           <span style="display:inline-block;border-bottom:1px solid #999;width:52px;vertical-align:bottom"></span>
         </div>
         <div style="font-size:8.5pt">${chk()} Preta &nbsp; ${chk()} Parda</div>
@@ -1407,14 +1395,14 @@ function buildLmePrintHTML(d, p){
     <!-- Campos 21 e 23 -->
     <tr>
       <td style="${Cb}width:50%;padding:3px 5px;vertical-align:top">
-        <div style="font-size:7.5pt;font-weight:700;margin-bottom:2px">21. NÃºmero do documento do Paciente</div>
+        <div style="font-size:7.5pt;font-weight:700;margin-bottom:2px">21. Número do documento do Paciente</div>
         <div style="font-size:8.5pt">
           ${radio(true)} CPF ou ${radio(false)} CNS:
           <span style="display:inline-block;border-bottom:1px solid #999;width:112px;vertical-align:bottom;font-size:9pt">&nbsp;${esc(p.cpf||"")}</span>
         </div>
       </td>
       <td style="${CbL}padding:3px 5px;vertical-align:top">
-        <div style="font-size:7.5pt;font-weight:700;margin-bottom:2px">23. Assinatura do responsÃ¡vel pelo preenchimento*</div>
+        <div style="font-size:7.5pt;font-weight:700;margin-bottom:2px">23. Assinatura do responsável pelo preenchimento*</div>
         <div style="min-height:22px"></div>
       </td>
     </tr>
@@ -1422,69 +1410,69 @@ function buildLmePrintHTML(d, p){
     <!-- Campo 22 -->
     <tr>
       <td colspan="2" style="${Cb}padding:3px 5px">
-        <div style="font-size:7.5pt;font-weight:700;margin-bottom:2px">22. Correio EletrÃ´nico do paciente</div>
+        <div style="font-size:7.5pt;font-weight:700;margin-bottom:2px">22. Correio Eletrônico do paciente</div>
         <div style="min-height:13px"></div>
       </td>
     </tr>
 
   </table>
 
-  <div style="font-size:7.5pt;font-weight:700;margin-top:3px">*CAMPOS DE PREENCHIMENTO OBRIGATÃ“RIO</div>
+  <div style="font-size:7.5pt;font-weight:700;margin-top:3px">*CAMPOS DE PREENCHIMENTO OBRIGATÓRIO</div>
   </div>`;
 }
 
 
 function buildFePrintHTML(d, p){
   const total = [d.acometimento,d.sorologia,d.inflamatorias,d.duracao].filter(v=>v!=="").reduce((a,b)=>a+Number(b),0);
-  const condRows = CONDS.map(c=>`<tr><td style="border:1px solid #ccc;padding:2px 6px;font-size:8.5px">${esc(c)}</td><td style="border:1px solid #ccc;padding:2px;text-align:center;width:50px">${cbSN(d.conds?.[c])} SIM</td><td style="border:1px solid #ccc;padding:2px;text-align:center;width:50px">${cbSN(d.conds?.[c]==="nao"?"sim":"")} NÃƒO</td></tr>`).join("");
+  const condRows = CONDS.map(c=>`<tr><td style="border:1px solid #ccc;padding:2px 6px;font-size:8.5px">${esc(c)}</td><td style="border:1px solid #ccc;padding:2px;text-align:center;width:50px">${cbSN(d.conds?.[c])} SIM</td><td style="border:1px solid #ccc;padding:2px;text-align:center;width:50px">${cbSN(d.conds?.[c]==="nao"?"sim":"")} NÃO</td></tr>`).join("");
   const medRows = Array.from({length:4},(_,i)=>{const m=d.meds[i];return `<tr style="height:22px"><td style="border:1px solid #ccc;padding:2px 4px;width:20px;text-align:center">${i+1}</td><td style="border:1px solid #ccc;padding:2px 4px;font-size:9.5px">${esc(m?.medicamento||"")}</td><td style="border:1px solid #ccc;padding:2px 4px;font-size:9px">${esc(m?.posologia||"")}</td></tr>`;}).join("");
   const sc = v => `<span style="display:inline-block;border:1px solid #000;padding:1px 6px;min-width:70px;min-height:14px">${esc(v||"")}</span>`;
   const box = v => `<div style="border:1px solid #000;padding:4px 6px;min-height:50px;font-size:9px;white-space:pre-wrap;margin-bottom:3px">${esc(v||"")}</div>`;
-  const rad = t => `<div style="font-size:8.5px;margin-bottom:3px;padding-left:4px">â—‹ ${t}</div>`;
+  const rad = t => `<div style="font-size:8.5px;margin-bottom:3px;padding-left:4px">○ ${t}</div>`;
   const wrap = (n,body) => `<table style="width:100%;border-collapse:collapse;margin-bottom:4px"><tr><td style="border:1px solid #000;padding:3px 6px;font-weight:700;font-size:9px;vertical-align:top;width:20px">${n}</td><td style="border:1px solid #000;padding:4px 6px;width:100%">${body}</td></tr></table>`;
 
   return `<div class="print-doc" style="font-family:Arial,sans-serif;font-size:9px;width:190mm;margin:0 auto">
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><div style="width:46px;height:46px;border:1px solid #ccc;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:20px">ðŸ›¡</div><div style="font-size:8.5px;font-weight:700;line-height:1.6">GOVERNO DO ESTADO DE MINAS GERAIS<br>SECRETARIA DE ESTADO DE SAÃšDE<br>SUPERINTENDÃŠNCIA DE ASSISTÃŠNCIA FARMACÃŠUTICA</div></div>
-    <div style="text-align:center;font-size:12px;font-weight:700;border-bottom:1px solid #000;padding-bottom:4px;margin-bottom:8px;text-transform:uppercase">FormulÃ¡rio EspecÃ­fico â€“ Artrite Reumatoide</div>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><div style="width:46px;height:46px;border:1px solid #ccc;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:20px">🛡</div><div style="font-size:8.5px;font-weight:700;line-height:1.6">GOVERNO DO ESTADO DE MINAS GERAIS<br>SECRETARIA DE ESTADO DE SAÚDE<br>SUPERINTENDÊNCIA DE ASSISTÊNCIA FARMACÊUTICA</div></div>
+    <div style="text-align:center;font-size:12px;font-weight:700;border-bottom:1px solid #000;padding-bottom:4px;margin-bottom:8px;text-transform:uppercase">Formulário Específico – Artrite Reumatoide</div>
     ${wrap(1,`<div style="font-size:8px;font-weight:700">NOME CIVIL DO(A) PACIENTE:</div><div style="border:1px solid #000;padding:2px 4px;margin-top:2px;font-size:10px;font-weight:700">${esc(p.nome)}</div><div style="font-size:8px;font-weight:700;margin-top:4px">NOME SOCIAL:</div><div style="border:1px solid #000;padding:2px 4px;margin-top:2px;min-height:14px"></div>`)}
-    ${wrap(2,`<div style="font-size:10px;font-weight:700;margin-bottom:4px">HISTÃ“RIA CLÃNICA</div>
-      <div style="font-size:8px;font-weight:700">2.1 CARACTERÃSTICAS CLÃNICAS E EVOLUÃ‡ÃƒO DA DOENÃ‡A:</div>${box(d.historia)}
-      <div style="font-size:9px;font-weight:700;margin:5px 0 3px">2.2 DIAGNÃ“STICO</div>
-      <div style="font-size:9px;font-weight:700;margin-bottom:2px">â— CritÃ©rios ACR 1987:</div>
-      ${rad("1) Rigidez matinal")}${rad("2) Artrite de 3 ou mais Ã¡reas articulares")}${rad("3) Artrite de mÃ£os")}${rad("4) Artrites simÃ©tricas")}${rad("5) NÃ³dulos reumatoides")}${rad("6) Fator Reumatoide positivo")}${rad("7) AlteraÃ§Ãµes radiogrÃ¡ficas")}
-      <div style="font-size:9px;font-weight:700;margin-top:3px">TOTAL DE CRITÃ‰RIOS: ${sc(d.acr87)}</div>
-      <div style="font-size:9px;font-weight:700;margin:5px 0 3px">â— CritÃ©rios ACR/EULAR 2010:</div>
+    ${wrap(2,`<div style="font-size:10px;font-weight:700;margin-bottom:4px">HISTÓRIA CLÍNICA</div>
+      <div style="font-size:8px;font-weight:700">2.1 CARACTERÍSTICAS CLÍNICAS E EVOLUÇÃO DA DOENÇA:</div>${box(d.historia)}
+      <div style="font-size:9px;font-weight:700;margin:5px 0 3px">2.2 DIAGNÓSTICO</div>
+      <div style="font-size:9px;font-weight:700;margin-bottom:2px">● Critérios ACR 1987:</div>
+      ${rad("1) Rigidez matinal")}${rad("2) Artrite de 3 ou mais áreas articulares")}${rad("3) Artrite de mãos")}${rad("4) Artrites simétricas")}${rad("5) Nódulos reumatoides")}${rad("6) Fator Reumatoide positivo")}${rad("7) Alterações radiográficas")}
+      <div style="font-size:9px;font-weight:700;margin-top:3px">TOTAL DE CRITÉRIOS: ${sc(d.acr87)}</div>
+      <div style="font-size:9px;font-weight:700;margin:5px 0 3px">● Critérios ACR/EULAR 2010:</div>
       <div style="font-size:9px;font-weight:700;margin-bottom:2px">1. Acometimento articular</div>
-      ${rad("1 grande articulaÃ§Ã£o: 0 pontos")}${rad("2 a 10 articulaÃ§Ãµes grandes: 1 ponto")}${rad("1 a 3 articulaÃ§Ãµes pequenas: 2 pontos")}${rad("4 a 10 articulaÃ§Ãµes pequenas: 3 pontos")}${rad(">10 articulaÃ§Ãµes (â‰¥1 pequena): 5 pontos")}
+      ${rad("1 grande articulação: 0 pontos")}${rad("2 a 10 articulações grandes: 1 ponto")}${rad("1 a 3 articulações pequenas: 2 pontos")}${rad("4 a 10 articulações pequenas: 3 pontos")}${rad(">10 articulações (≥1 pequena): 5 pontos")}
       <div style="font-size:9px;font-weight:700;margin:3px 0 2px">2. Sorologia</div>
-      ${rad("FR e anti-CCP negativos: 0 pontos")}${rad("FR ou anti-CCP baixos tÃ­tulos: 2 pontos")}${rad("FR ou anti-CCP altos tÃ­tulos: 3 pontos")}
-      <div style="font-size:9px;font-weight:700;margin:3px 0 2px">3. Provas inflamatÃ³rias</div>
+      ${rad("FR e anti-CCP negativos: 0 pontos")}${rad("FR ou anti-CCP baixos títulos: 2 pontos")}${rad("FR ou anti-CCP altos títulos: 3 pontos")}
+      <div style="font-size:9px;font-weight:700;margin:3px 0 2px">3. Provas inflamatórias</div>
       ${rad("VHS e PCR normais: 0 pontos")}${rad("VHS ou PCR alterados: 1 ponto")}
-      <div style="font-size:9px;font-weight:700;margin:3px 0 2px">4. DuraÃ§Ã£o dos sintomas</div>
-      ${rad("< 6 semanas: 0 pontos")}${rad("â‰¥ 6 semanas: 1 ponto")}
+      <div style="font-size:9px;font-weight:700;margin:3px 0 2px">4. Duração dos sintomas</div>
+      ${rad("< 6 semanas: 0 pontos")}${rad("≥ 6 semanas: 1 ponto")}
       <div style="font-size:9px;font-weight:700;margin-top:4px">TOTAL DE PONTOS: ${sc(total||"")}</div>
-      <div style="font-size:9px;font-weight:700;margin:5px 0 3px">2.3 ATIVIDADE DA DOENÃ‡A:</div>
-      <div style="font-size:9px;margin-bottom:3px">â€¢ DAS 28: ${sc(d.das28)}</div>
-      <div style="font-size:9px;margin-bottom:3px">â€¢ SDAI: ${sc(d.sdai)}</div>
-      <div style="font-size:9px">â€¢ CDAI: ${sc(d.cdai)}</div>`)}
-    ${wrap(3,`<div style="font-size:9px;font-weight:700;margin-bottom:4px">INFORMAR condiÃ§Ãµes abaixo:</div><table style="width:100%;border-collapse:collapse">${condRows}</table>`)}
-    ${wrap(4,`<div style="font-size:9px;font-weight:700;margin-bottom:3px">PARA LEF, MTX, SSZ, AZA E/OU CICLOSPORINA:</div><div style="font-size:9px;margin-bottom:4px">Tuberculose sem tratamento: ${cbSN(d.tbTrat)} SIM &nbsp;&nbsp; ${cbSN(d.tbTrat==="nao"?"sim":"")} NÃƒO</div><div style="border:1px solid #000;padding:4px 6px;font-size:8.5px;font-weight:700;text-align:center;background:#FFF9E6">AtenÃ§Ã£o: TB sem tratamento constitui contraindicaÃ§Ã£o.</div>`)}
-    ${wrap(5,`<div style="font-size:9px;font-weight:700;margin-bottom:3px">TRATAMENTOS PRÃ‰VIOS REALIZADOS:</div>${box(d.tratPrevios)}`)}
-    ${wrap(6,`<div style="font-size:9px;font-weight:700;margin-bottom:4px">PARA SOLICITAÃ‡ÃƒO DE MMCD BIOLÃ“GICO:</div><div style="font-size:9px;margin-bottom:4px">MMCDbio + metotrexato? ${cbSN(d.usarMTX==="sim"?"sim":"")} SIM &nbsp;&nbsp; ${cbSN(d.usarMTX==="nao"?"sim":"")} NÃƒO</div><div style="border:1px solid #000;padding:4px 6px;min-height:20px;font-size:9px">${esc(d.justMTX||"")}</div>`)}
-    ${wrap(7,`<div style="font-size:9px;font-weight:700;margin-bottom:4px">ESQUEMA TERAPÃŠUTICO COMPLETO:</div><table style="width:100%;border-collapse:collapse"><thead><tr><th style="border:1px solid #ccc;padding:3px;font-size:8.5px;width:20px"></th><th style="border:1px solid #ccc;padding:3px;font-size:8.5px">Medicamento(s)</th><th style="border:1px solid #ccc;padding:3px;font-size:8.5px">Posologia</th></tr></thead><tbody>${medRows}</tbody></table>`)}
-    ${wrap(8,`<div style="font-size:9px;font-weight:700;margin-bottom:3px">PARA SOLICITAÃ‡ÃƒO DE RITUXIMABE:</div>${box(d.rituximabe)}`)}
-    ${wrap(9,`<div style="font-size:9px;font-weight:700;margin-bottom:4px">PPD/IGRA? ${cbSN(d.ppd==="sim"?"sim":"")} SIM &nbsp;&nbsp; ${cbSN(d.ppd==="nao"?"sim":"")} NÃƒO</div>${box(d.ppd_obs)}`)}
-    ${wrap(10,`<div style="font-size:9px;font-weight:700;margin-bottom:3px">OUTRAS OBSERVAÃ‡Ã•ES PERTINENTES:</div>${box(d.obs)}`)}
-    ${wrap(11,`<div style="font-size:9px;font-weight:700;margin-bottom:8px">Assumo integral responsabilidade pela veracidade das informaÃ§Ãµes prestadas.</div>
+      <div style="font-size:9px;font-weight:700;margin:5px 0 3px">2.3 ATIVIDADE DA DOENÇA:</div>
+      <div style="font-size:9px;margin-bottom:3px">• DAS 28: ${sc(d.das28)}</div>
+      <div style="font-size:9px;margin-bottom:3px">• SDAI: ${sc(d.sdai)}</div>
+      <div style="font-size:9px">• CDAI: ${sc(d.cdai)}</div>`)}
+    ${wrap(3,`<div style="font-size:9px;font-weight:700;margin-bottom:4px">INFORMAR condições abaixo:</div><table style="width:100%;border-collapse:collapse">${condRows}</table>`)}
+    ${wrap(4,`<div style="font-size:9px;font-weight:700;margin-bottom:3px">PARA LEF, MTX, SSZ, AZA E/OU CICLOSPORINA:</div><div style="font-size:9px;margin-bottom:4px">Tuberculose sem tratamento: ${cbSN(d.tbTrat)} SIM &nbsp;&nbsp; ${cbSN(d.tbTrat==="nao"?"sim":"")} NÃO</div><div style="border:1px solid #000;padding:4px 6px;font-size:8.5px;font-weight:700;text-align:center;background:#FFF9E6">Atenção: TB sem tratamento constitui contraindicação.</div>`)}
+    ${wrap(5,`<div style="font-size:9px;font-weight:700;margin-bottom:3px">TRATAMENTOS PRÉVIOS REALIZADOS:</div>${box(d.tratPrevios)}`)}
+    ${wrap(6,`<div style="font-size:9px;font-weight:700;margin-bottom:4px">PARA SOLICITAÇÃO DE MMCD BIOLÓGICO:</div><div style="font-size:9px;margin-bottom:4px">MMCDbio + metotrexato? ${cbSN(d.usarMTX==="sim"?"sim":"")} SIM &nbsp;&nbsp; ${cbSN(d.usarMTX==="nao"?"sim":"")} NÃO</div><div style="border:1px solid #000;padding:4px 6px;min-height:20px;font-size:9px">${esc(d.justMTX||"")}</div>`)}
+    ${wrap(7,`<div style="font-size:9px;font-weight:700;margin-bottom:4px">ESQUEMA TERAPÊUTICO COMPLETO:</div><table style="width:100%;border-collapse:collapse"><thead><tr><th style="border:1px solid #ccc;padding:3px;font-size:8.5px;width:20px"></th><th style="border:1px solid #ccc;padding:3px;font-size:8.5px">Medicamento(s)</th><th style="border:1px solid #ccc;padding:3px;font-size:8.5px">Posologia</th></tr></thead><tbody>${medRows}</tbody></table>`)}
+    ${wrap(8,`<div style="font-size:9px;font-weight:700;margin-bottom:3px">PARA SOLICITAÇÃO DE RITUXIMABE:</div>${box(d.rituximabe)}`)}
+    ${wrap(9,`<div style="font-size:9px;font-weight:700;margin-bottom:4px">PPD/IGRA? ${cbSN(d.ppd==="sim"?"sim":"")} SIM &nbsp;&nbsp; ${cbSN(d.ppd==="nao"?"sim":"")} NÃO</div>${box(d.ppd_obs)}`)}
+    ${wrap(10,`<div style="font-size:9px;font-weight:700;margin-bottom:3px">OUTRAS OBSERVAÇÕES PERTINENTES:</div>${box(d.obs)}`)}
+    ${wrap(11,`<div style="font-size:9px;font-weight:700;margin-bottom:8px">Assumo integral responsabilidade pela veracidade das informações prestadas.</div>
       <div style="font-size:9px;margin-bottom:14px">Data: <span style="border-bottom:1px solid #000;display:inline-block;width:35px"></span> / <span style="border-bottom:1px solid #000;display:inline-block;width:28px"></span> / <span style="border-bottom:1px solid #000;display:inline-block;width:55px"></span></div>
       <div style="font-size:9px;margin-bottom:4px">Assinatura e carimbo: <span style="border-bottom:1px solid #000;display:inline-block;width:280px"></span></div>
-      <div style="font-size:9px;text-align:center;margin-top:2px">MÃ©dico</div>
-      <div style="font-size:8px;margin-top:8px;color:#555">${esc(MEDICO.nome)} Â· ${esc(MEDICO.crm)} Â· ${esc(MEDICO.especialidade)} Â· ${esc(MEDICO.instituicao)}</div>`)}
+      <div style="font-size:9px;text-align:center;margin-top:2px">Médico</div>
+      <div style="font-size:8px;margin-top:8px;color:#555">${esc(MEDICO.nome)} · ${esc(MEDICO.crm)} · ${esc(MEDICO.especialidade)} · ${esc(MEDICO.instituicao)}</div>`)}
     <div style="font-size:8px;color:#666;margin-top:4px;font-style:italic">Atualizado em 24/02/2026</div>
   </div>`;
 }
 
-// â”€â”€ INIT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── INIT ──────────────────────────────────────────────────────
 loadPts();
 render();
 </script>
