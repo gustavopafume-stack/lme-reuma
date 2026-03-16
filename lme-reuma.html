@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>LME Reuma · HC-UFU</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Outfit:wght@300;400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F8F7F4;--surf:#FFF;--surf2:#F3F2EF;
+  --border:#E4E2DC;--ink:#1C1917;--ink2:#78716C;--ink3:#A8A29E;
+  --blue:#1D4ED8;--blue-bg:#EFF6FF;--blue-ring:#BFDBFE;
+  --green:#15803D;--green-bg:#F0FDF4;--green-ring:#BBF7D0;
+  --red:#DC2626;--red-bg:#FEF2F2;--red-ring:#FECACA;
+  --amber:#B45309;--amber-bg:#FFFBEB;--amber-ring:#FDE68A;
+  --r:9px;--font:'Outfit',sans-serif;--serif:'Lora',serif;--mono:'Fira Code',monospace;
+}
+html,body{height:100%;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:14px;line-height:1.5;-webkit-text-size-adjust:100%}
+.app{display:flex;flex-direction:column;height:100vh;overflow:hidden}
+.bar{height:50px;background:var(--surf);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;padding:0 14px;flex-shrink:0;gap:8px}
+.bar-logo{font-family:var(--serif);font-size:1rem;color:var(--blue);white-space:nowrap}
+.bar-logo small{color:var(--ink3);font-size:.62rem;font-family:var(--font);display:block;line-height:1}
+.bar-dr{font-size:.68rem;color:var(--ink2);text-align:right;line-height:1.4;flex-shrink:0}
+.bar-dr b{display:block;color:var(--ink);font-weight:600}
+.body{display:flex;flex:1;overflow:hidden}
+/* Nav */
+.nav{width:44px;background:var(--surf);border-right:1px solid var(--border);
+  display:flex;flex-direction:column;align-items:center;padding:10px 0;gap:3px;flex-shrink:0}
+.nb{width:32px;height:32px;border-radius:7px;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:.9rem;
+  background:transparent;color:var(--ink3);transition:.14s;position:relative}
+.nb:hover{background:var(--surf2);color:var(--ink)}
+.nb.on{background:var(--blue-bg);color:var(--blue)}
+.nb:disabled{opacity:.28;cursor:not-allowed}
+.nb .tip{position:absolute;left:40px;top:50%;transform:translateY(-50%);
+  background:var(--ink);color:#fff;font-size:.67rem;padding:3px 7px;border-radius:4px;
+  white-space:nowrap;pointer-events:none;z-index:200;display:none}
+.nb:hover .tip{display:block}
+.nb .dot{width:5px;height:5px;background:var(--blue);border-radius:50%;
+  position:absolute;top:5px;right:5px}
+.nsep{width:18px;height:1px;background:var(--border);margin:3px 0}
+/* Main */
+.main{flex:1;overflow-y:auto;padding:18px;background:var(--bg)}
+.inner{max-width:720px;width:100%}
+/* Typography */
+.pg-title{font-family:var(--serif);font-size:1.4rem;color:var(--ink);margin-bottom:3px}
+.pg-sub{font-size:.78rem;color:var(--ink2);margin-bottom:16px}
+.sec-lbl{font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:10px}
+/* Cards */
+.card{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);
+  padding:16px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+/* Forms */
+.f{display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
+.fl{font-size:.67rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3)}
+.fi{border:1.5px solid var(--border);border-radius:7px;padding:7px 10px;
+  font-size:.86rem;font-family:var(--font);background:#fff;color:var(--ink);
+  outline:none;width:100%;transition:.14s}
+.fi:focus{border-color:var(--blue);box-shadow:0 0 0 2px rgba(29,78,216,.08)}
+.fi[readonly]{background:var(--surf2);color:var(--ink2)}
+textarea.fi{resize:vertical;min-height:72px;line-height:1.6}
+select.fi{cursor:pointer}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.s2{grid-column:1/-1}
+/* Buttons */
+.btn{border:none;border-radius:7px;padding:8px 15px;font-size:.8rem;
+  font-family:var(--font);font-weight:500;cursor:pointer;
+  display:inline-flex;align-items:center;gap:5px;transition:.14s;white-space:nowrap}
+.bp{background:var(--blue);color:#fff}.bp:hover{background:#1E40AF}
+.bg{background:transparent;color:var(--ink2);border:1px solid var(--border)}.bg:hover{background:var(--surf2);color:var(--ink)}
+.bd{background:var(--red-bg);color:var(--red);border:1px solid var(--red-ring)}.bd:hover{background:var(--red);color:#fff}
+.bs{background:var(--green-bg);color:var(--green);border:1px solid var(--green-ring)}
+.btn-sm{padding:5px 10px;font-size:.74rem;border-radius:6px}
+.btn-xs{padding:3px 8px;font-size:.69rem;border-radius:5px}
+.brow{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+/* Patient list */
+.pt-item{display:flex;align-items:center;gap:10px;padding:10px 12px;
+  border-radius:8px;cursor:pointer;border:1px solid transparent;margin-bottom:5px;transition:.14s}
+.pt-item:hover{background:var(--surf2)}
+.pt-item.sel{background:var(--blue-bg);border-color:var(--blue-ring)}
+.pt-av{width:34px;height:34px;border-radius:8px;background:var(--blue-bg);
+  border:1px solid var(--blue-ring);display:flex;align-items:center;justify-content:center;
+  font-size:.88rem;flex-shrink:0;color:var(--blue);font-weight:700}
+.pt-inf{flex:1;min-width:0}
+.pt-nm{font-weight:600;font-size:.87rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pt-mt{font-size:.68rem;color:var(--ink3);font-family:var(--mono)}
+.pt-ac{display:flex;gap:5px;flex-shrink:0}
+/* Steps */
+.steps{display:flex;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:16px}
+.step{flex:1;padding:6px 2px;text-align:center;font-size:.65rem;font-weight:500;
+  cursor:pointer;background:#fff;color:var(--ink3);border-right:1px solid var(--border);transition:.14s}
+.step:last-child{border-right:none}
+.step:hover{background:var(--surf2)}
+.step.on{background:var(--blue);color:#fff;font-weight:600}
+.step.done{background:var(--green-bg);color:var(--green)}
+/* Scores */
+.sc-row{display:flex;align-items:center;gap:9px;padding:7px 10px;
+  background:var(--surf2);border-radius:7px;margin-bottom:7px}
+.sc-k{font-family:var(--mono);font-size:.74rem;font-weight:500;color:var(--blue);min-width:50px}
+.sc-v{border:1px solid var(--border);border-radius:5px;padding:4px 7px;width:70px;
+  font-size:.82rem;font-family:var(--mono);outline:none;background:#fff}
+.sc-v:focus{border-color:var(--blue)}
+.sc-i{font-size:.72rem;color:var(--ink2)}
+/* Conditions */
+.co-row{display:flex;justify-content:space-between;align-items:center;
+  padding:6px 0;border-bottom:1px solid var(--surf2);gap:8px}
+.co-row:last-child{border-bottom:none}
+.co-lb{font-size:.8rem;flex:1}
+.yn{display:flex;gap:4px}
+.yn-btn{padding:3px 10px;border-radius:4px;font-size:.71rem;font-weight:600;
+  cursor:pointer;border:1px solid var(--border);background:#fff;color:var(--ink3);transition:.14s}
+.yn-btn.ys.on{background:var(--red-bg);color:var(--red);border-color:var(--red-ring)}
+.yn-btn.nn.on{background:var(--green-bg);color:var(--green);border-color:var(--green-ring)}
+/* Alerts */
+.al{border-radius:7px;padding:9px 12px;font-size:.78rem;
+  display:flex;gap:7px;margin-bottom:10px;line-height:1.5}
+.al-i{background:var(--blue-bg);border:1px solid var(--blue-ring);color:#1E40AF}
+.al-w{background:var(--amber-bg);border:1px solid var(--amber-ring);color:var(--amber)}
+.al-e{background:var(--red-bg);border:1px solid var(--red-ring);color:var(--red)}
+.al-s{background:var(--green-bg);border:1px solid var(--green-ring);color:var(--green)}
+/* Chips */
+.chip{display:inline-flex;align-items:center;padding:2px 7px;border-radius:9px;font-size:.67rem;font-weight:600}
+.ch-b{background:var(--blue-bg);color:var(--blue)}
+/* Med card */
+.med-card{border:1.5px solid var(--border);border-radius:9px;padding:12px;margin-bottom:9px;background:var(--bg)}
+.med-card:focus-within{border-color:var(--blue-ring);background:#fff}
+.med-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}
+.med-n{font-size:.66rem;font-weight:700;color:var(--ink3);letter-spacing:.06em;text-transform:uppercase}
+/* Checklist */
+.ck-sec{margin-bottom:16px}
+.ck-ttl{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--ink3);margin-bottom:7px;padding-bottom:4px;border-bottom:1px solid var(--border)}
+.ck-it{display:flex;gap:7px;padding:4px 0;font-size:.8rem;align-items:flex-start;line-height:1.4}
+.ck-bx{width:14px;height:14px;border:2px solid var(--blue);border-radius:3px;flex-shrink:0;margin-top:1px}
+/* Pills */
+.pill-row{display:flex;gap:5px;margin-bottom:14px;flex-wrap:wrap}
+.pill{padding:4px 12px;border-radius:20px;font-size:.74rem;font-weight:500;
+  cursor:pointer;border:1.5px solid var(--border);background:#fff;color:var(--ink2);transition:.14s}
+.pill.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+/* Patient header */
+.pt-hd{display:flex;align-items:flex-start;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.pt-hd-av{width:36px;height:36px;border-radius:8px;background:var(--blue-bg);
+  border:1px solid var(--blue-ring);display:flex;align-items:center;justify-content:center;
+  font-size:.88rem;color:var(--blue);font-weight:700;flex-shrink:0}
+.pt-hd-nm{font-weight:600;font-size:.9rem}
+.pt-hd-mt{font-size:.68rem;color:var(--ink3);font-family:var(--mono)}
+.pt-actions{display:flex;gap:5px;flex-wrap:wrap;margin-left:auto}
+/* Divider */
+.div{height:1px;background:var(--border);margin:14px 0}
+/* Empty */
+.empty{text-align:center;padding:36px 16px;color:var(--ink3)}
+.empty-i{font-size:2.4rem;display:block;margin-bottom:10px}
+.empty-t{font-family:var(--serif);font-size:1.1rem;color:var(--ink2);margin-bottom:5px}
+/* Toast */
+#toast{position:fixed;bottom:18px;right:18px;z-index:999;display:none;
+  background:var(--ink);color:#fff;padding:9px 16px;border-radius:8px;
+  font-size:.8rem;font-weight:500;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+/* Score interp colors */
+.interp-ok{color:var(--green)}.interp-mod{color:var(--amber)}.interp-hi{color:var(--red)}
+/* Review */
+.rev-row{font-size:.83rem;padding:4px 0;border-bottom:1px solid var(--surf2)}
+.rev-row:last-child{border-bottom:none}
+/* IMC */
+.imc{font-family:var(--mono);font-size:.69rem;padding:2px 6px;border-radius:5px}
+.imc-ok{background:var(--green-bg);color:var(--green)}
+.imc-ow{background:var(--amber-bg);color:var(--amber)}
+.imc-ob{background:var(--red-bg);color:var(--red)}
+/* Mobile adjustments */
+@media(max-width:480px){
+  .bar-logo small{display:none}
+  .g2{grid-template-columns:1fr}
+  .g3{grid-template-columns:1fr 1fr}
+  .step{font-size:.58rem;padding:5px 1px}
+  .main{padding:12px}
+}
+@media print{
+  body > *{display:none!important}
+  #print-area{display:block!important;position:static!important}
+  @page{margin:8mm;size:A4}
+}
+#print-area{display:none}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="bar">
+    <div class="bar-logo">LME Reuma <small>HC-UFU · CEAF-MG</small></div>
+    <div class="bar-dr"><b>Dr. Gustavo Pafume de Sá</b>CRM-MG 68688 · Reumatologia</div>
+  </div>
+  <div class="body">
+    <nav class="nav" id="nav"></nav>
+    <main class="main"><div class="inner" id="app-root"></div></main>
+  </div>
+</div>
+<div id="toast"></div>
+
+<script>
+// ── CONFIG ────────────────────────────────────────────────────
+const MEDICO = {
+  nome:"Dr. Gustavo Pafume de Sá",crm:"CRM-MG 68688",
+  especialidade:"Reumatologia",instituicao:"Hospital de Clínicas da UFU",
+  endereco:"Av. Pará, 1720 - Umuarama, Uberlândia - MG, 38405-320",
+  cnes:"2146355",cns:"701403641664437"
+};
+
+const CIDS = [
+  {c:"M05.0",d:"Artrite reumatoide com fator reumatoide — Síndrome de Felty"},
+  {c:"M05.1",d:"Artrite reumatoide com acometimento pulmonar"},
+  {c:"M05.2",d:"Artrite reumatoide com vasculite"},
+  {c:"M05.3",d:"Artrite reumatoide com acometimento de outros órgãos e sistemas"},
+  {c:"M05.8",d:"Outras artrites reumatoides soropositivas"},
+  {c:"M06.0",d:"Artrite reumatoide soronegativa"},
+  {c:"M06.8",d:"Outras artrites reumatoides especificadas"},
+];
+
+const MEDS = {
+  "MMCDs Sintéticos — 1ª linha":[
+    {nome:"Metotrexato 2,5mg",ap:"Comp. 2,5 mg",pos:"7,5 a 25 mg/semana, VO, 1×/semana (3–10 comprimidos/sem). Associar Ácido Fólico 5 mg/semana (36h após MTX).",obs:"Primeira escolha. Contraindicado na gestação (categoria X)."},
+    {nome:"Metotrexato 25mg/ml",ap:"Sol. inj. 25 mg/mL (frasco 2 mL = 50 mg)",pos:"7,5 a 25 mg/semana, SC ou IM, 1×/semana. Associar Ácido Fólico 5 mg/semana (36h após MTX).",obs:"Uso injetável quando há intolerância ao comprimido. Contraindicado na gestação (categoria X)."},
+    {nome:"Leflunomida 20mg",ap:"Comp. 20 mg",pos:"20 mg/dia, VO. Dose de ataque opcional: 100 mg/dia × 3 dias.",obs:"Contraindicada na gestação. Receituário de controle especial."},
+    {nome:"Sulfassalazina 500mg",ap:"Comp. 500 mg",pos:"1.000 a 3.000 mg/dia, VO, em 2–3 tomadas.",obs:""},
+    {nome:"Hidroxicloroquina 400mg",ap:"Comp. 400 mg",pos:"400 mg/dia, VO (máx 5 mg/kg/dia).",obs:"Monitoramento oftalmológico anual obrigatório."},
+    {nome:"Cloroquina 150mg",ap:"Comp. 150 mg",pos:"250 mg/dia, VO (máx 4 mg/kg/dia).",obs:"Monitoramento oftalmológico obrigatório."},
+  ],
+  "JAKi (MMCDsae) — 2ª linha":[
+    {nome:"Baricitinibe 2mg",ap:"Comp. 2 mg",pos:"2 mg VO 1×/dia (dose reduzida: ≥75 anos, IRC moderada ou controle prolongado).",obs:"Apenas ≥18 anos."},
+    {nome:"Baricitinibe 4mg",ap:"Comp. 4 mg",pos:"4 mg VO 1×/dia. Monoterapia ou + MTX.",obs:"Apenas ≥18 anos."},
+    {nome:"Tofacitinibe 5mg",ap:"Comp. 5 mg",pos:"5 mg VO 2×/dia. Monoterapia ou + MTX.",obs:"Apenas ≥18 anos."},
+    {nome:"Upadacitinibe 15mg",ap:"Comp. 15 mg (liberação prolongada)",pos:"15 mg VO 1×/dia. Monoterapia ou + MTX.",obs:"Apenas ≥18 anos."},
+  ],
+  "MMCDbio anti-TNF — 2ª linha":[
+    {nome:"Adalimumabe 40mg",ap:"Seringa preenchida 40 mg/0,8 mL SC",pos:"40 mg SC a cada 14 dias.",obs:"Preferencialmente + MTX."},
+    {nome:"Etanercepte 25mg",ap:"Frasco-ampola 25 mg SC",pos:"25 mg SC 2×/semana.",obs:"Preferencialmente + MTX."},
+    {nome:"Etanercepte 50mg",ap:"Frasco-ampola 50 mg SC",pos:"50 mg SC 1×/semana.",obs:"Preferencialmente + MTX."},
+    {nome:"Certolizumabe Pegol 200mg",ap:"Seringa preenchida 200 mg/mL SC",pos:"Ataque: 400 mg SC semanas 0, 2 e 4. Manutenção: 200 mg SC a cada 2 semanas.",obs:"Único anti-TNF permitido na gestação (2º trim.)."},
+    {nome:"Golimumabe 50mg",ap:"Seringa preenchida 50 mg/0,5 mL SC",pos:"50 mg SC 1×/mês.",obs:"Preferencialmente + MTX."},
+    {nome:"Infliximabe 100mg/10ml",ap:"Frasco-ampola 100 mg/10 mL IV",pos:"3 mg/kg IV semanas 0, 2 e 6, depois a cada 8 semanas.",obs:"Infusão hospitalar. Obrigatoriamente + MTX."},
+  ],
+  "MMCDbio não anti-TNF — 2ª linha":[
+    {nome:"Abatacepte 125mg",ap:"Seringa preenchida 125 mg/mL SC",pos:"125 mg SC 1×/semana.",obs:"Preferencialmente + MTX."},
+    {nome:"Tocilizumabe 20mg/ml",ap:"Frasco-ampola 80 mg/4 mL (20 mg/mL) IV",pos:"8 mg/kg IV a cada 4 semanas (mín 4 mg/kg, máx 800 mg/infusão).",obs:"Monoterapia ou + MTX."},
+    {nome:"Rituximabe 500mg/50ml",ap:"Frasco-ampola 500 mg/50 mL IV",pos:"1.000 mg IV dias 0 e 14 (ciclo). Manutenção: 1 ciclo a cada ≥6 meses. Pré-medicar com metilprednisolona 100 mg IV.",obs:"Reservado para falha a todos os MMCDbio e MMCDsae."},
+  ],
+  "Imunossupressores":[
+    {nome:"Azatioprina 50mg",ap:"Comp. 50 mg",pos:"1 a 3 mg/kg/dia, VO, em 1–2 tomadas.",obs:""},
+    {nome:"Ciclosporina 25mg",ap:"Cáps. 25 mg",pos:"2,5 a 5 mg/kg/dia, VO, em 2 tomadas.",obs:"Monitorar PA e função renal."},
+    {nome:"Ciclosporina 50mg",ap:"Cáps. 50 mg",pos:"2,5 a 5 mg/kg/dia, VO, em 2 tomadas.",obs:"Monitorar PA e função renal."},
+    {nome:"Ciclosporina 100mg",ap:"Cáps. 100 mg",pos:"2,5 a 5 mg/kg/dia, VO, em 2 tomadas.",obs:"Monitorar PA e função renal."},
+  ],
+  "AINEs — uso sintomático":[
+    {nome:"Naproxeno 500mg",ap:"Comp. 500 mg",pos:"500–1.000 mg/dia, VO, em 2 tomadas.",obs:""},
+    {nome:"Ibuprofeno 600mg",ap:"Comp. 600 mg",pos:"1.200–3.200 mg/dia, VO, em 3–4 tomadas.",obs:""},
+  ],
+};
+const ALL_MEDS = Object.values(MEDS).flat();
+
+const CONDS = [
+  "Sangramento gastrointestinal não controlado",
+  "Exposição à tuberculose/residência em área de TB endêmica ou micoses endêmicas",
+  "Infecção ativa, recorrente ou crônica, grave, oportunista ou localizada",
+  "Infecção bacteriana com indicação de uso de antibióticos",
+  "Infecção fúngica ameaçadora à vida",
+  "Infecção por herpes zoster e herpes simples ativa",
+  "Insuficiência hepática grave","Hepatite B aguda","Hepatite C aguda",
+  "Gestante","Lactante","Porfiria","Retinopatia",
+  "Hipertensão arterial sistêmica grave não controlada","Cistite hemorrágica",
+  "Neoplasia nos últimos cinco anos","Insuficiência cardíaca congestiva classe III ou IV",
+  "Doença neurológica desmielinizante","Esclerose múltipla",
+  "Leucoencefalopatia multifocal progressiva","Risco iminente de perfuração intestinal",
+  "Risco ou histórico de trombose venosa profunda (TVP) ou tromboembolismo venoso",
+  "Risco para embolia pulmonar (EP)",
+];
+
+const CHECKLIST = {
+  "Documentos pessoais":[
+    "RG ou documento de identidade com foto","CPF",
+    "Cartão Nacional de Saúde (CNS)",
+    "Comprovante de residência (últimos 3 meses)",
+    "Receita médica com posologia (validade 30 dias)",
+    "Formulário Específico AR — preenchido e assinado (SES-MG)",
+    "LME — Laudo CEAF — preenchida e assinada",
+    "Laudo médico circunstanciado",
+  ],
+  "Exames diagnósticos":[
+    "Fator Reumatoide (FR) com valor","Anti-CCP","VHS","PCR quantitativo",
+    "Hemograma completo","ALT/TGP e AST/TGO","Creatinina sérica",
+    "Glicemia de jejum","Urina rotina (EAS)",
+    "Radiografia de mãos e punhos bilateral (PA)",
+  ],
+  "Exames obrigatórios para biológicos / JAKi":[
+    "PPD ou IGRA","RX de tórax PA e perfil",
+    "HBsAg e Anti-HBc total","Anti-HCV","Sorologia HIV",
+  ],
+};
+
+// ── STATE ─────────────────────────────────────────────────────
+let state = {
+  view: "pacientes",
+  pts: [],
+  sel: null,
+  lme: null,
+  fe: null,
+  step: 0,
+  tab: "lme",   // "lme" | "fe" | "ck"
+  showNovo: false,
+  novo: {nome:"",mae:"",cpf:"",nasc:"",peso:"",altura:""},
+};
+
+// ── STORAGE ───────────────────────────────────────────────────
+const stor = {
+  get: k => { try{ const v=localStorage.getItem(k); return v?JSON.parse(v):null; }catch{return null;} },
+  set: (k,v) => { try{ localStorage.setItem(k,JSON.stringify(v)); }catch{} },
+};
+
+function loadPts(){ state.pts = stor.get("lme_pts") || []; }
+function savePts(){ stor.set("lme_pts", state.pts); }
+
+function loadLme(){
+  if(!state.sel) return;
+  state.lme = stor.get("lme_ar_"+state.sel.cpf) || initLme();
+}
+function saveLme(){
+  if(!state.sel){ toast("Selecione um paciente"); return; }
+  stor.set("lme_ar_"+state.sel.cpf, state.lme);
+  // atualizar histórico
+  const p = state.pts.find(x=>x.cpf===state.sel.cpf);
+  if(p){ p.lmes=p.lmes||[]; const hj=new Date().toLocaleDateString("pt-BR");
+    if(!p.lmes.find(h=>h.data===hj)) p.lmes.push({data:hj,d:"AR"});
+    savePts(); }
+  toast("LME salva ✓");
+}
+
+function loadFe(){
+  if(!state.sel) return null;
+  return stor.get("fe_ar_"+state.sel.cpf);
+}
+function saveFe(){
+  if(!state.sel||!state.fe){ toast("Preencha o formulário primeiro"); return; }
+  stor.set("fe_ar_"+state.sel.cpf, state.fe);
+  toast("Formulário Específico salvo ✓");
+}
+
+// ── INIT ──────────────────────────────────────────────────────
+function initLme(){
+  // Campos exatos do PDF NovomodelodeLME-EDITAVEL
+  return {
+    // Campos 1-6 (médico/paciente — maioria pré-preenchida)
+    meds: Array.from({length:6}, ()=>({nome:"", qtd:["","","","","",""]})), // campo 7+8
+    cid10:"",                  // campo 9
+    diagnostico:"",            // campo 10
+    anamnese:"",               // campo 11
+    tratPrevio:"",             // campo 12 (nao/sim + relato)
+    tratPrevioSim: false,
+    incapaz: false,            // campo 13
+    nomeResponsavel:"",
+    // campos 14-16 = médico (pré-preenchidos)
+    // campo 17 = assinatura (manual)
+    preenchidoPor:"paciente",  // campo 18
+    outroNome:"",outroCPF:"",
+    raca:"",etnia:"",          // campo 19
+    tel1:"",tel2:"",           // campo 20
+    docTipo:"cpf",             // campo 21
+    email:"",                  // campo 22
+    // campo 23 = assinatura responsável (manual)
+  };
+}
+function initFe(){
+  return {
+    historia:"",acr87:"",
+    acometimento:"",sorologia:"",inflamatorias:"",duracao:"",
+    das28:"",sdai:"",cdai:"",
+    conds: Object.fromEntries(CONDS.map(c=>[c,""])),
+    tbTrat:"",tratPrevios:"",
+    usarMTX:"",justMTX:"",
+    meds:[{medicamento:"",posologia:""},{medicamento:"",posologia:""}],
+    rituximabe:"",ppd:"",ppd_obs:"",obs:""
+  };
+}
+
+// ── HELPERS ───────────────────────────────────────────────────
+function fmtCPF(v){
+  const n=v.replace(/\D/g,"").slice(0,11);
+  if(n.length<=3) return n;
+  if(n.length<=6) return n.slice(0,3)+"."+n.slice(3);
+  if(n.length<=9) return n.slice(0,3)+"."+n.slice(3,6)+"."+n.slice(6);
+  return n.slice(0,3)+"."+n.slice(3,6)+"."+n.slice(6,9)+"-"+n.slice(9);
+}
+function imc(p,a){ if(!p||!a) return null; const v=parseFloat(p)/Math.pow(parseFloat(a)/100,2); return isNaN(v)?null:v.toFixed(1); }
+function imcCls(v){ if(!v) return ""; const n=parseFloat(v); if(n<18.5) return "imc imc-ow"; if(n<25) return "imc imc-ok"; if(n<30) return "imc imc-ow"; return "imc imc-ob"; }
+function das28Lbl(v){ const n=parseFloat(v); if(isNaN(n)) return ""; if(n<2.6) return "Remissão"; if(n<3.2) return "Baixa"; if(n<5.1) return "Moderada"; return "Alta"; }
+function das28Cls(v){ const n=parseFloat(v); if(isNaN(n)) return ""; if(n<2.6) return "interp-ok"; if(n<3.2) return "interp-ok"; if(n<5.1) return "interp-mod"; return "interp-hi"; }
+function eulaSum(d){ return [d.acometimento,d.sorologia,d.inflamatorias,d.duracao].filter(v=>v!=="").reduce((a,b)=>a+Number(b),0); }
+function h(tag,cls,inner,attrs=""){return `<${tag} class="${cls}" ${attrs}>${inner}</${tag}>`; }
+function esc(s){ return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+
+let toastTimer;
+function toast(msg){ const el=document.getElementById("toast"); el.textContent=msg; el.style.display="block"; clearTimeout(toastTimer); toastTimer=setTimeout(()=>el.style.display="none",2800); }
+
+// ── RENDER ENGINE ─────────────────────────────────────────────
+function render(){
+  renderNav();
+  document.getElementById("app-root").innerHTML = renderView();
+  bindEvents();
+}
+
+function renderNav(){
+  const nav = document.getElementById("nav");
+  const items = [
+    {id:"pacientes",icon:"👥",tip:"Pacientes",dis:false},
+    {id:"lme",icon:"🦴",tip:"Artrite Reumatoide",dis:false},
+    null,
+    {id:"les",icon:"🫀",tip:"Lúpus — em breve",dis:true},
+    {id:"espo",icon:"🪄",tip:"Espondiloartrites — em breve",dis:true},
+    {id:"pso",icon:"🩹",tip:"Artrite Psoriásica — em breve",dis:true},
+    {id:"mio",icon:"💪",tip:"Miopatias — em breve",dis:true},
+    {id:"sjo",icon:"💧",tip:"Sjögren — em breve",dis:true},
+    {id:"esc",icon:"🩺",tip:"Esc. Sistêmica — em breve",dis:true},
+    {id:"vas",icon:"🩸",tip:"Vasculites — em breve",dis:true},
+    {id:"ost",icon:"🔬",tip:"Osteoporose — em breve",dis:true},
+    {id:"dor",icon:"😣",tip:"Dor Crônica — em breve",dis:true},
+  ];
+  nav.innerHTML = items.map(item=>{
+    if(!item) return `<div class="nsep"></div>`;
+    const on = state.view===item.id ? "on" : "";
+    const dot = item.id==="pacientes"&&state.pts.length>0 ? `<span class="dot"></span>` : "";
+    const dis = item.dis ? "disabled" : "";
+    return `<button class="nb ${on}" ${dis} data-nav="${item.id}">${item.icon}${dot}<span class="tip">${esc(item.tip)}</span></button>`;
+  }).join("");
+}
+
+function renderView(){
+  if(state.view==="pacientes") return renderPacientes();
+  if(state.view==="lme") return renderLmeView();
+  return `<div class="empty"><span class="empty-i">🚧</span><div class="empty-t">Em desenvolvimento</div></div>`;
+}
+
+// ── PACIENTES ─────────────────────────────────────────────────
+function renderPacientes(){
+  const header = `<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
+    <div><div class="pg-title">Pacientes</div><div class="pg-sub">${state.pts.length} cadastrado${state.pts.length!==1?"s":""} · HC-UFU</div></div>
+    <div class="brow">
+      <button class="btn bg btn-sm" id="btn-teste">🎲 Teste</button>
+      <button class="btn bp btn-sm" id="btn-toggle-novo">${state.showNovo?"✕ Cancelar":"+ Novo"}</button>
+    </div></div>`;
+
+  let form = "";
+  if(state.showNovo){
+    form = `<div class="card" style="border-color:var(--blue-ring);margin-bottom:14px">
+      <div class="sec-lbl">Novo paciente</div>
+      <div class="g2">
+        <div class="f s2"><label class="fl">Nome Completo *</label><input class="fi" id="np-nome" placeholder="Nome completo" value="${esc(state.novo.nome)}"></div>
+        <div class="f s2"><label class="fl">Nome da Mãe *</label><input class="fi" id="np-mae" placeholder="Nome da mãe" value="${esc(state.novo.mae)}"></div>
+        <div class="f"><label class="fl">CPF *</label><input class="fi" id="np-cpf" placeholder="000.000.000-00" value="${esc(state.novo.cpf)}"></div>
+        <div class="f"><label class="fl">Data de Nascimento</label><input class="fi" type="date" id="np-nasc" value="${esc(state.novo.nasc)}"></div>
+        <div class="f"><label class="fl">Peso (kg)</label><input class="fi" type="number" id="np-peso" placeholder="68.5" value="${esc(state.novo.peso)}"></div>
+        <div class="f"><label class="fl">Altura (cm)</label><input class="fi" type="number" id="np-altura" placeholder="165" value="${esc(state.novo.altura)}"></div>
+      </div>
+      <div class="brow"><button class="btn bp btn-sm" id="btn-cadastrar">Salvar</button><button class="btn bg btn-sm" id="btn-cancelar-novo">Cancelar</button></div>
+    </div>`;
+  }
+
+  let lista = "";
+  if(state.pts.length===0 && !state.showNovo){
+    lista = `<div class="empty"><span class="empty-i">🏥</span><div class="empty-t">Nenhum paciente ainda</div><div style="margin-bottom:14px">Cadastre o primeiro para começar</div><button class="btn bp btn-sm" id="btn-toggle-novo2">+ Novo Paciente</button></div>`;
+  } else {
+    lista = state.pts.map(p=>{
+      const im = imc(p.peso,p.altura);
+      const imcSpan = im ? `<span class="${imcCls(im)}"> · IMC ${im}</span>` : "";
+      const chips = (p.lmes||[]).slice(-2).map(l=>`<span class="chip ch-b">${l.d} · ${l.data}</span>`).join(" ");
+      const nascStr = p.nasc ? ` · ${new Date(p.nasc+"T12:00:00").toLocaleDateString("pt-BR")}` : "";
+      const sel = state.sel?.cpf===p.cpf ? "sel" : "";
+      return `<div class="pt-item ${sel}" data-cpf="${esc(p.cpf)}">
+        <div class="pt-av">${esc(p.nome[0])}</div>
+        <div class="pt-inf">
+          <div class="pt-nm">${esc(p.nome)}</div>
+          <div class="pt-mt">${esc(p.cpf)}${nascStr}${p.peso?" · "+p.peso+"kg":""}${imcSpan}</div>
+          ${chips?`<div style="margin-top:3px">${chips}</div>`:""}
+        </div>
+        <div class="pt-ac">
+          <button class="btn bg btn-xs" data-lme="${esc(p.cpf)}">LME →</button>
+          <button class="btn bd btn-xs" data-del="${esc(p.cpf)}">✕</button>
+        </div>
+      </div>`;
+    }).join("");
+  }
+  return header + form + lista;
+}
+
+// ── LME VIEW ─────────────────────────────────────────────────
+function renderLmeView(){
+  if(!state.sel) return `<div class="empty"><span class="empty-i">📋</span><div class="empty-t">Selecione um paciente</div><button class="btn bg btn-sm" style="margin-top:10px" id="btn-goto-pts">← Pacientes</button></div>`;
+
+  const p = state.sel;
+  const hd = `<div class="pt-hd">
+    <div class="pt-hd-av">${esc(p.nome[0])}</div>
+    <div>
+      <div class="pt-hd-nm">${esc(p.nome)}</div>
+      <div class="pt-hd-mt">${esc(p.cpf)} · AR</div>
+    </div>
+    <div class="pt-actions">
+      <button class="btn bg btn-xs" id="btn-nova-lme" title="Zera o formulário e inicia nova LME">➕ Nova LME</button>
+      <button class="btn bg btn-xs" id="btn-baixar-lme" title="Baixa a última LME salva como PDF">⬇ Baixar LME</button>
+      <button class="btn bg btn-xs" id="btn-novo-fe" title="Formulário específico em branco">📋 Novo F.Esp.</button>
+      <button class="btn bg btn-xs" id="btn-editar-fe" title="Carrega último formulário específico salvo">✏ Editar F.Esp.</button>
+    </div>
+  </div>`;
+
+  const pills = `<div class="pill-row">
+    <button class="pill ${state.tab==="lme"?"on":""}" data-tab="lme">LME</button>
+    <button class="pill ${state.tab==="fe"?"on":""}" data-tab="fe">Form. Específico</button>
+    <button class="pill ${state.tab==="ck"?"on":""}" data-tab="ck">Checklist</button>
+  </div>`;
+
+  let content = "";
+  if(state.tab==="ck") content = renderChecklist();
+  else if(state.tab==="fe") content = state.fe ? renderFE() : `<div class="empty"><span class="empty-i">📋</span><div class="empty-t">Nenhum formulário específico</div><button class="btn bp btn-sm" style="margin-top:10px" id="btn-novo-fe2">+ Novo F. Específico</button></div>`;
+  else content = renderLmeForm();
+
+  return hd + pills + content;
+}
+
+// ── LME FORM (Campos 1-23 do NovomodelodeLME-EDITAVEL.pdf) ──
+function renderLmeForm(){
+  const d = state.lme;
+  const p = state.sel;
+
+  const medOptGrps = Object.entries(MEDS).map(([g,lista])=>
+    `<optgroup label="${esc(g)}">${lista.map(m=>`<option value="${esc(m.nome)}">${esc(m.nome)}</option>`).join("")}</optgroup>`
+  ).join("");
+
+  const medRows = d.meds.map((m,i)=>`
+    <tr>
+      <td style="width:24px;text-align:center;font-weight:600;font-size:.8rem;padding:4px 2px">${i+1}</td>
+      <td style="padding:4px 6px">
+        <select class="fi" style="font-size:.78rem;padding:5px 8px" data-lme-med-sel="${i}">
+          <option value="">— Medicamento —</option>${medOptGrps}
+        </select>
+      </td>
+      ${m.qtd.map((q,j)=>`<td style="padding:3px 2px;width:44px"><input class="fi" style="padding:4px;text-align:center;font-size:.78rem" type="text" placeholder="—" data-lme-qtd="${i}-${j}" value="${esc(q)}"></td>`).join("")}
+    </tr>`).join("");
+
+  const cidOpts = CIDS.map(c=>`<option value="${c.c}" ${d.cid10===c.c?"selected":""}>${c.c} — ${c.d}</option>`).join("");
+
+  return `
+  <div class="card">
+    <div class="sec-lbl">1–2 · Estabelecimento</div>
+    <div class="g2">
+      <div class="f"><label class="fl">1. CNES</label><input class="fi" value="${esc(MEDICO.cnes)}" readonly></div>
+      <div class="f"><label class="fl">2. Estabelecimento</label><input class="fi" value="${esc(MEDICO.instituicao)}" readonly></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="sec-lbl">3–6 · Paciente</div>
+    <div class="g2">
+      <div class="f s2"><label class="fl">3.1 Nome Civil do Paciente *</label><input class="fi" value="${esc(p.nome)}" readonly></div>
+      <div class="f"><label class="fl">5. Peso (kg) *</label><input class="fi" value="${esc(p.peso||"")}" readonly></div>
+      <div class="f"><label class="fl">6. Altura (cm) *</label><input class="fi" value="${esc(p.altura||"")}" readonly></div>
+      <div class="f s2"><label class="fl">3.2 Nome Social</label><input class="fi" id="lme-nome-social" placeholder="Se houver" value="${esc(d.nomeSocial||"")}"></div>
+      <div class="f s2"><label class="fl">4. Nome da Mãe *</label><input class="fi" value="${esc(p.mae||"")}" readonly></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="sec-lbl">7–8 · Medicamentos e Quantidades</div>
+    <div class="al al-i" style="font-size:.75rem">Selecione os medicamentos. Preencha as quantidades mensais (ex: 31, 60...).</div>
+    <div style="overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;min-width:480px">
+        <thead>
+          <tr>
+            <th style="padding:4px 2px;font-size:.7rem;color:var(--ink3);width:24px"></th>
+            <th style="padding:4px 6px;font-size:.7rem;color:var(--ink3);text-align:left">7. Medicamento *</th>
+            ${["1°","2°","3°","4°","5°","6°"].map(m=>`<th style="padding:4px 2px;font-size:.68rem;color:var(--ink3);text-align:center;width:44px">${m}<br>mês</th>`).join("")}
+          </tr>
+        </thead>
+        <tbody>${medRows}</tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="sec-lbl">9–10 · CID e Diagnóstico</div>
+    <div class="g2">
+      <div class="f"><label class="fl">9. CID-10 *</label>
+        <select class="fi" id="lme-cid10"><option value="">Selecione</option>${cidOpts}</select>
+      </div>
+      <div class="f"><label class="fl">10. Diagnóstico</label>
+        <input class="fi" id="lme-diagnostico" placeholder="Ex: Artrite Reumatoide" value="${esc(d.diagnostico||CIDS.find(c=>c.c===d.cid10)?.d||"")}">
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="sec-lbl">11 · Anamnese *</div>
+    <div class="f">
+      <textarea class="fi" id="lme-anamnese" rows="5" placeholder="Descreva a história clínica, evolução da doença, tratamentos realizados...">${esc(d.anamnese)}</textarea>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="sec-lbl">12 · Tratamento prévio *</div>
+    <div class="brow" style="margin-bottom:10px">
+      <button class="btn btn-sm ${!d.tratPrevioSim?"bp":"bg"}" id="lme-trat-nao">◉ NÃO</button>
+      <button class="btn btn-sm ${d.tratPrevioSim?"bp":"bg"}" id="lme-trat-sim">◉ SIM</button>
+    </div>
+    ${d.tratPrevioSim?`<div class="f"><label class="fl">Relatar</label><textarea class="fi" id="lme-trat-relato" rows="3" placeholder="Medicamentos anteriores, tempo de uso, motivo da troca...">${esc(d.tratPrevio)}</textarea></div>`:""}
+  </div>
+
+  <div class="card">
+    <div class="sec-lbl">13 · Atestado de Capacidade *</div>
+    <div style="font-size:.8rem;color:var(--ink2);margin-bottom:10px;font-style:italic">O paciente é considerado incapaz (art. 3° e 4° do Código Civil)?</div>
+    <div class="brow" style="margin-bottom:10px">
+      <button class="btn btn-sm ${!d.incapaz?"bp":"bg"}" id="lme-cap-nao">◉ NÃO</button>
+      <button class="btn btn-sm ${d.incapaz?"bp":"bg"}" id="lme-cap-sim">◉ SIM</button>
+    </div>
+    ${d.incapaz?`<div class="f"><label class="fl">Nome do Responsável</label><input class="fi" id="lme-responsavel" placeholder="Nome completo do responsável" value="${esc(d.nomeResponsavel)}"></div>`:""}
+  </div>
+
+  <div class="card">
+    <div class="sec-lbl">14–16 · Médico Solicitante</div>
+    <div class="g2">
+      <div class="f s2"><label class="fl">14. Nome do médico *</label><input class="fi" value="${esc(MEDICO.nome)}" readonly></div>
+      <div class="f"><label class="fl">15. CNS do médico *</label><input class="fi" value="${esc(MEDICO.cns)}" readonly></div>
+      <div class="f"><label class="fl">16. Data da Solicitação *</label><input class="fi" placeholder="___/___/________" id="lme-data"></div>
+    </div>
+    <div style="margin-top:12px;padding:10px;background:var(--surf2);border-radius:7px;font-size:.78rem;color:var(--ink3)">
+      17. Assinatura e carimbo do médico — preencher no momento da impressão
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="sec-lbl" style="color:var(--ink3)">18–23 · Campos preenchidos pelo paciente na farmácia</div>
+    <div class="al al-i" style="font-size:.77rem">Os campos 18 (responsável pelo preenchimento), 19 (raça/etnia), 20 (telefones), 21 (documento), 22 (email) e 23 (assinatura) serão preenchidos pelo paciente ou responsável diretamente na farmácia do CEAF.</div>
+  </div>
+
+  <div class="div"></div>
+  <div class="brow no-print">
+    <button class="btn bg btn-sm" id="btn-save-lme">💾 Salvar LME</button>
+    <button class="btn bp btn-sm" id="btn-pdf-lme">⬇ Baixar LME (PDF)</button>
+  </div>`;
+}
+
+
+// ── FORMULÁRIO ESPECÍFICO ─────────────────────────────────────
+function renderFE(){
+  const d=state.fe;
+  const total=eulaSum(d);
+  const medOptGrps=Object.entries(MEDS).map(([g,lista])=>`<optgroup label="${esc(g)}">${lista.map(m=>`<option value="${esc(m.nome)}">${esc(m.nome)}</option>`).join("")}</optgroup>`).join("");
+  const condRows=CONDS.map(c=>`<div class="co-row">
+    <span class="co-lb">${esc(c)}</span>
+    <div class="yn">
+      <button class="yn-btn ys ${d.conds[c]==="sim"?"on":""}" data-fe-cond="${esc(c)}" data-val="sim">SIM</button>
+      <button class="yn-btn nn ${d.conds[c]==="nao"?"on":""}" data-fe-cond="${esc(c)}" data-val="nao">NÃO</button>
+    </div></div>`).join("");
+  const medCards=d.meds.map((m,i)=>`<div class="med-card">
+    <div class="med-hd"><span class="med-n">Medicamento ${i+1}</span>${i>=2?`<button class="btn bd btn-xs" data-del-fe-med="${i}">Remover</button>`:""}</div>
+    <div class="g2" style="margin-bottom:8px">
+      <div class="f"><label class="fl">Medicamento</label><select class="fi" data-fe-med-sel="${i}"><option value="">— Selecionar —</option>${medOptGrps}</select></div>
+      <div class="f"><label class="fl">Posologia</label><textarea class="fi" rows="2" data-fe-med-pos="${i}" placeholder="Posologia...">${esc(m.posologia)}</textarea></div>
+    </div></div>`).join("");
+
+  return `
+  <div class="al al-i">Formulário Específico — AR · SES-MG (24/02/2026)</div>
+  <div class="card">
+    <div class="sec-lbl">1 · Identificação</div>
+    <div class="f"><label class="fl">Nome Civil do(a) Paciente</label><input class="fi" value="${esc(state.sel.nome)}" readonly></div>
+  </div>
+  <div class="card">
+    <div class="sec-lbl">2 · História Clínica</div>
+    <div class="f"><label class="fl">2.1 Características clínicas e evolução</label>
+    <textarea class="fi" id="fe-historia" rows="5" placeholder="Início, evolução, articulações acometidas...">${esc(d.historia)}</textarea></div>
+    <div class="sec-lbl" style="margin-top:10px">2.2 Critérios ACR 1987</div>
+    <div class="f" style="max-width:200px"><label class="fl">Total critérios (0–7)</label>
+    <input class="fi" type="number" min="0" max="7" id="fe-acr87" value="${esc(d.acr87)}" placeholder="0–7"></div>
+    <div class="sec-lbl" style="margin-top:10px">2.2 Critérios ACR/EULAR 2010</div>
+    <div class="al al-i">Score ≥ 6 pontos confirma AR</div>
+    <div class="g2">
+      <div class="f"><label class="fl">Acometimento articular (0–5)</label>
+      <select class="fi" id="fe-acometimento">
+        <option value="">Selecione</option>
+        <option value="0" ${d.acometimento==="0"?"selected":""}>0 — 1 grande articulação</option>
+        <option value="1" ${d.acometimento==="1"?"selected":""}>1 — 2–10 grandes</option>
+        <option value="2" ${d.acometimento==="2"?"selected":""}>2 — 1–3 pequenas</option>
+        <option value="3" ${d.acometimento==="3"?"selected":""}>3 — 4–10 pequenas</option>
+        <option value="5" ${d.acometimento==="5"?"selected":""}>5 — &gt;10 (≥1 pequena)</option>
+      </select></div>
+      <div class="f"><label class="fl">Sorologia FR/Anti-CCP (0–3)</label>
+      <select class="fi" id="fe-sorologia">
+        <option value="">Selecione</option>
+        <option value="0" ${d.sorologia==="0"?"selected":""}>0 — Negativos</option>
+        <option value="2" ${d.sorologia==="2"?"selected":""}>2 — Baixos títulos</option>
+        <option value="3" ${d.sorologia==="3"?"selected":""}>3 — Altos títulos</option>
+      </select></div>
+      <div class="f"><label class="fl">Provas inflamatórias (0–1)</label>
+      <select class="fi" id="fe-inflamatorias">
+        <option value="">Selecione</option>
+        <option value="0" ${d.inflamatorias==="0"?"selected":""}>0 — VHS e PCR normais</option>
+        <option value="1" ${d.inflamatorias==="1"?"selected":""}>1 — VHS ou PCR alterados</option>
+      </select></div>
+      <div class="f"><label class="fl">Duração dos sintomas (0–1)</label>
+      <select class="fi" id="fe-duracao">
+        <option value="">Selecione</option>
+        <option value="0" ${d.duracao==="0"?"selected":""}>0 — &lt; 6 semanas</option>
+        <option value="1" ${d.duracao==="1"?"selected":""}>1 — ≥ 6 semanas</option>
+      </select></div>
+    </div>
+    ${total>0?`<div style="margin-top:10px;padding:7px 11px;background:${total>=6?"var(--green-bg)":"var(--surf2)"};border-radius:7px;font-size:.8rem"><span style="font-family:var(--mono);font-weight:600">Total: ${total} pts</span><span style="margin-left:10px;color:var(--ink2)">${total>=6?"✓ AR confirmada":"⚠ Insuficiente"}</span></div>`:""}
+    <div class="sec-lbl" style="margin-top:12px">2.3 Atividade da Doença</div>
+    <div class="sc-row"><span class="sc-k">DAS28</span><input class="sc-v" type="number" step=".01" id="fe-das28" value="${esc(d.das28)}" placeholder="—"></div>
+    <div class="sc-row"><span class="sc-k">SDAI</span><input class="sc-v" type="number" step=".01" id="fe-sdai" value="${esc(d.sdai)}" placeholder="—"></div>
+    <div class="sc-row"><span class="sc-k">CDAI</span><input class="sc-v" type="number" step=".01" id="fe-cdai" value="${esc(d.cdai)}" placeholder="—"></div>
+  </div>
+  <div class="card"><div class="sec-lbl">3 · Condições Especiais</div>${condRows}</div>
+  <div class="card">
+    <div class="sec-lbl">4 · Tuberculose (para LEF, MTX, SSZ, AZA, Ciclosporina)</div>
+    <div style="font-size:.83rem;margin-bottom:9px">Paciente apresenta tuberculose sem tratamento?</div>
+    <div class="brow" style="margin-bottom:8px">
+      <button class="btn btn-sm ${d.tbTrat==="sim"?"bd":"bg"}" id="fe-tb-sim">SIM</button>
+      <button class="btn btn-sm ${d.tbTrat==="nao"?"bs":"bg"}" id="fe-tb-nao">NÃO</button>
+    </div>
+    ${d.tbTrat==="sim"?`<div class="al al-e">⛔ TB sem tratamento é contraindicação absoluta aos MMCDs.</div>`:""}
+  </div>
+  <div class="card">
+    <div class="sec-lbl">5 · Tratamentos Prévios</div>
+    <div class="f"><label class="fl">Medicamentos anteriores, tempo, falha, intolerância</label>
+    <textarea class="fi" id="fe-tratPrevios" rows="5" placeholder="Ex: Metotrexato 20 mg/sem por 6 meses — falha terapêutica...">${esc(d.tratPrevios)}</textarea></div>
+  </div>
+  <div class="card">
+    <div class="sec-lbl">6 · MMCDbio + MTX</div>
+    <div style="font-size:.83rem;margin-bottom:9px">O MMCDbio será associado ao Metotrexato?</div>
+    <div class="brow" style="margin-bottom:10px">
+      <button class="btn btn-sm ${d.usarMTX==="sim"?"bp":"bg"}" id="fe-mtx-sim">SIM</button>
+      <button class="btn btn-sm ${d.usarMTX==="nao"?"bp":"bg"}" id="fe-mtx-nao">NÃO</button>
+    </div>
+    ${d.usarMTX==="nao"?`<div class="f"><label class="fl">Justificativa</label><textarea class="fi" id="fe-justMTX" rows="3" placeholder="Justifique...">${esc(d.justMTX)}</textarea></div>`:""}
+  </div>
+  <div class="card">
+    <div class="sec-lbl">7 · Esquema Terapêutico</div>
+    <div class="al al-i">Selecione os medicamentos — posologia preenchida automaticamente</div>
+    ${medCards}
+    <button class="btn bg btn-sm" id="fe-btn-add-med">+ Adicionar Medicamento</button>
+  </div>
+  <div class="card">
+    <div class="sec-lbl">8 · Rituximabe</div>
+    <div class="f"><label class="fl">Contraindicação / falha a biológicos e JAKi</label>
+    <textarea class="fi" id="fe-rituximabe" rows="3" placeholder="Descrever falha/contraindicação...">${esc(d.rituximabe)}</textarea></div>
+  </div>
+  <div class="card">
+    <div class="sec-lbl">9 · PPD / IGRA</div>
+    <div style="font-size:.83rem;margin-bottom:9px">Paciente realizou PPD ou IGRA?</div>
+    <div class="brow" style="margin-bottom:10px">
+      <button class="btn btn-sm ${d.ppd==="sim"?"bp":"bg"}" id="fe-ppd-sim">SIM</button>
+      <button class="btn btn-sm ${d.ppd==="nao"?"bp":"bg"}" id="fe-ppd-nao">NÃO</button>
+    </div>
+    <div class="f"><label class="fl">Resultado / Observações</label>
+    <textarea class="fi" id="fe-ppd_obs" rows="2" placeholder="Resultado, TB prévia, ILTB tratada...">${esc(d.ppd_obs)}</textarea></div>
+  </div>
+  <div class="card">
+    <div class="sec-lbl">10 · Observações</div>
+    <div class="f"><textarea class="fi" id="fe-obs" rows="3" placeholder="Outras informações...">${esc(d.obs)}</textarea></div>
+  </div>
+  <div class="card" style="padding:14px">
+    <div class="sec-lbl">11 · Responsabilidade</div>
+    <div style="font-size:.83rem;color:var(--ink2);margin-bottom:14px">Assumo integral responsabilidade pela veracidade das informações prestadas.</div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end">
+      <div><div style="font-size:.76rem;color:var(--ink3)">Assinatura e carimbo</div><div style="border-bottom:1px solid var(--ink);width:180px;margin-top:20px"></div></div>
+      <div style="text-align:right"><div style="font-size:.76rem;color:var(--ink3)">Data</div><div style="border-bottom:1px solid var(--ink);width:90px;margin-top:20px"></div></div>
+    </div>
+    <div style="margin-top:10px;font-size:.76rem;color:var(--ink3)">${esc(MEDICO.nome)} · ${esc(MEDICO.crm)} · ${esc(MEDICO.especialidade)} · ${esc(MEDICO.instituicao)}</div>
+  </div>
+  <div class="div"></div>
+  <div class="brow no-print">
+    <button class="btn bg btn-sm" id="btn-save-fe">💾 Salvar F. Específico</button>
+    <button class="btn bp btn-sm" id="btn-pdf-fe">⬇ Baixar F. Específico (PDF)</button>
+    <button class="btn bg btn-sm" id="btn-pdf-lme2">⬇ Baixar LME (PDF)</button>
+  </div>`;
+}
+
+// ── CHECKLIST ────────────────────────────────────────────────
+function renderChecklist(){
+  const secs = Object.entries(CHECKLIST).map(([ttl,itens])=>`
+    <div class="ck-sec">
+      <div class="ck-ttl">${esc(ttl)}</div>
+      ${itens.map(it=>`<div class="ck-it"><div class="ck-bx"></div>${esc(it)}</div>`).join("")}
+    </div>`).join("");
+  return `<div class="card">${secs}<div style="font-size:.68rem;color:var(--ink3);margin-top:10px;border-top:1px solid var(--border);padding-top:8px">Ref.: Formulário Específico AR — SES-MG (24/02/2026) · saude.mg.gov.br/formulariosceaf</div>
+  <div class="brow" style="margin-top:14px"><button class="btn bp btn-sm" id="btn-print-ck">🖨 Imprimir Checklist</button></div></div>`;
+}
+
+// ── BIND EVENTS ───────────────────────────────────────────────
+function bindEvents(){
+  // Nav
+  document.querySelectorAll("[data-nav]").forEach(el=>{
+    el.addEventListener("click",()=>{ state.view=el.dataset.nav; render(); });
+  });
+
+  // Pacientes
+  q("btn-toggle-novo",()=>{ state.showNovo=!state.showNovo; render(); });
+  q("btn-toggle-novo2",()=>{ state.showNovo=true; render(); });
+  q("btn-teste", testeAleatorio);
+  q("btn-cadastrar", cadastrar);
+  q("btn-cancelar-novo",()=>{ state.showNovo=false; render(); });
+
+  // Inputs novo paciente
+  bindInput("np-nome", v=>state.novo.nome=v);
+  bindInput("np-mae", v=>state.novo.mae=v);
+  bindInputFmt("np-cpf", v=>{ state.novo.cpf=fmtCPF(v); });
+  bindInput("np-nasc", v=>state.novo.nasc=v);
+  bindInput("np-peso", v=>state.novo.peso=v);
+  bindInput("np-altura", v=>state.novo.altura=v);
+
+  // Lista pacientes
+  document.querySelectorAll("[data-cpf]").forEach(el=>{
+    el.addEventListener("click",()=>{ selPaciente(el.dataset.cpf); });
+  });
+  document.querySelectorAll("[data-lme]").forEach(el=>{
+    el.addEventListener("click",e=>{ e.stopPropagation(); selPaciente(el.dataset.lme); state.view="lme"; state.tab="lme"; state.step=0; render(); });
+  });
+  document.querySelectorAll("[data-del]").forEach(el=>{
+    el.addEventListener("click",e=>{ e.stopPropagation(); delPaciente(el.dataset.del); });
+  });
+
+  // LME view
+  q("btn-goto-pts",()=>{ state.view="pacientes"; render(); });
+  q("btn-nova-lme",()=>{ state.lme=initLme(); state.fe=null; state.tab="lme"; state.step=0; render(); toast("Nova LME iniciada"); });
+  q("btn-baixar-lme",()=>{ downloadPDF("lme"); });
+  q("btn-novo-fe",()=>{ state.fe=initFe(); state.tab="fe"; render(); });
+  q("btn-novo-fe2",()=>{ state.fe=initFe(); state.tab="fe"; render(); });
+  q("btn-editar-fe",()=>{ const d=loadFe(); state.fe=d||initFe(); state.tab="fe"; render(); if(!d) toast("Nenhum formulário salvo — novo em branco"); });
+
+  // Tabs
+  document.querySelectorAll("[data-tab]").forEach(el=>{
+    el.addEventListener("click",()=>{ state.tab=el.dataset.tab; render(); });
+  });
+
+  // LME form buttons
+  q("btn-save-lme",()=>{ collectLme(); saveLme(); });
+  q("btn-pdf-lme",()=>{ collectLme(); downloadPDF("lme"); });
+  q("btn-pdf-lme2",()=>{ collectLme(); downloadPDF("lme"); });
+  q("btn-baixar-lme",()=>{ collectLme(); downloadPDF("lme"); });
+  q("btn-print-ck",()=>window.print());
+
+  // LME form inputs (campos diretos)
+  bindSel("lme-cid10",v=>{
+    state.lme.cid10=v;
+    const cid=CIDS.find(c=>c.c===v);
+    if(cid){
+      // preenche diagnóstico
+      const elD=document.getElementById("lme-diagnostico");
+      if(elD) { elD.value=cid.d; state.lme.diagnostico=cid.d; }
+      // preenche anamnese se ainda vazia
+      const elA=document.getElementById("lme-anamnese");
+      if(elA && !elA.value.trim()) { elA.value=cid.d; state.lme.anamnese=cid.d; }
+    }
+  });
+  bindInput("lme-diagnostico",v=>state.lme.diagnostico=v);
+  bindInput("lme-anamnese",v=>state.lme.anamnese=v, true);
+  bindInput("lme-trat-relato",v=>state.lme.tratPrevio=v, true);
+  bindInput("lme-responsavel",v=>state.lme.nomeResponsavel=v);
+  bindInput("lme-data",v=>state.lme.dataStr=v);
+  bindInput("lme-outro-nome",v=>state.lme.outroNome=v);
+  bindInput("lme-outro-cpf",v=>state.lme.outroCPF=v);
+  bindInput("lme-etnia",v=>state.lme.etnia=v);
+  bindInput("lme-tel1",v=>state.lme.tel1=v);
+  bindInput("lme-tel2",v=>state.lme.tel2=v);
+  bindInput("lme-email",v=>state.lme.email=v);
+  bindInput("lme-nome-social",v=>state.lme.nomeSocial=v);
+
+  q("lme-trat-sim",()=>{ state.lme.tratPrevioSim=true; render(); });
+  q("lme-trat-nao",()=>{ state.lme.tratPrevioSim=false; state.lme.tratPrevio=""; render(); });
+  q("lme-cap-sim",()=>{ state.lme.incapaz=true; render(); });
+  q("lme-cap-nao",()=>{ state.lme.incapaz=false; state.lme.nomeResponsavel=""; render(); });
+
+  document.querySelectorAll("[data-lme-por]").forEach(el=>{
+    el.addEventListener("click",()=>{ state.lme.preenchidoPor=el.dataset.lmePor; render(); });
+  });
+  document.querySelectorAll("[data-lme-raca]").forEach(el=>{
+    el.addEventListener("click",()=>{ state.lme.raca=el.dataset.lmeRaca; render(); });
+  });
+
+  // Medicamentos LME (tabela 6×6)
+  document.querySelectorAll("[data-lme-med-sel]").forEach(el=>{
+    const i=parseInt(el.dataset.lmeMedSel);
+    if(state.lme.meds[i]) el.value=state.lme.meds[i].nome||"";
+    el.addEventListener("change",()=>{ state.lme.meds[i].nome=el.value; });
+  });
+  document.querySelectorAll("[data-lme-qtd]").forEach(el=>{
+    const [i,j]=el.dataset.lmeQtd.split("-").map(Number);
+    el.addEventListener("input",()=>{ state.lme.meds[i].qtd[j]=el.value; });
+  });
+
+  // FE events
+  q("btn-save-fe",()=>{ collectFE(); saveFe(); });
+  q("btn-pdf-fe",()=>{ collectFE(); downloadPDF("fe"); });
+
+  bindInput("fe-historia",v=>state.fe&&(state.fe.historia=v), true);
+  bindInput("fe-acr87",v=>state.fe&&(state.fe.acr87=v));
+  bindSel("fe-acometimento",v=>{ if(state.fe){state.fe.acometimento=v;render();} });
+  bindSel("fe-sorologia",v=>{ if(state.fe){state.fe.sorologia=v;render();} });
+  bindSel("fe-inflamatorias",v=>{ if(state.fe){state.fe.inflamatorias=v;render();} });
+  bindSel("fe-duracao",v=>{ if(state.fe){state.fe.duracao=v;render();} });
+  bindInput("fe-das28",v=>state.fe&&(state.fe.das28=v));
+  bindInput("fe-sdai",v=>state.fe&&(state.fe.sdai=v));
+  bindInput("fe-cdai",v=>state.fe&&(state.fe.cdai=v));
+  bindInput("fe-tratPrevios",v=>state.fe&&(state.fe.tratPrevios=v), true);
+  bindInput("fe-justMTX",v=>state.fe&&(state.fe.justMTX=v), true);
+  bindInput("fe-rituximabe",v=>state.fe&&(state.fe.rituximabe=v), true);
+  bindInput("fe-ppd_obs",v=>state.fe&&(state.fe.ppd_obs=v), true);
+  bindInput("fe-obs",v=>state.fe&&(state.fe.obs=v), true);
+
+  q("fe-tb-sim",()=>{ if(state.fe){state.fe.tbTrat=state.fe.tbTrat==="sim"?"":"sim";render();} });
+  q("fe-tb-nao",()=>{ if(state.fe){state.fe.tbTrat=state.fe.tbTrat==="nao"?"":"nao";render();} });
+  q("fe-mtx-sim",()=>{ if(state.fe){state.fe.usarMTX="sim";render();} });
+  q("fe-mtx-nao",()=>{ if(state.fe){state.fe.usarMTX="nao";render();} });
+  q("fe-ppd-sim",()=>{ if(state.fe){state.fe.ppd="sim";render();} });
+  q("fe-ppd-nao",()=>{ if(state.fe){state.fe.ppd="nao";render();} });
+
+  document.querySelectorAll("[data-fe-cond]").forEach(el=>{
+    el.addEventListener("click",()=>{
+      if(!state.fe) return;
+      const c=el.dataset.feCond, v=el.dataset.val;
+      state.fe.conds[c]=state.fe.conds[c]===v?"":v;
+      render();
+    });
+  });
+  document.querySelectorAll("[data-fe-med-sel]").forEach(el=>{
+    const i=parseInt(el.dataset.feMedSel);
+    if(state.fe?.meds[i]) el.value=state.fe.meds[i].medicamento||"";
+    el.addEventListener("change",()=>{
+      if(!state.fe) return;
+      const nome=el.value; const m=ALL_MEDS.find(x=>x.nome===nome);
+      state.fe.meds[i]={medicamento:nome,posologia:m?.pos||""};
+      render();
+    });
+  });
+  document.querySelectorAll("[data-fe-med-pos]").forEach(el=>{
+    const i=parseInt(el.dataset.feMedPos);
+    el.addEventListener("input",()=>{ if(state.fe) state.fe.meds[i].posologia=el.value; });
+  });
+  document.querySelectorAll("[data-del-fe-med]").forEach(el=>{
+    el.addEventListener("click",()=>{ if(state.fe){state.fe.meds.splice(parseInt(el.dataset.delFeMed),1);render();} });
+  });
+  q("fe-btn-add-med",()=>{ if(state.fe){state.fe.meds.push({medicamento:"",posologia:""});render();} });
+}
+
+function q(id,fn){ const el=document.getElementById(id); if(el) el.addEventListener("click",fn); }
+function bindInput(id,fn,noRender){
+  const el=document.getElementById(id);
+  if(el) el.addEventListener("input",()=>{ fn(el.value); if(!noRender) {} });
+}
+function bindInputFmt(id,fn){
+  const el=document.getElementById(id);
+  if(!el) return;
+  el.addEventListener("input",()=>{ fn(el.value); const v=state.novo.cpf; el.value=v; el.setSelectionRange(v.length,v.length); });
+}
+function bindSel(id,fn){
+  const el=document.getElementById(id);
+  if(el) el.addEventListener("change",()=>fn(el.value));
+}
+
+function collectLme(){
+  // Persiste valores dos inputs da LME antes de salvar/PDF
+  const flds={
+    "lme-anamnese":"anamnese","lme-trat-relato":"tratPrevio","lme-diagnostico":"diagnostico",
+    "lme-responsavel":"nomeResponsavel","lme-data":"dataStr",
+    "lme-outro-nome":"outroNome","lme-outro-cpf":"outroCPF",
+    "lme-etnia":"etnia","lme-tel1":"tel1","lme-tel2":"tel2","lme-email":"email","lme-nome-social":"nomeSocial"
+  };
+  for(const [id,key] of Object.entries(flds)){
+    const el=document.getElementById(id); if(el&&state.lme) state.lme[key]=el.value;
+  }
+  // Medicamentos
+  document.querySelectorAll("[data-lme-med-sel]").forEach(el=>{
+    const i=parseInt(el.dataset.lmeMedSel); if(state.lme?.meds[i]) state.lme.meds[i].nome=el.value;
+  });
+  document.querySelectorAll("[data-lme-qtd]").forEach(el=>{
+    const [i,j]=el.dataset.lmeQtd.split("-").map(Number);
+    if(state.lme?.meds[i]) state.lme.meds[i].qtd[j]=el.value;
+  });
+}
+
+function collectFE(){
+  const flds={
+    "fe-historia":"historia","fe-acr87":"acr87","fe-das28":"das28","fe-sdai":"sdai","fe-cdai":"cdai",
+    "fe-tratPrevios":"tratPrevios","fe-justMTX":"justMTX","fe-rituximabe":"rituximabe","fe-ppd_obs":"ppd_obs","fe-obs":"obs"
+  };
+  for(const [id,key] of Object.entries(flds)){
+    const el=document.getElementById(id); if(el&&state.fe) state.fe[key]=el.value;
+  }
+  document.querySelectorAll("[data-fe-med-pos]").forEach(el=>{
+    const i=parseInt(el.dataset.feMedPos); if(state.fe?.meds[i]) state.fe.meds[i].posologia=el.value;
+  });
+}
+
+// ── PACIENTE ACTIONS ──────────────────────────────────────────
+function selPaciente(cpf){
+  state.sel = state.pts.find(p=>p.cpf===cpf)||null;
+  loadLme();
+  render();
+}
+
+function cadastrar(){
+  const n=state.novo;
+  if(!n.nome.trim()||!n.cpf.trim()){ toast("Nome e CPF são obrigatórios"); return; }
+  const p={...n, id:Date.now(), lmes:[]};
+  state.pts.push(p); savePts();
+  state.novo={nome:"",mae:"",cpf:"",nasc:"",peso:"",altura:""};
+  state.showNovo=false;
+  toast("Paciente cadastrado ✓");
+  render();
+}
+
+function delPaciente(cpf){
+  if(!confirm("Remover paciente?")) return;
+  state.pts = state.pts.filter(p=>p.cpf!==cpf);
+  savePts();
+  if(state.sel?.cpf===cpf) state.sel=null;
+  render();
+}
+
+function testeAleatorio(){
+  const pool=[
+    {nome:"Maria Aparecida Silva Santos",mae:"Benedita Conceição Silva"},
+    {nome:"José Carlos Oliveira Ferreira",mae:"Ana Maria Oliveira"},
+    {nome:"Francisca Rodrigues Almeida",mae:"Luzia Rodrigues Costa"},
+    {nome:"Antônia Pereira Nascimento",mae:"Rita de Cássia Pereira"},
+  ];
+  const e=pool[Math.floor(Math.random()*pool.length)];
+  const raw=String(Math.floor(Math.random()*900000000)+100000000);
+  const cpf=`${raw.slice(0,3)}.${raw.slice(3,6)}.${raw.slice(6,9)}-${String(Math.floor(Math.random()*90)+10)}`;
+  const ano=2025-(Math.floor(Math.random()*35)+28);
+  const mes=String(Math.floor(Math.random()*12)+1).padStart(2,"0");
+  const dia=String(Math.floor(Math.random()*28)+1).padStart(2,"0");
+  const p={nome:e.nome,mae:e.mae,cpf,nasc:`${ano}-${mes}-${dia}`,
+    peso:(Math.random()*35+50).toFixed(1),altura:String(Math.floor(Math.random()*31)+155),
+    id:Date.now(),lmes:[]};
+  state.pts.push(p); savePts();
+  state.sel=p; loadLme();
+  toast(`"${p.nome.split(" ")[0]}" cadastrado ✓`);
+  render();
+}
+
+// ── IMPRESSÃO ─────────────────────────────────────────────────
+
+// ── SALVAR & PDF ──────────────────────────────────────────────
+// URL do servidor local — alterar se usar porta diferente
+const SERVIDOR_URL = "http://localhost:8765";
+
+function downloadPDF(tipo){
+  const p = state.sel;
+  if(!p){ toast("Selecione um paciente"); return; }
+
+  if(tipo === "lme"){
+    collectLme();
+    if(!state.lme){ toast("Nenhuma LME preenchida"); return; }
+
+    const dados = {
+      medico: {
+        nome: MEDICO.nome,
+        cnes: MEDICO.cnes,
+        cns: MEDICO.cns,
+        instituicao: MEDICO.instituicao
+      },
+      paciente: {
+        nome: p.nome || "",
+        mae: p.mae || "",
+        cpf: p.cpf || "",
+        peso: p.peso || "",
+        altura: p.altura || "",
+        nomeSocial: state.lme.nomeSocial || ""
+      },
+      lme: {
+        cid10: state.lme.cid10 || "",
+        diagnostico: state.lme.diagnostico || "",
+        anamnese: state.lme.anamnese || "",
+        tratPrevioSim: state.lme.tratPrevioSim || false,
+        tratPrevio: state.lme.tratPrevio || "",
+        incapaz: state.lme.incapaz || false,
+        nomeResponsavel: state.lme.nomeResponsavel || "",
+        dataStr: state.lme.dataStr || "",
+        meds: (state.lme.meds || []).map(m=>({
+          nome: m.nome || "",
+          qtd: m.qtd || ["","","","","",""]
+        }))
+      }
+    };
+
+    toast("Gerando PDF...");
+
+    fetch(SERVIDOR_URL + "/gerar-lme", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(dados)
+    })
+    .then(res => {
+      if(!res.ok) return res.text().then(t => { throw new Error(t); });
+      return res.blob();
+    })
+    .then(blob => {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "LME_" + p.nome.replace(/\s+/g,"_") + ".pdf";
+      a.click();
+      setTimeout(()=>URL.revokeObjectURL(url), 5000);
+      toast("✓ PDF baixado com sucesso!");
+    })
+    .catch(err => {
+      // Servidor não está rodando — fallback: baixa JSON para usar com script Python
+      if(err.message && err.message.includes("fetch")) {
+        toast("Servidor não encontrado. Baixando dados para gerar PDF manualmente...");
+        const json = JSON.stringify(dados, null, 2);
+        const blob = new Blob([json], {type:"application/json"});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "LME_" + p.nome.replace(/\s+/g,"_") + ".json";
+        a.click();
+        setTimeout(()=>URL.revokeObjectURL(url), 3000);
+        setTimeout(()=>toast("Para gerar o PDF: python3 servidor_lme.py → abra http://localhost:8765"), 3200);
+      } else {
+        toast("Erro ao gerar PDF: " + err.message);
+      }
+    });
+
+  } else if(tipo === "fe"){
+    collectFE();
+    if(!state.fe){ toast("Preencha o Formulário Específico primeiro"); return; }
+
+    const titulo = "FormEspecifico_AR_" + p.nome.replace(/\s+/g,"_");
+    const conteudo = buildFePrintHTML(state.fe, p);
+    const html = `<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><title>${titulo}</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Arial,sans-serif;background:#fff}
+  #bar{background:#1D4ED8;color:#fff;padding:10px 18px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100}
+  #bar span{font-size:.88rem;font-weight:600;flex:1}
+  #bar button{background:#fff;color:#1D4ED8;border:none;border-radius:6px;padding:7px 18px;font-size:.85rem;font-weight:700;cursor:pointer}
+  .doc{padding:8mm;max-width:210mm;margin:0 auto}
+  @media print{#bar{display:none!important}.doc{padding:0;max-width:100%}@page{margin:8mm;size:A4}}
+</style>
+</head>
+<body>
+<div id="bar"><span>📄 ${titulo.replace(/_/g," ")}</span><button id="bp">🖨 Imprimir / Salvar PDF</button></div>
+<div class="doc">${conteudo}</div>
+<script>document.getElementById("bp").onclick=function(){window.print()}<\/script>
+</body></html>`;
+    const blob = new Blob([html], {type:"text/html;charset=utf-8"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = titulo + ".html";
+    a.click();
+    setTimeout(()=>URL.revokeObjectURL(url), 3000);
+    toast("Arquivo baixado — abra no Chrome e imprima como PDF");
+  }
+}
+
+
+function cbSN(val){ return `<span style="display:inline-block;width:10px;height:10px;border:1px solid #000;margin-right:2px;vertical-align:middle;text-align:center;font-size:7px;line-height:10px">${val==="sim"?"✓":""}</span>`; }
+
+function buildLmePrintHTML(d, p){
+  const cid = CIDS.find(c=>c.c===d.cid10);
+  const radio = (on) => `<span style="font-size:12px;vertical-align:middle;line-height:1">${on?'●':'○'}</span>`;
+  const chk   = ()   => `<span style="display:inline-block;width:9px;height:9px;border:1px solid #333;vertical-align:middle;margin-right:2px;background:#fff"></span>`;
+
+  const medsRows = Array.from({length:6}, (_,i) => {
+    const m    = (d.meds||[])[i] || {nome:"", qtd:[]};
+    const qtds = Array.from({length:6}, (_,j) => (m.qtd||[])[j]||"");
+    return `<tr style="height:19px">
+      <td style="border-left:1px solid #000;border-right:1px solid #000;border-bottom:1px solid #000;width:20px;text-align:center;font-size:8.5pt;padding:1px 3px;font-weight:600">${i+1}</td>
+      <td style="border-right:1px solid #000;border-bottom:1px solid #000;padding:1px 5px;font-size:9pt">${esc(m.nome||"")}</td>
+      ${qtds.map(q=>`<td style="border-right:1px solid #000;border-bottom:1px solid #000;text-align:center;font-size:9pt;padding:1px 2px;width:26px">${esc(q)}</td>`).join("")}
+    </tr>`;
+  }).join("");
+
+  // Estilos base das células principais (borda esquerda+direita+bottom, sem top = contínuo)
+  const C  = `border:1px solid #000;`;              // célula completa (primeira linha)
+  const Cb = `border-left:1px solid #000;border-right:1px solid #000;border-bottom:1px solid #000;`; // sem topo
+  const CbL= `border-right:1px solid #000;border-bottom:1px solid #000;`; // sem topo e sem esquerda
+
+  return `<div style="font-family:Arial,Helvetica,sans-serif;font-size:9pt;color:#000;width:100%;line-height:1.3">
+
+  <!-- ══ CABEÇALHO ══ -->
+  <table style="width:100%;border-collapse:collapse;margin-bottom:5px">
+    <tr>
+      <td style="width:80px;vertical-align:middle;padding:0 8px 0 0">
+        <table style="border:1.5px solid #1a5e8a;border-collapse:collapse;width:74px">
+          <tr>
+            <td style="background:#1a5e8a;padding:3px 4px;text-align:center;width:44px">
+              <div style="color:#fff;font-size:15pt;font-weight:900;letter-spacing:-1px;line-height:1;font-family:Arial">SUS</div>
+              <div style="width:0;height:0;border-left:11px solid transparent;border-right:11px solid transparent;border-top:7px solid #fff;margin:2px auto 0"></div>
+            </td>
+            <td style="border-left:1.5px solid #1a5e8a;padding:2px 3px;vertical-align:middle;text-align:center">
+              <div style="font-size:5pt;color:#1a5e8a;font-weight:700;line-height:1.4">Sistema<br>Único<br>de Saúde</div>
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td style="text-align:center;vertical-align:middle">
+        <div style="font-size:9pt;line-height:1.8">Sistema Único de Saúde<br>Ministério da Saúde<br>Secretaria de Estado da Saúde</div>
+      </td>
+    </tr>
+  </table>
+
+  <!-- ══ FORMULÁRIO — UMA TABELA CONTÍGUA ══ -->
+  <table style="width:100%;border-collapse:collapse">
+
+    <!-- Título principal -->
+    <tr><td colspan="2" style="${C}text-align:center;padding:3px 4px;font-size:9.5pt;font-weight:700;text-transform:uppercase;line-height:1.5">
+      COMPONENTE ESPECIALIZADO DA ASSISTÊNCIA FARMACÊUTICA<br>
+      LAUDO DE SOLICITAÇÃO, AVALIAÇÃO E AUTORIZAÇÃO DE MEDICAMENTO(S)
+    </td></tr>
+    <tr><td colspan="2" style="${Cb}text-align:center;padding:2px 4px;font-size:9pt">SOLICITAÇÃO DE MEDICAMENTO(S)</td></tr>
+    <tr><td colspan="2" style="${Cb}background:#D0D0D0;padding:2px 5px;font-size:8.5pt;font-weight:700">CAMPOS DE PREENCHIMENTO EXCLUSIVO PELO MÉDICO SOLICITANTE</td></tr>
+
+    <!-- Campos 1 e 2 -->
+    <tr>
+      <td style="${Cb}width:26%;padding:2px 5px;vertical-align:top">
+        <div style="font-size:7.5pt;font-weight:700">1. Número do CNES*</div>
+        <div style="font-size:9pt;padding:2px 0">${esc(MEDICO.cnes)}</div>
+      </td>
+      <td style="${CbL}padding:2px 5px;vertical-align:top">
+        <div style="font-size:7.5pt;font-weight:700">2. Nome do Estabelecimento de Saúde Solicitante</div>
+        <div style="font-size:9pt;padding:2px 0">${esc(MEDICO.instituicao)}</div>
+      </td>
+    </tr>
+
+    <!-- Campos 3.1 e 5 -->
+    <tr>
+      <td style="${Cb}padding:2px 5px;vertical-align:top">
+        <div style="font-size:7.5pt;font-weight:700">3.1 Nome civil completo do Paciente*</div>
+        <div style="font-size:11pt;font-weight:700;padding:3px 0 2px">${esc(p.nome)}</div>
+      </td>
+      <td style="${CbL}width:22%;padding:2px 5px;vertical-align:top">
+        <div style="font-size:7.5pt;font-weight:700">5. Peso do Paciente (Kg)*</div>
+        <div style="font-size:9pt;padding:2px 0">${esc(p.peso||"")}</div>
+      </td>
+    </tr>
+
+    <!-- Campos 3.2 e 6 -->
+    <tr>
+      <td style="${Cb}padding:2px 5px;vertical-align:top">
+        <div style="font-size:7.5pt;font-weight:700">3.2 Nome social do Paciente</div>
+        <div style="font-size:9pt;padding:2px 0;min-height:13px">${esc(d.nomeSocial||"")}</div>
+      </td>
+      <td style="${CbL}padding:2px 5px;vertical-align:top">
+        <div style="font-size:7.5pt;font-weight:700">6. Altura do Paciente (cm)*</div>
+        <div style="font-size:9pt;padding:2px 0">${esc(p.altura||"")}</div>
+      </td>
+    </tr>
+
+    <!-- Campo 4 -->
+    <tr>
+      <td colspan="2" style="${Cb}padding:2px 5px;vertical-align:top">
+        <div style="font-size:7.5pt;font-weight:700">4. Nome da Mãe do Paciente*</div>
+        <div style="font-size:10pt;padding:3px 0 2px">${esc(p.mae||"")}</div>
+      </td>
+    </tr>
+
+    <!-- Campos 7 e 8: cabeçalho da tabela de medicamentos -->
+    <tr>
+      <td colspan="2" style="${Cb}padding:0">
+        <table style="width:100%;border-collapse:collapse">
+          <tr>
+            <td colspan="2" style="border-bottom:1px solid #000;text-align:center;padding:3px 4px;font-size:9pt;font-weight:700">7. <b>Medicamentos*</b></td>
+            <td colspan="6" style="border-left:1px solid #000;border-bottom:1px solid #000;text-align:center;padding:3px 4px;font-size:9pt;font-weight:700">8. <b>Quantidade Solicitada*</b></td>
+          </tr>
+          <tr>
+            <td style="border-bottom:1px solid #000;width:20px;padding:1px 2px"></td>
+            <td style="border-left:1px solid #000;border-bottom:1px solid #000;padding:1px 4px"></td>
+            ${["1° mês","2° mês","3° mês","4° mês","5° mês","6° mês"].map(m=>`<td style="border-left:1px solid #000;border-bottom:1px solid #000;text-align:center;font-size:7pt;padding:1px 0;width:26px">${m}</td>`).join("")}
+          </tr>
+          ${medsRows}
+        </table>
+      </td>
+    </tr>
+
+    <!-- Campos 9 e 10 -->
+    <tr>
+      <td style="${Cb}width:13%;padding:2px 5px;vertical-align:top">
+        <div style="font-size:7.5pt;font-weight:700">9. CID-10*</div>
+        <div style="font-size:11pt;font-weight:700;padding:2px 0">${esc(d.cid10||"")}</div>
+      </td>
+      <td style="${CbL}padding:2px 5px;vertical-align:top">
+        <div style="font-size:7.5pt;font-weight:700">10. Diagnóstico</div>
+        <div style="font-size:9pt;padding:2px 0">${esc(d.diagnostico||cid?.d||"")}</div>
+      </td>
+    </tr>
+
+    <!-- Campo 11 Anamnese -->
+    <tr>
+      <td colspan="2" style="${Cb}padding:2px 5px">
+        <div style="font-size:7.5pt;font-weight:700;margin-bottom:2px">11. Anamnese*</div>
+        <div style="font-size:9pt;min-height:55px;white-space:pre-wrap;line-height:1.5;padding-bottom:4px">${esc(d.anamnese||"")}</div>
+      </td>
+    </tr>
+
+    <!-- Campo 12 -->
+    <tr>
+      <td colspan="2" style="${Cb}padding:2px 5px">
+        <div style="font-size:7.5pt;font-weight:700;margin-bottom:2px">12. Paciente realizou tratamento prévio ou está em tratamento na doença?*</div>
+        <div style="font-size:9pt">
+          ${radio(!d.tratPrevioSim)} NÃO &nbsp;&nbsp;
+          ${radio(d.tratPrevioSim)} SIM. Relatar: ${esc(d.tratPrevio||"")}
+        </div>
+      </td>
+    </tr>
+
+    <!-- Campo 13 Atestado -->
+    <tr>
+      <td colspan="2" style="${Cb}padding:5px 8px">
+        <div style="font-size:9pt;font-weight:700;text-align:center;margin-bottom:3px">13. Atestado de Capacidade*</div>
+        <div style="font-size:8pt;text-align:center;margin-bottom:5px;line-height:1.4">
+          A solicitação do medicamento deverá ser realizada pelo paciente. Entretanto, fica dispensada a obrigatoriedade da presença física do<br>
+          paciente considerado incapaz de acordo com os artigos 3° e 4° do Código Civil. O paciente é considerado incapaz?
+        </div>
+        <table style="width:100%;border-collapse:collapse">
+          <tr>
+            <td style="width:52%;vertical-align:middle;padding-right:8px;font-size:9pt">
+              ${radio(!d.incapaz)} NÃO &nbsp;&nbsp;
+              ${radio(d.incapaz)} SIM. Indicar o nome do responsável pelo paciente, o qual poderá realizar a solicitação do medicamento
+            </td>
+            <td style="vertical-align:bottom">
+              <div style="border-bottom:1px solid #000;min-height:16px;font-size:9pt;padding-bottom:1px">${esc(d.nomeResponsavel||"")}</div>
+              <div style="font-size:7pt;margin-top:2px">Nome do Responsável</div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- Campos 14 e 17 (linha 1) -->
+    <tr>
+      <td style="${Cb}width:60%;padding:2px 5px;vertical-align:top">
+        <div style="font-size:7.5pt;font-weight:700">14. Nome do médico solicitante*</div>
+        <div style="font-size:10pt;font-weight:700;padding:2px 0">${esc(MEDICO.nome)}</div>
+      </td>
+      <td rowspan="2" style="${CbL}padding:5px;text-align:center;vertical-align:top">
+        <div style="font-size:7.5pt;font-weight:700">17. Assinatura e carimbo do médico*</div>
+        <div style="min-height:34px"></div>
+      </td>
+    </tr>
+
+    <!-- Campos 15 e 16 (linha 2, dentro da mesma tabela) -->
+    <tr>
+      <td style="${Cb}padding:0;vertical-align:top">
+        <table style="width:100%;border-collapse:collapse">
+          <tr>
+            <td style="border-right:1px solid #000;padding:2px 5px;width:58%;vertical-align:top">
+              <div style="font-size:7.5pt;font-weight:700">15. N° do Cartão Nacional de Saúde (CNS) do médico solicitante*</div>
+              <div style="font-size:9pt;padding:2px 0">${esc(MEDICO.cns)}</div>
+            </td>
+            <td style="padding:2px 5px;vertical-align:top">
+              <div style="font-size:7.5pt;font-weight:700">16. Data da Solicitação*</div>
+              <div style="font-size:9pt;padding:2px 0">${esc(d.dataStr||"")}</div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- Campo 18 -->
+    <tr>
+      <td colspan="2" style="${Cb}padding:3px 5px;font-size:8.5pt">
+        <b>18. CAMPOS ABAIXO PREENCHIDOS POR*:</b>
+        ${chk()} Paciente &nbsp;
+        ${chk()} Mãe do Paciente &nbsp;
+        ${chk()} Responsável (Descrito no item 13) &nbsp;
+        ${chk()} Médico Solicitante<br>
+        ${chk()} Outro, informar nome:
+        <span style="display:inline-block;border-bottom:1px solid #999;width:145px;vertical-align:bottom"></span>
+        &nbsp;e CPF:
+        <span style="display:inline-block;border-bottom:1px solid #999;width:108px;vertical-align:bottom"></span>
+      </td>
+    </tr>
+
+    <!-- Campos 19 e 20 -->
+    <tr>
+      <td style="${Cb}width:50%;padding:3px 5px;vertical-align:top">
+        <div style="font-size:7.5pt;font-weight:700;margin-bottom:2px">19. Raça/Cor/Etnia informado pelo Paciente Responsável*</div>
+        <div style="font-size:8.5pt;margin-bottom:2px">
+          ${chk()} Branca &nbsp; ${chk()} Amarela &nbsp; ${chk()} Indígena. Informar Etnia:
+          <span style="display:inline-block;border-bottom:1px solid #999;width:52px;vertical-align:bottom"></span>
+        </div>
+        <div style="font-size:8.5pt">${chk()} Preta &nbsp; ${chk()} Parda</div>
+      </td>
+      <td style="${CbL}padding:3px 5px;vertical-align:top">
+        <div style="font-size:7.5pt;font-weight:700;margin-bottom:3px">20. Telefone(s) para contato do paciente</div>
+        <div style="font-size:9pt;margin-bottom:5px">
+          (<span style="display:inline-block;width:18px"></span>)
+          <span style="display:inline-block;border-bottom:1px solid #999;width:115px;vertical-align:bottom"></span>
+        </div>
+        <div style="font-size:9pt">
+          (<span style="display:inline-block;width:18px"></span>)
+          <span style="display:inline-block;border-bottom:1px solid #999;width:115px;vertical-align:bottom"></span>
+        </div>
+      </td>
+    </tr>
+
+    <!-- Campos 21 e 23 -->
+    <tr>
+      <td style="${Cb}width:50%;padding:3px 5px;vertical-align:top">
+        <div style="font-size:7.5pt;font-weight:700;margin-bottom:2px">21. Número do documento do Paciente</div>
+        <div style="font-size:8.5pt">
+          ${radio(true)} CPF ou ${radio(false)} CNS:
+          <span style="display:inline-block;border-bottom:1px solid #999;width:112px;vertical-align:bottom;font-size:9pt">&nbsp;${esc(p.cpf||"")}</span>
+        </div>
+      </td>
+      <td style="${CbL}padding:3px 5px;vertical-align:top">
+        <div style="font-size:7.5pt;font-weight:700;margin-bottom:2px">23. Assinatura do responsável pelo preenchimento*</div>
+        <div style="min-height:22px"></div>
+      </td>
+    </tr>
+
+    <!-- Campo 22 -->
+    <tr>
+      <td colspan="2" style="${Cb}padding:3px 5px">
+        <div style="font-size:7.5pt;font-weight:700;margin-bottom:2px">22. Correio Eletrônico do paciente</div>
+        <div style="min-height:13px"></div>
+      </td>
+    </tr>
+
+  </table>
+
+  <div style="font-size:7.5pt;font-weight:700;margin-top:3px">*CAMPOS DE PREENCHIMENTO OBRIGATÓRIO</div>
+  </div>`;
+}
+
+
+function buildFePrintHTML(d, p){
+  const total = [d.acometimento,d.sorologia,d.inflamatorias,d.duracao].filter(v=>v!=="").reduce((a,b)=>a+Number(b),0);
+  const condRows = CONDS.map(c=>`<tr><td style="border:1px solid #ccc;padding:2px 6px;font-size:8.5px">${esc(c)}</td><td style="border:1px solid #ccc;padding:2px;text-align:center;width:50px">${cbSN(d.conds?.[c])} SIM</td><td style="border:1px solid #ccc;padding:2px;text-align:center;width:50px">${cbSN(d.conds?.[c]==="nao"?"sim":"")} NÃO</td></tr>`).join("");
+  const medRows = Array.from({length:4},(_,i)=>{const m=d.meds[i];return `<tr style="height:22px"><td style="border:1px solid #ccc;padding:2px 4px;width:20px;text-align:center">${i+1}</td><td style="border:1px solid #ccc;padding:2px 4px;font-size:9.5px">${esc(m?.medicamento||"")}</td><td style="border:1px solid #ccc;padding:2px 4px;font-size:9px">${esc(m?.posologia||"")}</td></tr>`;}).join("");
+  const sc = v => `<span style="display:inline-block;border:1px solid #000;padding:1px 6px;min-width:70px;min-height:14px">${esc(v||"")}</span>`;
+  const box = v => `<div style="border:1px solid #000;padding:4px 6px;min-height:50px;font-size:9px;white-space:pre-wrap;margin-bottom:3px">${esc(v||"")}</div>`;
+  const rad = t => `<div style="font-size:8.5px;margin-bottom:3px;padding-left:4px">○ ${t}</div>`;
+  const wrap = (n,body) => `<table style="width:100%;border-collapse:collapse;margin-bottom:4px"><tr><td style="border:1px solid #000;padding:3px 6px;font-weight:700;font-size:9px;vertical-align:top;width:20px">${n}</td><td style="border:1px solid #000;padding:4px 6px;width:100%">${body}</td></tr></table>`;
+
+  return `<div class="print-doc" style="font-family:Arial,sans-serif;font-size:9px;width:190mm;margin:0 auto">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><div style="width:46px;height:46px;border:1px solid #ccc;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:20px">🛡</div><div style="font-size:8.5px;font-weight:700;line-height:1.6">GOVERNO DO ESTADO DE MINAS GERAIS<br>SECRETARIA DE ESTADO DE SAÚDE<br>SUPERINTENDÊNCIA DE ASSISTÊNCIA FARMACÊUTICA</div></div>
+    <div style="text-align:center;font-size:12px;font-weight:700;border-bottom:1px solid #000;padding-bottom:4px;margin-bottom:8px;text-transform:uppercase">Formulário Específico – Artrite Reumatoide</div>
+    ${wrap(1,`<div style="font-size:8px;font-weight:700">NOME CIVIL DO(A) PACIENTE:</div><div style="border:1px solid #000;padding:2px 4px;margin-top:2px;font-size:10px;font-weight:700">${esc(p.nome)}</div><div style="font-size:8px;font-weight:700;margin-top:4px">NOME SOCIAL:</div><div style="border:1px solid #000;padding:2px 4px;margin-top:2px;min-height:14px"></div>`)}
+    ${wrap(2,`<div style="font-size:10px;font-weight:700;margin-bottom:4px">HISTÓRIA CLÍNICA</div>
+      <div style="font-size:8px;font-weight:700">2.1 CARACTERÍSTICAS CLÍNICAS E EVOLUÇÃO DA DOENÇA:</div>${box(d.historia)}
+      <div style="font-size:9px;font-weight:700;margin:5px 0 3px">2.2 DIAGNÓSTICO</div>
+      <div style="font-size:9px;font-weight:700;margin-bottom:2px">● Critérios ACR 1987:</div>
+      ${rad("1) Rigidez matinal")}${rad("2) Artrite de 3 ou mais áreas articulares")}${rad("3) Artrite de mãos")}${rad("4) Artrites simétricas")}${rad("5) Nódulos reumatoides")}${rad("6) Fator Reumatoide positivo")}${rad("7) Alterações radiográficas")}
+      <div style="font-size:9px;font-weight:700;margin-top:3px">TOTAL DE CRITÉRIOS: ${sc(d.acr87)}</div>
+      <div style="font-size:9px;font-weight:700;margin:5px 0 3px">● Critérios ACR/EULAR 2010:</div>
+      <div style="font-size:9px;font-weight:700;margin-bottom:2px">1. Acometimento articular</div>
+      ${rad("1 grande articulação: 0 pontos")}${rad("2 a 10 articulações grandes: 1 ponto")}${rad("1 a 3 articulações pequenas: 2 pontos")}${rad("4 a 10 articulações pequenas: 3 pontos")}${rad(">10 articulações (≥1 pequena): 5 pontos")}
+      <div style="font-size:9px;font-weight:700;margin:3px 0 2px">2. Sorologia</div>
+      ${rad("FR e anti-CCP negativos: 0 pontos")}${rad("FR ou anti-CCP baixos títulos: 2 pontos")}${rad("FR ou anti-CCP altos títulos: 3 pontos")}
+      <div style="font-size:9px;font-weight:700;margin:3px 0 2px">3. Provas inflamatórias</div>
+      ${rad("VHS e PCR normais: 0 pontos")}${rad("VHS ou PCR alterados: 1 ponto")}
+      <div style="font-size:9px;font-weight:700;margin:3px 0 2px">4. Duração dos sintomas</div>
+      ${rad("< 6 semanas: 0 pontos")}${rad("≥ 6 semanas: 1 ponto")}
+      <div style="font-size:9px;font-weight:700;margin-top:4px">TOTAL DE PONTOS: ${sc(total||"")}</div>
+      <div style="font-size:9px;font-weight:700;margin:5px 0 3px">2.3 ATIVIDADE DA DOENÇA:</div>
+      <div style="font-size:9px;margin-bottom:3px">• DAS 28: ${sc(d.das28)}</div>
+      <div style="font-size:9px;margin-bottom:3px">• SDAI: ${sc(d.sdai)}</div>
+      <div style="font-size:9px">• CDAI: ${sc(d.cdai)}</div>`)}
+    ${wrap(3,`<div style="font-size:9px;font-weight:700;margin-bottom:4px">INFORMAR condições abaixo:</div><table style="width:100%;border-collapse:collapse">${condRows}</table>`)}
+    ${wrap(4,`<div style="font-size:9px;font-weight:700;margin-bottom:3px">PARA LEF, MTX, SSZ, AZA E/OU CICLOSPORINA:</div><div style="font-size:9px;margin-bottom:4px">Tuberculose sem tratamento: ${cbSN(d.tbTrat)} SIM &nbsp;&nbsp; ${cbSN(d.tbTrat==="nao"?"sim":"")} NÃO</div><div style="border:1px solid #000;padding:4px 6px;font-size:8.5px;font-weight:700;text-align:center;background:#FFF9E6">Atenção: TB sem tratamento constitui contraindicação.</div>`)}
+    ${wrap(5,`<div style="font-size:9px;font-weight:700;margin-bottom:3px">TRATAMENTOS PRÉVIOS REALIZADOS:</div>${box(d.tratPrevios)}`)}
+    ${wrap(6,`<div style="font-size:9px;font-weight:700;margin-bottom:4px">PARA SOLICITAÇÃO DE MMCD BIOLÓGICO:</div><div style="font-size:9px;margin-bottom:4px">MMCDbio + metotrexato? ${cbSN(d.usarMTX==="sim"?"sim":"")} SIM &nbsp;&nbsp; ${cbSN(d.usarMTX==="nao"?"sim":"")} NÃO</div><div style="border:1px solid #000;padding:4px 6px;min-height:20px;font-size:9px">${esc(d.justMTX||"")}</div>`)}
+    ${wrap(7,`<div style="font-size:9px;font-weight:700;margin-bottom:4px">ESQUEMA TERAPÊUTICO COMPLETO:</div><table style="width:100%;border-collapse:collapse"><thead><tr><th style="border:1px solid #ccc;padding:3px;font-size:8.5px;width:20px"></th><th style="border:1px solid #ccc;padding:3px;font-size:8.5px">Medicamento(s)</th><th style="border:1px solid #ccc;padding:3px;font-size:8.5px">Posologia</th></tr></thead><tbody>${medRows}</tbody></table>`)}
+    ${wrap(8,`<div style="font-size:9px;font-weight:700;margin-bottom:3px">PARA SOLICITAÇÃO DE RITUXIMABE:</div>${box(d.rituximabe)}`)}
+    ${wrap(9,`<div style="font-size:9px;font-weight:700;margin-bottom:4px">PPD/IGRA? ${cbSN(d.ppd==="sim"?"sim":"")} SIM &nbsp;&nbsp; ${cbSN(d.ppd==="nao"?"sim":"")} NÃO</div>${box(d.ppd_obs)}`)}
+    ${wrap(10,`<div style="font-size:9px;font-weight:700;margin-bottom:3px">OUTRAS OBSERVAÇÕES PERTINENTES:</div>${box(d.obs)}`)}
+    ${wrap(11,`<div style="font-size:9px;font-weight:700;margin-bottom:8px">Assumo integral responsabilidade pela veracidade das informações prestadas.</div>
+      <div style="font-size:9px;margin-bottom:14px">Data: <span style="border-bottom:1px solid #000;display:inline-block;width:35px"></span> / <span style="border-bottom:1px solid #000;display:inline-block;width:28px"></span> / <span style="border-bottom:1px solid #000;display:inline-block;width:55px"></span></div>
+      <div style="font-size:9px;margin-bottom:4px">Assinatura e carimbo: <span style="border-bottom:1px solid #000;display:inline-block;width:280px"></span></div>
+      <div style="font-size:9px;text-align:center;margin-top:2px">Médico</div>
+      <div style="font-size:8px;margin-top:8px;color:#555">${esc(MEDICO.nome)} · ${esc(MEDICO.crm)} · ${esc(MEDICO.especialidade)} · ${esc(MEDICO.instituicao)}</div>`)}
+    <div style="font-size:8px;color:#666;margin-top:4px;font-style:italic">Atualizado em 24/02/2026</div>
+  </div>`;
+}
+
+// ── INIT ──────────────────────────────────────────────────────
+loadPts();
+render();
+</script>
+</body>
+</html>
